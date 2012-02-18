@@ -3,7 +3,11 @@
 # ###################################
 # BEGIN Core EMC/HAL Loads
 # ###################################
-# kinematics
+
+# This machine uses Gantry kinematics.
+# Joint 0 and joint 3 are motors on either side of the gantry, driving the gantry along the X axis
+# Joint 1 is a motor on the gantry, driving the spindle sled side to side on the gantry along the Y axis
+# Joint 2 is a motor on the spindle sled, driving the spindle along the Z axis
 loadrt gantrykins
 setp gantrykins.joint-0 0
 setp gantrykins.joint-1 1
