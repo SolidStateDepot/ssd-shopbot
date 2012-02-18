@@ -1,0 +1,784 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- 
+Include your PyVCP panel here.
+The contents of this file will not be overwritten when you run stepconf again.
+-->
+<pyvcp>
+
+<vbox>
+	<labelframe text="System Status">
+		<font>"Helvetica",12</font>
+	<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
+	<tablesticky sticky="new"/>
+	<tablerow/>
+
+		<led> <!-- E-Stop LED -->
+		 	<halpin>"halui.estop.is-activated"</halpin>
+			<on_color> "red"</on_color> 
+			<off_color> "green"</off_color>
+		</led>
+		<label><text>"E-Stop    "</text><font>"Helvetica",11</font></label>
+		<vbox>
+			<led> <!-- Stepper Power Enable LED -->
+	 	        <halpin>"stepper.power.enable.led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "red"</off_color>
+				<size>16</size> 
+			</led>
+			<led> <!-- Stepper Contactor Status LED -->
+	 	        <halpin>"stepper.contactor.status.led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "red"</off_color>
+				<size>8</size> 
+			</led>
+		</vbox>
+		<label><text>"Stepper Power    "</text>	<font>"Helvetica",11</font></label>
+		<vbox>
+			<led> <!-- Spindle Contactor Status LED-->
+		 	        <halpin>"spindle.contactor.status.led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "red"</off_color>
+				<size>16</size> 
+			</led>
+			<led> <!-- Spindle Power Enable-->
+		 	        <halpin>"spindle.power.enable.led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "red"</off_color>
+				<size>8</size> 
+			</led>
+		</vbox>
+		<label><text>"Spindle Power    "</text><font>"Helvetica",11</font></label>
+
+		<led> <!-- World Mode Status -->
+	 	        <halpin>"halui.mode.joint"</halpin>
+			<on_color> "red"</on_color> 
+			<off_color> "green"</off_color>
+		</led>
+		<label><text>"World Mode"</text><font>"Helvetica",11</font></label>
+
+	</table> 
+	</labelframe>
+
+	<labelframe text="Motion">
+		<font>"Helvetica",12</font>
+	<hbox>
+		<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
+		<tablesticky sticky="new"/>
+		<tablerow/> <!-- Axis Labels --> 
+			<label>
+				<font>"Helvetica",8</font>
+				<text>" Position(in)   "</text>
+			</label>
+			<label>
+				<font>"Helvetica",12</font>
+				<text>"       X       "</text>
+			</label>
+			<label>
+				<font>"Helvetica",12</font>
+				<text>"       Y       "</text>
+			</label>
+			<label>
+				<font>"Helvetica",12</font>
+				<text>"       Z       "</text>
+			</label>
+			<label>
+				<font>"Helvetica",12</font>
+				<text>"               "</text>
+			</label>
+		<tablerow/>
+			<label>
+				<font>"Helvetica",10</font>
+				<text>"Abolute    "</text>
+		        </label>
+			<number> <!-- X1 Local Position Numeric Display -->
+				<halpin>"halui.axis.0.pos-feedback"</halpin>
+				<font>("Helvetica",12)</font> 
+				<format>"+4.4f"</format>
+
+			</number>
+			<number> <!-- Y Local Position Numeric Display -->
+				<halpin>"halui.axis.1.pos-feedback"</halpin>
+				<font>("Helvetica",12)</font>  
+				<format>"+4.4f"</format>
+			</number>
+			<number> <!-- Z Absolute Position Numeric Display -->
+				<halpin>"halui.axis.2.pos-feedback"</halpin>
+
+				<font>("Helvetica",12)</font>  
+				<format>"+4.4f"</format>
+			</number>
+			<label>
+				<font>"Helvetica",10</font>
+				<text>"               "</text>
+		   	</label>
+		<tablerow/>
+			<label>
+				<font>"Helvetica",10</font>
+				<text>"Local        "</text>
+		        </label>
+			<number> <!-- X1 Local Position Numeric Display -->
+				<halpin>"halui.axis.0.pos-relative"</halpin>
+
+				<font>("Helvetica",12)</font> 
+				<format>"+4.4f"</format>
+			</number>
+			<number> <!-- Y Local Position Numeric Display -->
+				<halpin>"halui.axis.1.pos-relative"</halpin>
+				<font>("Helvetica",12)</font> 
+				<format>"+4.4f"</format>
+			</number>
+
+			<number> <!-- Z Local Position Numeric Display -->
+				<halpin>"halui.axis.2.pos-relative"</halpin>
+				<font>("Helvetica",12)</font> 
+				<format>"+4.4f"</format>
+			</number>
+			<label>
+				<font>"Helvetica",10</font>
+				<text>"               "</text>
+		   	</label>
+
+		<tablerow/>
+			<label>
+				<font>"Helvetica",10</font>
+				<text>"Go to Coordinates"</text>
+		        </label>
+			<spinbox> <!-- X Goto numeric input -->
+				<halpin>"x.goto.numeric.input"</halpin>
+				<min_>-1</min_>
+				<max_>96</max_>
+				<width>5</width>
+				<resolution>0.1</resolution>
+				<format>"2.4f"</format>
+				<font>"Helvetica",10</font>
+			</spinbox>
+			<spinbox> <!-- Y Goto numeric input -->
+				<halpin>"y.goto.numeric.input"</halpin>
+				<min_>-1</min_>
+				<max_>96</max_>
+				<width>5</width>
+				<resolution>0.1</resolution>
+				<format>"2.4f"</format>
+				<font>"Helvetica",10</font>
+			</spinbox>
+			<spinbox> <!-- Z Goto numeric input -->
+				<halpin>"z.goto.numeric.input"</halpin>
+				<min_>-1</min_>
+				<max_>96</max_>
+				<width>5</width>
+				<resolution>0.1</resolution>
+				<format>"2.4f"</format>
+				<font>"Helvetica",10</font>
+			</spinbox>
+			<button> <!-- Goto Button -->
+				<halpin>"goto-button"</halpin>
+				<text>"Go"</text>
+				<font>"Helvetica",10</font>
+			</button>
+		<tablerow/>
+		</table> 
+	</hbox>
+	</labelframe>
+
+	<labelframe text="Encoder Status">
+			<font>"Helvetica",12</font>
+		<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
+		<tablesticky sticky="new"/>
+		<tablerow/>
+			<label>
+			    <text>"X1"</text>
+			    <font>"Helvetica",10</font>
+			</label> 
+			<label>
+			    <text>"X2"</text>
+			    <font>"Helvetica",10</font>
+			</label> 
+			<label>
+			    <text>"Y"</text>
+			    <font>"Helvetica",10</font>
+			</label> 
+			<label>
+			    <text>"Z"</text>
+			    <font>"Helvetica",10</font>
+			</label> 
+		<tablerow/>
+			<meter> <!-- X1 Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-x1"</halpin>
+			    <size>120</size>
+			    <min_>-50</min_>
+			    <max_>50</max_>
+			    <majorscale>10</majorscale>
+			    <minorscale>5</minorscale>
+			    <font>"Helvetica",5</font>
+			    <region1>(-50,-20,"red")</region1>
+			    <region2>(-20,20,"green")</region2>
+			    <region3>(20,50,"red")</region3>
+			</meter>
+			<meter> <!-- X2 Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-x2"</halpin>
+			    <size>120</size>
+			    <min_>-50</min_>
+			    <max_>50</max_>
+			    <majorscale>10</majorscale>
+			    <minorscale>5</minorscale>
+			    <font>"Helvetica",5</font>
+			    <region1>(-50,-20,"red")</region1>
+			    <region2>(-20,20,"green")</region2>
+			    <region3>(20,50,"red")</region3>
+			</meter>
+			<meter> <!-- Y Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-y"</halpin>
+			    <size>120</size>
+			    <min_>-50</min_>
+			    <max_>50</max_>
+			    <majorscale>10</majorscale>
+			    <minorscale>5</minorscale>
+			    <font>"Helvetica",5</font>
+			    <region1>(-50,-20,"red")</region1>
+			    <region2>(-20,20,"green")</region2>
+			    <region3>(20,50,"red")</region3>
+			</meter>
+			<meter> <!-- Z Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-z"</halpin>
+			    <size>120</size>
+			    <min_>-50</min_>
+			    <max_>50</max_>
+			    <majorscale>10</majorscale>
+			    <minorscale>5</minorscale>
+			    <font>"Helvetica",5</font>
+			    <region1>(-50,-20,"red")</region1>
+			    <region2>(-20,20,"green")</region2>
+			    <region3>(20,50,"red")</region3>
+			</meter>
+		<tablerow/>
+			<number> <!-- X1 Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-x1"</halpin>
+				<font>("Helvetica",11)</font>
+				<format>"+4.0f"</format>
+			</number>
+			<number> <!-- X2 Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-x2"</halpin>
+				<font>("Helvetica",11)</font> 
+				<format>"+4.0f"</format>
+			</number>
+			<number> <!-- Y Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-y"</halpin>
+				<font>("Helvetica",11)</font> 
+				<format>"+4.0f"</format>
+			</number>
+			<number> <!-- Z Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-z"</halpin>
+				<font>("Helvetica",11)</font> 
+				<format>"+4.0f"</format>
+			</number>
+			<tablerow/>
+				<s32> <!-- X1 Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-x1"</halpin>
+					<font>("Helvetica",11)</font>
+					<format>"+4.0f"</format>
+				</s32>
+				<s32> <!-- X2 Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-x2"</halpin>
+					<font>("Helvetica",11)</font> 
+					<format>"+4.0f"</format>
+				</s32>
+				<s32> <!-- Y Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-y"</halpin>
+					<font>("Helvetica",11)</font> 
+					<format>"+4.0f"</format>
+				</s32>
+				<s32> <!-- Z Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-z"</halpin>
+					<font>("Helvetica",11)</font> 
+					<format>"+4.0f"</format>
+				</s32>
+			</table> 
+	</labelframe>
+
+	<labelframe text="Proximity Switches and Homing">
+			<font>"Helvetica",12</font>
+		<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
+		<tablesticky sticky="new"/>
+		<tablerow/>
+			<labelframe text="X1">
+				<font>"Helvetica",12</font>
+				<vbox>
+					<hbox>
+						<led> <!-- X1 Prox Sensor LED -->
+					 	        <halpin>"prox-led-x1"</halpin>
+							<on_color> "red"</on_color> 
+							<off_color> "green"</off_color>
+						</led>
+						<label>
+							<text>"      X1 Prox"</text>
+
+							<font>"Helvetica",10</font>
+						</label> 
+					</hbox>
+					<hbox>
+						<led> <!-- X1 Alarm LED -->
+					 	        <halpin>"alarm-led-x1"</halpin>
+							<on_color> "red"</on_color> 
+							<off_color> "black"</off_color>
+						</led>
+						<label> 
+							<text>"X1 Alarm"</text>
+							<font>"Helvetica",8</font>
+						</label> 
+						<button> <!-- X1 Alarm Clear Button -->
+							<halpin>"alarm-clear-button-x1"</halpin>
+							<text>"Clear"</text>
+							<font>"Helvetica",8</font>
+						</button>
+					</hbox>
+				</vbox>
+				</labelframe>
+				<labelframe text="X2">
+					<font>"Helvetica",12</font>
+				<vbox>
+				<hbox>
+					<led> <!-- X2 Prox Sensor LED -->
+				 	        <halpin>"prox-led-x2"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "green"</off_color>
+					</led>
+					<label>
+						<text>"      X2 Prox"</text>
+						<font>"Helvetica",10</font>
+					</label> 
+				</hbox>
+				<hbox>
+					<led> <!-- X2 Alarm LED -->
+				 	        <halpin>"alarm-led-x2"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<label>
+						<text>"X2 Alarm"</text>
+
+						<font>"Helvetica",8</font>
+					</label> 
+					<button> <!-- X2 Alarm Clear Button -->
+						<halpin>"alarm-clear-button-x2"</halpin>
+						<text>"Clear"</text>
+						<font>"Helvetica",8</font>
+					</button>
+
+				</hbox>
+				</vbox>
+				</labelframe>
+				<labelframe text="Y">
+					<font>"Helvetica",12</font>
+				<vbox>
+				<hbox>
+					<led> <!-- Y Prox Sensor LED -->
+				 	        <halpin>"prox-led-y"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "green"</off_color>
+					</led>
+					<label>
+						<text>"      Y Prox"</text>
+
+						<font>"Helvetica",10</font>
+					</label> 
+				</hbox>
+				<hbox>
+					<led> <!-- Y Alarm LED -->
+				 	        <halpin>"alarm-led-y"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<label>
+						<text>"Y Alarm"</text>
+
+						<font>"Helvetica",8</font>
+					</label> 
+					<button> <!-- Y Alarm Clear Button -->
+						<halpin>"alarm-clear-button-y"</halpin>
+						<text>"Clear"</text>
+						<font>"Helvetica",8</font>
+					</button>
+				</hbox>
+				</vbox>
+				</labelframe>
+				<labelframe text="Z">
+					<font>"Helvetica",12</font>
+				<vbox>
+				<hbox>
+					<led> <!-- Z Prox Sensor LED -->
+				 	        <halpin>"prox-led-z"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "green"</off_color>
+					</led>
+					<label>
+						<text>"      Z Prox"</text>
+
+						<font>"Helvetica",10</font>
+					</label> 
+				</hbox>
+				<hbox>
+					<led> <!-- Z Alarm LED -->
+				 	        <halpin>"alarm-led-z"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<label>
+						<text>"Z Alarm"</text>
+
+						<font>"Helvetica",8</font>
+					</label> 
+					<button> <!-- Z Alarm Clear Button -->
+						<halpin>"alarm-clear-button-z"</halpin>
+						<text>"Clear"</text>
+						<font>"Helvetica",8</font>
+					</button>
+				</hbox>
+				</vbox>
+				</labelframe>
+			<tablerow/>
+			</table> 
+	</labelframe>
+
+
+	<hbox>
+
+			
+	</hbox>
+
+</vbox>
+
+<tabs>
+    <names>["Spindle", "Homing and Zeroing", "Misc Controls"]</names>
+    <vbox>
+	<labelframe text="Spindle Status">
+		<hbox>
+		<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
+		<tablesticky sticky="new"/>
+		<tablerow/> <!-- Axis Labels --> 
+			<label> <!-- Empty label -->
+				<text>"		"</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<hbox>
+				<led> <!-- Spindle At Speed LED -->
+					<halpin>"spindle-at-speed-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "red"</off_color>
+				</led>
+				<label> <!-- Spindle Speed Label -->
+					<text>"Speed (RPM)"</text>
+					<font>"Helvetica",13</font>
+				</label>
+			</hbox>
+			<label> <!-- Empty label -->
+				<text>"		"</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<label> <!-- Spindle Torque Label -->
+				<text>"Torque (%)"</text>
+				<font>"Helvetica",13</font>
+			</label>
+		<tablerow/> <!-- Meters --> 
+			<label> <!-- Empty label -->
+				<text>"		"</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<meter> <!-- Spindle Speed Meter -->
+			    <halpin>"spindle-speed-meter"</halpin>
+			    <size>140</size>
+			    <min_>0</min_>
+			    <max_>18000</max_>
+			    <majorscale>6000</majorscale>
+			    <minorscale>2000</minorscale>
+			    <font>"Helvetica",5</font>
+			</meter>
+			<label> <!-- Empty label -->
+				<text>"		"</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<meter> <!-- Spindle Torque Meter -->
+			    <halpin>"spindle-torque-meter"</halpin>
+			    <size>140</size>
+			    <min_>0</min_>
+			    <max_>100</max_>
+			    <majorscale>10</majorscale>
+			    <minorscale>25</minorscale>
+			    <font>"Helvetica",5</font>
+			</meter>
+		<tablerow/> <!-- Numeric Displays --> 
+			<label> <!-- Empty label -->
+				<text>"		"</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<number> <!-- Spindle Speed Numeric Display -->
+				<halpin>"spindle-speed-numeric-display"</halpin>
+				<font>("Helvetica",13)</font> 
+				<format>"+4.0f"</format>
+			</number>
+			<label> <!-- Empty label -->
+				<text>""</text>
+				<font>"Helvetica",13</font>
+			</label>
+			<number> <!-- Spindle Torque Numeric Display -->
+				<halpin>"spindle-torque-numeric-display"</halpin>
+				<font>("Helvetica",13)</font> 
+				<format>"+4.0f"</format>
+			</number>
+		<tablerow/>
+		</table> 
+		</hbox>
+	</labelframe>
+	<labelframe text="Spindle Control">
+	<hbox>
+		<label> <!-- Empty label -->
+			<text>"		"</text>
+			<font>"Helvetica",13</font>
+		</label>
+		<vbox>
+			<hbox>
+				<led> <!-- Spindle Power Status LED -->
+					<halpin>"spindle-power-status-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "red"</off_color>
+				</led>
+				<button> <!-- Spindle Power Enable Button -->
+					<halpin>"spindle-power-enable-button"</halpin>
+					<text>"Spindle VFD Power"</text>
+						<font>"Helvetica",10</font>
+				</button>
+			</hbox>
+			<hbox>
+				<led> <!-- Spindle Motion Status LED -->
+					<halpin>"spindle-is-on-status-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "red"</off_color>
+				</led>
+				<button> <!-- Spindle Power Enable Button -->
+					<halpin>"spindle-motion-stop-button"</halpin>
+					<text>"Spindle Motion Stop"</text>
+						<font>"Helvetica",10</font>
+				</button>
+			</hbox>
+			<hbox>
+				<led> <!-- Spindle Fan Enable LED -->
+			 	        <halpin>"spindle-fan-indicator-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "red"</off_color>
+					</led>
+				<button> <!-- Spindle Fan Enable Button -->
+					<halpin>"spindle-fan-enable-button"</halpin>
+					<text>"Spindle Fan Enable"</text>
+					<font>"Helvetica",10</font>
+				</button>
+			</hbox>
+		</vbox>
+		<label> <!-- Empty label -->
+			<text>"		"</text>
+			<font>"Helvetica",13</font>
+		</label>
+		<vbox>
+			<hbox>
+				<led> <!-- Spindle Forward LED -->
+			 	        <halpin>"spindle-forward-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "black"</off_color>
+				</led>
+				<label> <!-- Spindle Forward Label -->
+					<text>"Forward"</text>
+					<font>"Helvetica",10</font>
+				</label>
+			</hbox>
+			<hbox>
+				<led> <!-- Spindle Reverse LED -->
+			 	        <halpin>"spindle-reverse-led"</halpin>
+					<on_color> "green"</on_color> 
+					<off_color> "black"</off_color>
+				</led>
+				<label> <!-- Spindle Reverse Label -->
+					<text>"Reverse"</text>
+					<font>"Helvetica",10</font>
+				</label>
+			</hbox>
+		</vbox>
+	</hbox>
+	</labelframe>
+    </vbox>
+    <vbox>
+	<hbox>
+		<labelframe text="Zeroing"> <!-- Zeroing -->
+			<vbox>
+				<hbox>
+					<led> <!-- Zeroing Enable Status LED -->
+						<halpin>"zero-enable-status-led"</halpin>
+						<on_color> "green"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<button> <!-- Zeroing Enable Enable Button -->
+						<halpin>"zero-enable-button"</halpin>
+						<text>"Zero Enable"</text>
+							<font>"Helvetica",10</font>
+					</button>
+				</hbox>
+				<button> <!-- Zero All Local Coordinate Here Button -->
+					<halpin>"zero-button-all"</halpin>
+					<text>"Zero All Axes"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- X Zero Local Coordinate Here Button -->
+					<halpin>"zero-button-x"</halpin>
+					<text>"Zero X Axis"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Y Zero Local Coordinate Here Button -->
+					<halpin>"zero-button-y"</halpin>
+					<text>"Zero Y Axis"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Z Zero Local Coordinate Here Button -->
+					<halpin>"zero-button-z"</halpin>
+					<text>"Zero Z Axis"</text>
+					<font>"Helvetica",10</font>
+				</button>
+			</vbox>
+		</labelframe>
+		<labelframe text="Zero Plate"> <!-- Zero Plate -->
+			<vbox>
+				<hbox>
+					<led> <!-- Zero Plate Enable Status LED -->
+						<halpin>"zero-plate-enable-status-led"</halpin>
+						<on_color> "green"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<button> <!-- Zero Plate Enable Enable Button -->
+						<halpin>"zero-plate-enable-button"</halpin>
+						<text>"Zero Plate Enable"</text>
+						<font>"Helvetica",10</font>
+					</button>
+				</hbox>
+				<hbox>
+					<led> <!-- Zero Plate Signal LED -->
+						<halpin>"zero-plate-signal-status-led"</halpin>
+						<on_color> "green"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<label> <!-- Zero Plate Signal Label -->
+						<text>"Zero Plate Signal"</text>
+						<font>"Helvetica",10</font>
+					</label>
+				</hbox>
+				<button> <!-- X Zero Plate Button -->
+					<halpin>"zplate-button-x"</halpin>
+					<text>"X Axis Z-plate"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Y Zero Plate Button -->
+					<halpin>"zplate-button-y"</halpin>
+					<text>"Y Axis Z-plate"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Z Zero Plate Button -->
+					<halpin>"zplate-button-z"</halpin>
+					<text>"Z Axis Z-plate"</text>
+					<font>"Helvetica",10</font>
+				</button>
+			</vbox>
+
+		</labelframe>
+		<labelframe text="Preset Home Locations"> <!-- Homing -->
+		<hbox>
+			<vbox>
+				<button> <!-- Goto Home 1 Button -->
+					<halpin>"goto-home-1"</halpin>
+					<text>"Home 1"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 3 Button -->
+					<halpin>"goto-home-3"</halpin>
+					<text>"Home 3"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 5 Button -->
+					<halpin>"goto-home-5"</halpin>
+					<text>"Home 5"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 7 Button -->
+					<halpin>"goto-home-7"</halpin>
+					<text>"Home 7"</text>
+					<font>"Helvetica",10</font>
+				</button>
+			</vbox>
+			<vbox>
+				<button> <!-- Goto Home 2 Button -->
+					<halpin>"goto-home-2"</halpin>
+					<text>"Home 2"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 4 Button -->
+					<halpin>"goto-home-4"</halpin>
+					<text>"Home 4"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 6 Button -->
+					<halpin>"goto-home-6"</halpin>
+					<text>"Home 6"</text>
+					<font>"Helvetica",10</font>
+				</button>
+				<button> <!-- Goto Home 8 Button -->
+					<halpin>"goto-home-8"</halpin>
+					<text>"Home 8"</text>
+					<font>"Helvetica",10</font>
+				</button>
+			</vbox>
+		</hbox>
+		</labelframe>
+	</hbox>
+    </vbox>
+    <vbox>
+	<labelframe text="External Controls"> <!-- Buttons and Status LEDs for misc controls -->
+	<hbox>
+		<hbox>
+			<led> <!-- Mist Enable LED -->
+		 	        <halpin>"mist-enable-led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "black"</off_color>
+			</led>
+			<button> <!-- Mist Enable Button -->
+				<halpin>"mist-enable-button"</halpin>
+				<text>"Mist Enable"</text>
+				<font>"Helvetica",10</font>
+			</button>
+		</hbox>
+		<hbox>
+			<led> <!-- Vacuum Enable LED -->
+		 	        <halpin>"vacuum-enable-led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "black"</off_color>
+			</led>
+			<button> <!-- Vacuum Enable Button -->
+				<halpin>"vacuum-enable-button"</halpin>
+				<text>"Vacuum Enable"</text>
+				<font>"Helvetica",10</font>
+			</button>
+		</hbox>
+		<hbox>
+			<led> <!-- Dust Collection Enable LED -->
+		 	        <halpin>"dust-collection-enable-led"</halpin>
+				<on_color> "green"</on_color> 
+				<off_color> "black"</off_color>
+				</led>
+			<button> <!-- Dust Collection Enable Button -->
+				<halpin>"dust-collection-enable-button"</halpin>
+				<text>"Dust Collection Enable"</text>
+				<font>"Helvetica",10</font>
+			</button>
+		</hbox>
+	</hbox>
+	</labelframe>
+    </vbox>
+</tabs>
+
+
+</pyvcp>
+
+

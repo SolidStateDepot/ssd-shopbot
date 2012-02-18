@@ -1,0 +1,262 @@
+###EMC2.4.2 Configuration for Shopbot-Ultra, developed at Boulder Engineering Studio, July 2010
+
+# ###################################
+# BEGIN Core EMC/HAL Loads
+# ###################################
+# kinematics
+loadrt gantrykins
+setp gantrykins.joint-0 0
+setp gantrykins.joint-1 1
+setp gantrykins.joint-2 2
+setp gantrykins.joint-3 0
+
+# Load the realtime portion of classic ladder
+loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonostables=2 numPhysInputs=16 numPhysOutputs=16 numArithmExpr=4 numSections=4
+# Loader the userspace portion of Classic Ladder to silently load the program
+loadusr classicladder --modmaster --nogui shopbot-ladder-1.clp
+
+loadrt stepgen step_type=0,0,0,0
+
+# motion controller, get name and thread periods from ini file
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES
+# only the 7i43 needs this, but it doesnt hurt the others
+loadrt probe_parport
+
+#load additional blocks
+loadrt hypot count=2
+loadrt comp count=3
+loadrt or2 count=3
+
+loadrt scale count=5
+addf scale.1 servo-thread
+addf scale.2 servo-thread
+addf scale.3 servo-thread
+addf scale.4 servo-thread
+
+# hostmot2 driver
+loadrt hostmot2
+# load low-level driver
+loadrt hm2_pci config="firmware=hm2/5i23/SVST2_4_7I47.BIT num_encoders=4 num_pwmgens=2 num_stepgens=4" 
+    setp hm2_5i23.0.pwmgen.pwm_frequency 100000
+    setp hm2_5i23.0.pwmgen.pdm_frequency 100000
+    setp hm2_5i23.0.watchdog.timeout_ns 10000000
+
+########################################
+#### END Core EMC/Hal Loads ############
+########################################
+
+# ################################################
+# THREADS
+# ################################################
+addf hm2_5i23.0.read servo-thread
+addf hm2_5i23.0.write         servo-thread
+addf hm2_5i23.0.pet_watchdog  servo-thread
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+addf classicladder.0.refresh               servo-thread
+
+# ################################################
+# External Output Signals
+# ################################################
+#Contactor control for Stepper power
+#net contactor-stepper-control     <=  axis.0.amp-enable-out
+#net contactor-stepper-control     =>  hm2_5i23.0.gpio.044.out
+#net contactor-stepper-control     =>  hm2_5i23.0.stepgen.00.enable
+setp hm2_5i23.0.gpio.044.is_output 1
+setp hm2_5i23.0.gpio.044.is_opendrain 1
+setp hm2_5i23.0.gpio.044.invert_output 1
+
+#Contactor control for Spindle power
+#net contactor-spindle-control     <=  axis.1.amp-enable-out
+#net contactor-spindle-control     =>  hm2_5i23.0.gpio.046.out
+setp hm2_5i23.0.gpio.046.is_output 1
+setp hm2_5i23.0.gpio.046.is_opendrain 1
+setp hm2_5i23.0.gpio.046.invert_output 1
+
+#Spindle Power Enable
+net spindle-power-enable-control => hm2_5i23.0.gpio.046.out
+
+#Spindle Fan Control
+net spindle-fan-control =>  hm2_5i23.0.gpio.047.out
+setp hm2_5i23.0.gpio.047.is_output 1
+setp hm2_5i23.0.gpio.047.is_opendrain 1
+setp hm2_5i23.0.gpio.047.invert_output 1
+
+#Spindle Forward / Reverse Control
+#net spindle-forward-control => hm2_5i23.0.gpio.041.out
+setp hm2_5i23.0.gpio.041.is_output 1
+setp hm2_5i23.0.gpio.041.is_opendrain 1
+setp hm2_5i23.0.gpio.041.invert_output 1
+#net spindle-reverse-control => hm2_5i23.0.gpio.043.out
+setp hm2_5i23.0.gpio.043.is_output 1
+setp hm2_5i23.0.gpio.043.is_opendrain 1
+setp hm2_5i23.0.gpio.043.invert_output 1
+
+#Mist Coolant Control
+#net mist-control     =>  hm2_5i23.0.gpio.043.out
+#setp hm2_5i23.0.gpio.043.is_output 1
+
+#Stepper Driver Digital I/O
+net alarm-clear-x1     =>  hm2_5i23.0.gpio.050.out
+setp hm2_5i23.0.gpio.050.is_output 1
+net alarm-clear-y     =>  hm2_5i23.0.gpio.054.out
+setp hm2_5i23.0.gpio.054.is_output 1
+net alarm-clear-z     =>  hm2_5i23.0.gpio.058.out
+setp hm2_5i23.0.gpio.058.is_output 1
+net alarm-clear-x2     =>  hm2_5i23.0.gpio.062.out
+setp hm2_5i23.0.gpio.056.is_output 1
+net stepper-windings-off-x1     =>  hm2_5i23.0.gpio.051.out
+setp hm2_5i23.0.gpio.051.is_output 1
+net stepper-windings-off-y     =>  hm2_5i23.0.gpio.055.out
+setp hm2_5i23.0.gpio.055.is_output 1
+net stepper-windings-off-z     =>  hm2_5i23.0.gpio.059.out
+setp hm2_5i23.0.gpio.059.is_output 1
+net stepper-windings-off-x2     =>  hm2_5i23.0.gpio.063.out
+setp hm2_5i23.0.gpio.063.is_output 1
+
+
+# ################################################
+# External Input Signals
+# ################################################
+#Contactor status for Stepper and Spindle power
+net contactor-stepper-status     <=  hm2_5i23.0.gpio.064.in
+net contactor-spindle-status     <=  hm2_5i23.0.gpio.066.in
+
+#Control Pendant
+net pendant-green-button    <=  hm2_5i23.0.gpio.065.in_not
+net pendant-green-button    <=  classicladder.0.in-03
+net pendant-blue-button    <=  hm2_5i23.0.gpio.067.in_not
+net pendant-blue-button    =>  classicladder.0.in-02
+
+#Remote E-Stop
+net estop-remote    <=  hm2_5i23.0.gpio.032.in_not
+net estop-remote    =>  classicladder.0.in-01
+
+#Spindle Key Switch
+net spindle-key-switch    <=  hm2_5i23.0.gpio.034.in_not
+#net spindle-key-switch    =>  classicladder.0.in-05
+
+#Zero Plate
+#net probe-in <=  hm2_5i23.0.gpio.068.in_not
+
+#Prox Sensors
+net prox-x1     <=  hm2_5i23.0.gpio.024.in_not
+net prox-x1     => axis.0.home-sw-in axis.0.neg-lim-sw-in axis.0.pos-lim-sw-in axis.0.home-sw-in 
+net prox-y      <=  hm2_5i23.0.gpio.026.in_not
+net prox-y     => axis.1.home-sw-in axis.1.neg-lim-sw-in axis.1.pos-lim-sw-in axis.1.home-sw-in
+net prox-z     <=  hm2_5i23.0.gpio.028.in_not
+net prox-z     => axis.2.home-sw-in axis.2.neg-lim-sw-in axis.2.pos-lim-sw-in axis.2.home-sw-in
+net prox-x2     <=  hm2_5i23.0.gpio.030.in_not 
+net prox-x1     => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in axis.3.home-sw-in 
+
+#Stepper Driver Digital I/O #run all of these into estop chain
+net alarm-x1     <=  hm2_5i23.0.gpio.048.in
+#net alarm-x1     =>  classicladder.0.in-05
+net alarm-y     <=  hm2_5i23.0.gpio.052.in
+#net alarm-y     =>  classicladder.0.in-06
+net alarm-z     <=  hm2_5i23.0.gpio.056.in
+#net alarm-z     =>  classicladder.0.in-07
+net alarm-x2     <=  hm2_5i23.0.gpio.060.in
+#net alarm-x2     =>  classicladder.0.in-08
+
+
+
+
+# ######################################################
+# Axis-of-motion Specific Configs (not the GUI)
+# ######################################################
+
+# axis enable chain
+net axis-enable-chain-x1 axis.0.amp-enable-out => hm2_5i23.0.stepgen.00.enable hm2_5i23.0.gpio.044.out
+net axis-enable-chain-y axis.1.amp-enable-out => hm2_5i23.0.stepgen.01.enable
+net axis-enable-chain-z axis.2.amp-enable-out => hm2_5i23.0.stepgen.02.enable
+net axis-enable-chain-x2 axis.3.amp-enable-out => hm2_5i23.0.stepgen.03.enable
+
+#Re-scale Encoder feedback
+setp scale.1.gain 0.000100692 #x1 scale
+setp scale.2.gain 0.000100692 #y scale
+setp scale.3.gain 0.00008391 #z scale
+setp scale.4.gain 0.000100692 #x2 scale
+net encoder-x1-rescale hm2_5i23.0.encoder.00.position => scale.1.in
+net encoder-y-rescale hm2_5i23.0.encoder.01.position => scale.2.in
+net encoder-z-rescale hm2_5i23.0.encoder.02.position => scale.3.in
+net encoder-x2-rescale hm2_5i23.0.encoder.03.position => scale.4.in
+
+
+# position command and feedback
+net emcmot.00.pos-cmd <= axis.0.motor-pos-cmd
+net emcmot.01.pos-cmd <= axis.1.motor-pos-cmd
+net emcmot.02.pos-cmd <= axis.2.motor-pos-cmd
+net emcmot.03.pos-cmd <= axis.3.motor-pos-cmd
+net emcmot.00.pos-cmd => hm2_5i23.0.stepgen.00.position-cmd
+net emcmot.01.pos-cmd => hm2_5i23.0.stepgen.01.position-cmd
+net emcmot.02.pos-cmd => hm2_5i23.0.stepgen.02.position-cmd
+net emcmot.03.pos-cmd => hm2_5i23.0.stepgen.03.position-cmd
+#net motor.00.pos-fb <= hm2_5i23.0.stepgen.00.position-fb
+#net motor.01.pos-fb <= hm2_5i23.0.stepgen.01.position-fb
+#net motor.02.pos-fb <= hm2_5i23.0.stepgen.02.position-fb
+#net motor.03.pos-fb <= hm2_5i23.0.stepgen.03.position-fb
+#net motor.00.pos-fb <= hm2_5i23.0.encoder.00.position
+#net motor.01.pos-fb <= hm2_5i23.0.encoder.01.position
+#net motor.02.pos-fb <= hm2_5i23.0.encoder.02.position
+#net motor.03.pos-fb <= hm2_5i23.0.encoder.03.position
+net motor.00.pos-fb <= scale.1.out
+net motor.01.pos-fb <= scale.2.out
+net motor.02.pos-fb <= scale.3.out
+net motor.03.pos-fb <= scale.4.out
+net motor.00.pos-fb => axis.0.motor-pos-fb
+net motor.01.pos-fb => axis.1.motor-pos-fb
+net motor.02.pos-fb => axis.2.motor-pos-fb
+net motor.03.pos-fb => axis.3.motor-pos-fb
+
+#Axis Jogging Settings
+setp axis.0.jog-vel-mode	1
+setp axis.1.jog-vel-mode	1
+setp axis.2.jog-vel-mode	1
+setp axis.3.jog-vel-mode	1	
+
+# Stepgen parameters
+setp hm2_5i23.0.stepgen.00.dirsetup        [AXIS_0]DIRSETUP
+setp hm2_5i23.0.stepgen.01.dirsetup        [AXIS_1]DIRSETUP
+setp hm2_5i23.0.stepgen.02.dirsetup        [AXIS_2]DIRSETUP
+setp hm2_5i23.0.stepgen.03.dirsetup        [AXIS_3]DIRSETUP
+setp hm2_5i23.0.stepgen.00.dirhold         [AXIS_0]DIRHOLD
+setp hm2_5i23.0.stepgen.01.dirhold         [AXIS_1]DIRHOLD
+setp hm2_5i23.0.stepgen.02.dirhold         [AXIS_2]DIRHOLD
+setp hm2_5i23.0.stepgen.03.dirhold         [AXIS_3]DIRHOLD
+setp hm2_5i23.0.stepgen.00.steplen         [AXIS_0]STEPLEN
+setp hm2_5i23.0.stepgen.01.steplen         [AXIS_1]STEPLEN
+setp hm2_5i23.0.stepgen.02.steplen         [AXIS_1]STEPLEN
+setp hm2_5i23.0.stepgen.03.steplen         [AXIS_3]STEPLEN
+setp hm2_5i23.0.stepgen.00.stepspace       [AXIS_0]STEPSPACE
+setp hm2_5i23.0.stepgen.01.stepspace       [AXIS_1]STEPSPACE
+setp hm2_5i23.0.stepgen.02.stepspace       [AXIS_2]STEPSPACE
+setp hm2_5i23.0.stepgen.03.stepspace       [AXIS_3]STEPSPACE
+setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_0]SCALE
+setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_1]SCALE
+setp hm2_5i23.0.stepgen.02.position-scale  [AXIS_2]SCALE
+setp hm2_5i23.0.stepgen.03.position-scale  [AXIS_3]SCALE
+setp hm2_5i23.0.stepgen.00.maxaccel        [AXIS_0]MAX_ACCELERATION
+setp hm2_5i23.0.stepgen.01.maxaccel        [AXIS_1]MAX_ACCELERATION
+setp hm2_5i23.0.stepgen.02.maxaccel        [AXIS_2]MAX_ACCELERATION
+setp hm2_5i23.0.stepgen.03.maxaccel        [AXIS_3]MAX_ACCELERATION
+setp hm2_5i23.0.stepgen.00.step_type       0
+setp hm2_5i23.0.stepgen.01.step_type       0
+setp hm2_5i23.0.stepgen.02.step_type       0
+setp hm2_5i23.0.stepgen.03.step_type       0
+#setp hm2_5i23.0.stepgen.00.maxvel         0
+#setp hm2_5i23.0.stepgen.01.maxvel         0
+#setp hm2_5i23.0.stepgen.02.maxvel         0
+#setp hm2_5i23.0.stepgen.03.maxvel         0
+
+
+# ######################################################
+# E-Stop related
+# ######################################################
+
+net gui-estop <= iocontrol.0.user-enable-out
+net gui-estop => classicladder.0.in-00
+net estop-all-ok <= classicladder.0.out-00
+net estop-all-ok => iocontrol.0.emc-enable-in
+
+
