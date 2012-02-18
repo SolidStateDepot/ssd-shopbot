@@ -139,15 +139,23 @@ net spindle-key-switch    <=  hm2_5i23.0.gpio.034.in_not
 #Zero Plate
 #net probe-in <=  hm2_5i23.0.gpio.068.in_not
 
-#Prox Sensors
-net prox-x1     <=  hm2_5i23.0.gpio.024.in_not
-net prox-x1     => axis.0.home-sw-in axis.0.neg-lim-sw-in axis.0.pos-lim-sw-in axis.0.home-sw-in 
-net prox-y      <=  hm2_5i23.0.gpio.026.in_not
-net prox-y     => axis.1.home-sw-in axis.1.neg-lim-sw-in axis.1.pos-lim-sw-in axis.1.home-sw-in
-net prox-z     <=  hm2_5i23.0.gpio.028.in_not
-net prox-z     => axis.2.home-sw-in axis.2.neg-lim-sw-in axis.2.pos-lim-sw-in axis.2.home-sw-in
-net prox-x2     <=  hm2_5i23.0.gpio.030.in_not 
-net prox-x1     => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in axis.3.home-sw-in 
+
+#
+# Prox limit/home sensors
+#
+
+net prox-x1 <= hm2_5i23.0.gpio.024.in_not
+net prox-x1 => axis.0.home-sw-in axis.0.neg-lim-sw-in axis.0.pos-lim-sw-in axis.0.home-sw-in 
+
+net prox-y  <= hm2_5i23.0.gpio.026.in_not
+net prox-y  => axis.1.home-sw-in axis.1.neg-lim-sw-in axis.1.pos-lim-sw-in axis.1.home-sw-in
+
+net prox-z  <= hm2_5i23.0.gpio.028.in_not
+net prox-z  => axis.2.home-sw-in axis.2.neg-lim-sw-in axis.2.pos-lim-sw-in axis.2.home-sw-in
+
+net prox-x2 <= hm2_5i23.0.gpio.030.in_not 
+net prox-x1 => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in axis.3.home-sw-in 
+
 
 #Stepper Driver Digital I/O #run all of these into estop chain
 net alarm-x1     <=  hm2_5i23.0.gpio.048.in
