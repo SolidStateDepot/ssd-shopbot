@@ -1,0 +1,22 @@
+
+Mechanical:
+
+    Mount the spindle VFD
+
+    level the machine
+
+    align and true the machine
+
+    build a table per the Shopbot instruction
+
+
+Equipment & tooling:
+
+    get a permanent console for it: monitor, usb keyboard & mouse, usb wifi, powered usb hub
+
+
+fix dust removal system
+
+Tune steppers & encoders
+
+Locate G53 properly

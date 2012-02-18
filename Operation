@@ -1,0 +1,14 @@
+
+This is a gantry machine, and LinuxCNC has trouble with gantry machines.
+
+Home in Joint (aka Free) mode, but never jog there!
+
+Jog and run in World mode.
+
+Use '$' to switch back and forth between Joint and World mode.
+
+
+The spindle goes up to 18K rpm.
+
+There's plenty of Onsrud tooling.
+
