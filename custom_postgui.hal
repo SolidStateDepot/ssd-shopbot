@@ -173,7 +173,7 @@ net spindle-stop-button pyvcp.spindle-motion-stop-button => halui.spindle.stop
 
 #Zeroing Buttons / Control
 net zero-enable-toggle-in pyvcp.zero-enable-button => toggle.5.in
-net zero-enable-toggle-out toggle.5.out => and2.0.in0 and2.1.in0 and2.2.in0 and2.3.in0 and2.4.in0 pyvcp.zero-enable-status-led
+net zero-enable-toggle-out toggle.5.out => and2.0.in0 and2.1.in0 and2.2.in0 and2.3.in0 pyvcp.zero-enable-status-led
 net zero-all-button-and2-in pyvcp.zero-button-all => and2.0.in1
 net zero-all-output and2.0.out => halui.mdi-command-00
 net zero-x-button-and2-in pyvcp.zero-button-x => and2.1.in1
@@ -185,7 +185,7 @@ net zero-z-output and2.3.out => halui.mdi-command-03
 
 #Zero Plate Control
 net zero-plate-enable-toggle-in pyvcp.zero-plate-enable-button => toggle.6.in
-net zero-plate-enable-toggle-out toggle.6.out => and2.5.in0 and2.6.in0 and2.7.in0 and2.8.in0 pyvcp.zero-plate-enable-status-led
+net zero-plate-enable-toggle-out toggle.6.out => and2.5.in0 pyvcp.zero-plate-enable-status-led
 net zero-plate-signal-and2-in hm2_5i23.0.gpio.068.in_not => and2.5.in1
 net zero-plate-signal-and2-out and2.5.out => motion.probe-input pyvcp.zero-plate-signal-status-led
 
