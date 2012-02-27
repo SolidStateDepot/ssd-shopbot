@@ -38,7 +38,7 @@ linuxcnc config:
 
     get rid of broken halui MDI commands
 
-    no incremental jogging in coordinated mode
+    no incremental jogging in coordinated mode on gantry machines :-(
 
     no joint-mode jogging of joint 3 (x2)
 
