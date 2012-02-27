@@ -49,11 +49,11 @@ setp hm2_5i23.0.pwmgen.pdm_frequency 100000
 # THREADS
 # ################################################
 addf hm2_5i23.0.read servo-thread
-addf hm2_5i23.0.write         servo-thread
 addf hm2_5i23.0.pet_watchdog  servo-thread
 addf motion-command-handler servo-thread
 addf motion-controller servo-thread
 addf classicladder.0.refresh               servo-thread
+addf hm2_5i23.0.write         servo-thread
 
 # ################################################
 # External Output Signals
