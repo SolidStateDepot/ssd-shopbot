@@ -241,7 +241,7 @@ setp hm2_5i23.0.stepgen.02.dirhold         [AXIS_2]DIRHOLD
 setp hm2_5i23.0.stepgen.03.dirhold         [AXIS_3]DIRHOLD
 setp hm2_5i23.0.stepgen.00.steplen         [AXIS_0]STEPLEN
 setp hm2_5i23.0.stepgen.01.steplen         [AXIS_1]STEPLEN
-setp hm2_5i23.0.stepgen.02.steplen         [AXIS_1]STEPLEN
+setp hm2_5i23.0.stepgen.02.steplen         [AXIS_2]STEPLEN
 setp hm2_5i23.0.stepgen.03.steplen         [AXIS_3]STEPLEN
 setp hm2_5i23.0.stepgen.00.stepspace       [AXIS_0]STEPSPACE
 setp hm2_5i23.0.stepgen.01.stepspace       [AXIS_1]STEPSPACE
