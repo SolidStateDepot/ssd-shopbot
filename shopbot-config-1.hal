@@ -28,10 +28,6 @@ loadrt comp count=3
 loadrt or2 count=3
 
 loadrt scale count=5
-addf scale.1 servo-thread
-addf scale.2 servo-thread
-addf scale.3 servo-thread
-addf scale.4 servo-thread
 
 # hostmot2 driver
 loadrt hostmot2
@@ -48,15 +44,78 @@ setp hm2_5i23.0.watchdog.timeout_ns 10000000
 #### END Core EMC/Hal Loads ############
 ########################################
 
-# ################################################
-# THREADS
-# ################################################
+loadrt toggle count=7
+
+loadrt sum2 count=4
+
+loadrt conv_s32_float count=8
+
+loadrt abs count=1
+
+loadrt and2 count=9
+
+
+#
+# all realtime components loaded, build servo thread
+#
+
 addf hm2_5i23.0.read servo-thread
 addf hm2_5i23.0.pet_watchdog  servo-thread
+
+addf conv-s32-float.0 servo-thread
+addf conv-s32-float.1 servo-thread
+addf conv-s32-float.2 servo-thread
+addf conv-s32-float.3 servo-thread
+addf conv-s32-float.4 servo-thread
+addf conv-s32-float.5 servo-thread
+addf conv-s32-float.6 servo-thread
+addf conv-s32-float.7 servo-thread
+
+addf sum2.0 servo-thread
+addf sum2.1 servo-thread
+addf sum2.2 servo-thread
+addf sum2.3 servo-thread
+
+# FIXME: replace these with encoder scale
+addf scale.1 servo-thread
+addf scale.2 servo-thread
+addf scale.3 servo-thread
+addf scale.4 servo-thread
+
+addf toggle.0 servo-thread
+addf toggle.1 servo-thread
+addf toggle.4 servo-thread
+addf toggle.5 servo-thread
+addf toggle.6 servo-thread
+
+addf and2.0 servo-thread
+addf and2.1 servo-thread
+addf and2.2 servo-thread
+addf and2.3 servo-thread
+addf and2.5 servo-thread
+
+addf or2.1 servo-thread
+
+addf classicladder.0.refresh               servo-thread
+
 addf motion-command-handler servo-thread
 addf motion-controller servo-thread
-addf classicladder.0.refresh               servo-thread
+
+# these two take the spindle speed command from motion and cook it for the arduino
+addf scale.0 servo-thread
+addf abs.0 servo-thread
+
 addf hm2_5i23.0.write         servo-thread
+
+# these are unused:
+#addf toggle.2 servo-thread
+#addf toggle.3 servo-thread
+#addf or2.2 servo-thread
+#addf and2.4 servo-thread
+#addf and2.6 servo-thread
+#addf and2.7 servo-thread
+#addf and2.8 servo-thread
+
 
 # ################################################
 # External Output Signals
