@@ -19,12 +19,8 @@ loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonosta
 # Loader the userspace portion of Classic Ladder to silently load the program
 loadusr classicladder --modmaster --nogui shopbot-ladder-1.clp
 
-loadrt stepgen step_type=0,0,0,0
-
 # motion controller, get name and thread periods from ini file
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES
-# only the 7i43 needs this, but it doesnt hurt the others
-loadrt probe_parport
 
 #load additional blocks
 loadrt hypot count=2
