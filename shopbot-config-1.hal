@@ -39,7 +39,10 @@ loadrt hostmot2
 loadrt hm2_pci config="firmware=hm2/5i23/SVST2_4_7I47.BIT num_encoders=4 num_pwmgens=2 num_stepgens=4" 
 setp hm2_5i23.0.pwmgen.pwm_frequency 100000
 setp hm2_5i23.0.pwmgen.pdm_frequency 100000
-    setp hm2_5i23.0.watchdog.timeout_ns 10000000
+
+# remove this when we upgrade to LinuxCNC 2.5
+setp hm2_5i23.0.watchdog.timeout_ns 10000000
+
 
 ########################################
 #### END Core EMC/Hal Loads ############
