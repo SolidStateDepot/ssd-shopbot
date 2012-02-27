@@ -25,7 +25,11 @@ linuxcnc config:
 
     Tune steppers & encoders
 
-    fix servo thread function order
+    encoder scaling uses a separate scale component
+
+    do the encoders have index?  if so home to that
+
+    don't load unused realtime comps
 
     discrepancy between the two X joints should cause estop
 
@@ -38,9 +42,9 @@ linuxcnc config:
 
     no joint-mode jogging of joint 3 (x2)
 
-    encoder scaling uses a separate scale component
-
     can't disable limit override when not on a limit...
 
-    do the encoders have index?  if so home to that
+    the Y prox switch is very noisy, needs debounce.  Or can it be
+    cleaned up mechanically somehow?  X1 prox looks fine.  How are the
+    other proxes?
 
