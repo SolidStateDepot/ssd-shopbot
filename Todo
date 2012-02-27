@@ -48,3 +48,9 @@ linuxcnc config:
     cleaned up mechanically somehow?  X1 prox looks fine.  How are the
     other proxes?
 
+    nontrivkins machines need [TRAJ]DEFAULT_ACCELERATION, which is lame
+
+    machine needs rehome after e-stop, how to get around that?
+
+    in joint mode it honors the soft limits, but in world mode it doesn't
+
