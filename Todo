@@ -1,8 +1,6 @@
 
 Mechanical:
 
-    level the machine
-
     align and true the machine
 
     build a table per the Shopbot instruction
@@ -33,12 +31,7 @@ linuxcnc config:
 
     discrepancy between the two X joints should cause estop
 
-    jogging in joint mode (Y & Z only!) works fine, but in coordinated
-    mode it overshoots
-
     get rid of broken halui MDI commands
-
-    no incremental jogging in coordinated mode on gantry machines :-(
 
     no joint-mode jogging of joint 3 (x2)
 
@@ -48,9 +41,14 @@ linuxcnc config:
     cleaned up mechanically somehow?  X1 prox looks fine.  How are the
     other proxes?
 
-    nontrivkins machines need [TRAJ]DEFAULT_ACCELERATION, which is lame
-
     machine needs rehome after e-stop, how to get around that?
 
     in joint mode it honors the soft limits, but in world mode it doesn't
+
+
+linuxcnc bugs and feature requests:
+
+    no incremental jogging in coordinated mode on gantry machines :-(
+
+    nontrivkins machines need [TRAJ]DEFAULT_ACCELERATION, which is lame
 
