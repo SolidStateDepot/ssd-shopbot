@@ -50,12 +50,6 @@ addf and2.6 servo-thread
 addf and2.7 servo-thread
 addf and2.8 servo-thread
 
-#Axis config (not pyvcp)
-setp axis.0.jog-vel-mode 1
-setp axis.1.jog-vel-mode 1
-setp axis.2.jog-vel-mode 1
-setp axis.3.jog-vel-mode 1
-
 
 # ######################################################
 # Arduino Interface
