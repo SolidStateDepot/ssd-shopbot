@@ -41,8 +41,8 @@ addf scale.4 servo-thread
 loadrt hostmot2
 # load low-level driver
 loadrt hm2_pci config="firmware=hm2/5i23/SVST2_4_7I47.BIT num_encoders=4 num_pwmgens=2 num_stepgens=4" 
-    setp hm2_5i23.0.pwmgen.pwm_frequency 100000
-    setp hm2_5i23.0.pwmgen.pdm_frequency 100000
+setp hm2_5i23.0.pwmgen.pwm_frequency 100000
+setp hm2_5i23.0.pwmgen.pdm_frequency 100000
     setp hm2_5i23.0.watchdog.timeout_ns 10000000
 
 ########################################
@@ -103,18 +103,25 @@ setp hm2_5i23.0.gpio.043.invert_output 1
 #Stepper Driver Digital I/O
 net alarm-clear-x1     =>  hm2_5i23.0.gpio.050.out
 setp hm2_5i23.0.gpio.050.is_output 1
+
 net alarm-clear-y     =>  hm2_5i23.0.gpio.054.out
 setp hm2_5i23.0.gpio.054.is_output 1
+
 net alarm-clear-z     =>  hm2_5i23.0.gpio.058.out
 setp hm2_5i23.0.gpio.058.is_output 1
+
 net alarm-clear-x2     =>  hm2_5i23.0.gpio.062.out
 setp hm2_5i23.0.gpio.056.is_output 1
+
 net stepper-windings-off-x1     =>  hm2_5i23.0.gpio.051.out
 setp hm2_5i23.0.gpio.051.is_output 1
+
 net stepper-windings-off-y     =>  hm2_5i23.0.gpio.055.out
 setp hm2_5i23.0.gpio.055.is_output 1
+
 net stepper-windings-off-z     =>  hm2_5i23.0.gpio.059.out
 setp hm2_5i23.0.gpio.059.is_output 1
+
 net stepper-windings-off-x2     =>  hm2_5i23.0.gpio.063.out
 setp hm2_5i23.0.gpio.063.is_output 1
 
