@@ -251,6 +251,8 @@ setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_0]SCALE
 setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_1]SCALE
 setp hm2_5i23.0.stepgen.02.position-scale  [AXIS_2]SCALE
 setp hm2_5i23.0.stepgen.03.position-scale  [AXIS_3]SCALE
+
+# step_type=0 means Step & Direction
 setp hm2_5i23.0.stepgen.00.step_type       0
 setp hm2_5i23.0.stepgen.01.step_type       0
 setp hm2_5i23.0.stepgen.02.step_type       0
