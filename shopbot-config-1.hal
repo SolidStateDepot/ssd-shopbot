@@ -251,18 +251,20 @@ setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_0]SCALE
 setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_1]SCALE
 setp hm2_5i23.0.stepgen.02.position-scale  [AXIS_2]SCALE
 setp hm2_5i23.0.stepgen.03.position-scale  [AXIS_3]SCALE
-setp hm2_5i23.0.stepgen.00.maxaccel        [AXIS_0]MAX_ACCELERATION
-setp hm2_5i23.0.stepgen.01.maxaccel        [AXIS_1]MAX_ACCELERATION
-setp hm2_5i23.0.stepgen.02.maxaccel        [AXIS_2]MAX_ACCELERATION
-setp hm2_5i23.0.stepgen.03.maxaccel        [AXIS_3]MAX_ACCELERATION
 setp hm2_5i23.0.stepgen.00.step_type       0
 setp hm2_5i23.0.stepgen.01.step_type       0
 setp hm2_5i23.0.stepgen.02.step_type       0
 setp hm2_5i23.0.stepgen.03.step_type       0
-#setp hm2_5i23.0.stepgen.00.maxvel         0
-#setp hm2_5i23.0.stepgen.01.maxvel         0
-#setp hm2_5i23.0.stepgen.02.maxvel         0
-#setp hm2_5i23.0.stepgen.03.maxvel         0
+
+# let the trajectory planner choose accel and vel
+setp hm2_5i23.0.stepgen.00.maxaccel        0
+setp hm2_5i23.0.stepgen.01.maxaccel        0
+setp hm2_5i23.0.stepgen.02.maxaccel        0
+setp hm2_5i23.0.stepgen.03.maxaccel        0
+setp hm2_5i23.0.stepgen.00.maxvel          0
+setp hm2_5i23.0.stepgen.01.maxvel          0
+setp hm2_5i23.0.stepgen.02.maxvel          0
+setp hm2_5i23.0.stepgen.03.maxvel          0
 
 
 # ######################################################
