@@ -1,52 +1,56 @@
 
 Mechanical:
 
-    align and true the machine
+    align all axes to be perpendicular
+
+    tweak limit positions - try to make it so it has time to stop when jogging in world mode
+
+    square the spindle
+
+    check spindle power supply
 
     build a table per the Shopbot instruction
 
-
-Equipment & tooling:
-
-    get a permanent console for it: monitor, usb keyboard & mouse,
-    usb wifi, powered usb hub
+    redo spindle control?  later
 
 
-fix dust removal system
-
-
-machine should have some hard stops (better than driving the gantry off
-the table)
+fix dust removal system if needed
 
 
 linuxcnc config:
 
-    want to see diff between commanded steps and actual encoder feedback (mod backlash)
-
     Tune steppers & encoders
 
-    do the encoders have index?  if so home to that
+    tune acceleration
+
+    estop:
+
+	want to see diff between commanded steps and actual encoder feedback (mod backlash)
+
+	discrepancy between the two Y joints should cause estop
 
     don't load unused realtime comps
 
-    discrepancy between the two X joints should cause estop
-
     get rid of broken halui MDI commands
+
+    clean up pyvcp panel
 
     no joint-mode jogging of joint 3 (x2)
 
     can't disable limit override when not on a limit...
 
-    the Y prox switch is very noisy, needs debounce.  Or can it be
-    cleaned up mechanically somehow?  X1 prox looks fine.  How are the
+    the X prox switch is very noisy, needs debounce.  Or can it be
+    cleaned up mechanically somehow?  Y2 prox looks fine.  How are the
     other proxes?
 
     machine needs rehome after e-stop, how to get around that?
 
-    in joint mode it honors the soft limits, but in world mode it doesn't
+    fix spindle
 
 
 linuxcnc bugs and feature requests:
+
+    in joint mode it honors the soft limits, but in world mode it doesn't
 
     no incremental jogging in coordinated mode on gantry machines :-(
 
