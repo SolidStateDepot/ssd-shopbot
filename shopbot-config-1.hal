@@ -27,7 +27,7 @@ loadrt hypot count=2
 loadrt comp count=3
 loadrt or2 count=3
 
-loadrt scale count=5
+loadrt scale count=1
 
 # hostmot2 driver
 loadrt hostmot2
@@ -75,12 +75,6 @@ addf sum2.0 servo-thread
 addf sum2.1 servo-thread
 addf sum2.2 servo-thread
 addf sum2.3 servo-thread
-
-# FIXME: replace these with encoder scale
-addf scale.1 servo-thread
-addf scale.2 servo-thread
-addf scale.3 servo-thread
-addf scale.4 servo-thread
 
 addf toggle.0 servo-thread
 addf toggle.1 servo-thread
@@ -230,9 +224,9 @@ net prox-y2 => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in
 
 #Stepper Driver Digital I/O #run all of these into estop chain
 net alarm-x     <=  hm2_5i23.0.gpio.052.in
-net alarm-y1     <=  hm2_5i23.0.gpio.048.in
+net alarm-y1    <=  hm2_5i23.0.gpio.048.in
 net alarm-z     <=  hm2_5i23.0.gpio.056.in
-net alarm-y2     <=  hm2_5i23.0.gpio.060.in
+net alarm-y2    <=  hm2_5i23.0.gpio.060.in
 
 #net alarm-x1     =>  classicladder.0.in-05
 #net alarm-y     =>  classicladder.0.in-06
@@ -252,29 +246,38 @@ net axis-enable-chain-y1 axis.1.amp-enable-out => hm2_5i23.0.stepgen.00.enable
 net axis-enable-chain-z  axis.2.amp-enable-out => hm2_5i23.0.stepgen.02.enable
 net axis-enable-chain-y2 axis.3.amp-enable-out => hm2_5i23.0.stepgen.03.enable
 
-#Re-scale Encoder feedback
-setp scale.2.gain 0.000100692 #x scale
-setp scale.1.gain 0.000100692  #y1 scale
-setp scale.3.gain 0.00008391   #z scale
-setp scale.4.gain 0.000100692  #y2 scale
-net encoder-x-rescale  hm2_5i23.0.encoder.01.position => scale.2.in
-net encoder-y1-rescale hm2_5i23.0.encoder.00.position => scale.1.in
-net encoder-z-rescale  hm2_5i23.0.encoder.02.position => scale.3.in
-net encoder-y2-rescale hm2_5i23.0.encoder.03.position => scale.4.in
+# encoder feedback signals
+setp hm2_5i23.0.encoder.01.scale [AXIS_0]INPUT_SCALE
+net x-encoder-pos <= hm2_5i23.0.encoder.01.position
+net x-encoder-pos => axis.0.motor-pos-fb
+net x-encoder-count <= hm2_5i23.0.encoder.01.count
+
+setp hm2_5i23.0.encoder.00.scale [AXIS_1]INPUT_SCALE
+net y1-encoder-pos <= hm2_5i23.0.encoder.00.position
+net y1-encoder-pos => axis.1.motor-pos-fb
+net y1-encoder-count <= hm2_5i23.0.encoder.00.count
+
+setp hm2_5i23.0.encoder.02.scale [AXIS_2]INPUT_SCALE
+net z-encoder-pos <= hm2_5i23.0.encoder.02.position
+net z-encoder-pos => axis.2.motor-pos-fb
+net z-encoder-count <= hm2_5i23.0.encoder.02.count
+
+setp hm2_5i23.0.encoder.03.scale [AXIS_3]INPUT_SCALE
+net y2-encoder-pos <= hm2_5i23.0.encoder.03.position
+net y2-encoder-pos => axis.3.motor-pos-fb
+net y2-encoder-count <= hm2_5i23.0.encoder.03.count
 
 
-# position command and feedback
+
+
+# position command
 net x.pos-cmd  axis.0.motor-pos-cmd => hm2_5i23.0.stepgen.01.position-cmd
-net x.pos-fb   scale.2.out => axis.0.motor-pos-fb
 
 net y1.pos-cmd axis.1.motor-pos-cmd => hm2_5i23.0.stepgen.00.position-cmd
-net y1.pos-fb  scale.1.out => axis.1.motor-pos-fb
 
 net z.pos-cmd  axis.2.motor-pos-cmd => hm2_5i23.0.stepgen.02.position-cmd
-net z.pos-fb   scale.3.out => axis.2.motor-pos-fb
 
 net y2.pos-cmd axis.3.motor-pos-cmd => hm2_5i23.0.stepgen.03.position-cmd
-net y2.pos-fb  scale.4.out => axis.3.motor-pos-fb
 
 
 #Axis Jogging Settings
@@ -284,17 +287,17 @@ setp axis.2.jog-vel-mode	1
 setp axis.3.jog-vel-mode	1	
 
 # Stepgen parameters
-setp hm2_5i23.0.stepgen.00.dirsetup        [AXIS_0]DIRSETUP
-setp hm2_5i23.0.stepgen.00.dirhold         [AXIS_0]DIRHOLD
-setp hm2_5i23.0.stepgen.00.steplen         [AXIS_0]STEPLEN
-setp hm2_5i23.0.stepgen.00.stepspace       [AXIS_0]STEPSPACE
-setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_0]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.01.dirsetup        [AXIS_0]DIRSETUP
+setp hm2_5i23.0.stepgen.01.dirhold         [AXIS_0]DIRHOLD
+setp hm2_5i23.0.stepgen.01.steplen         [AXIS_0]STEPLEN
+setp hm2_5i23.0.stepgen.01.stepspace       [AXIS_0]STEPSPACE
+setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_0]OUTPUT_SCALE
 
-setp hm2_5i23.0.stepgen.01.dirsetup        [AXIS_1]DIRSETUP
-setp hm2_5i23.0.stepgen.01.dirhold         [AXIS_1]DIRHOLD
-setp hm2_5i23.0.stepgen.01.steplen         [AXIS_1]STEPLEN
-setp hm2_5i23.0.stepgen.01.stepspace       [AXIS_1]STEPSPACE
-setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_1]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.00.dirsetup        [AXIS_1]DIRSETUP
+setp hm2_5i23.0.stepgen.00.dirhold         [AXIS_1]DIRHOLD
+setp hm2_5i23.0.stepgen.00.steplen         [AXIS_1]STEPLEN
+setp hm2_5i23.0.stepgen.00.stepspace       [AXIS_1]STEPSPACE
+setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_1]OUTPUT_SCALE
 
 setp hm2_5i23.0.stepgen.02.dirsetup        [AXIS_2]DIRSETUP
 setp hm2_5i23.0.stepgen.02.dirhold         [AXIS_2]DIRHOLD

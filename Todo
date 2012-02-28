@@ -21,9 +21,9 @@ the table)
 
 linuxcnc config:
 
-    Tune steppers & encoders
+    want to see diff between commanded steps and actual encoder feedback (mod backlash)
 
-    encoder scaling uses a separate scale component
+    Tune steppers & encoders
 
     do the encoders have index?  if so home to that
 

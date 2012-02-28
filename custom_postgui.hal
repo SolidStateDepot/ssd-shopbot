@@ -166,10 +166,10 @@ net axis-1-pos-rel pyvcp.halui.axis.1.pos-relative <= halui.axis.1.pos-relative
 net axis-2-pos-rel pyvcp.halui.axis.2.pos-relative <= halui.axis.2.pos-relative
 
 #Encoders
-net encoder-count-x  pyvcp.encoder-count-numeric-display-x  <= hm2_5i23.0.encoder.01.count
-net encoder-count-y1 pyvcp.encoder-count-numeric-display-y1 <= hm2_5i23.0.encoder.00.count
-net encoder-count-z  pyvcp.encoder-count-numeric-display-z  <= hm2_5i23.0.encoder.02.count
-net encoder-count-y2 pyvcp.encoder-count-numeric-display-y2 <= hm2_5i23.0.encoder.03.count
+net x-encoder-count  => pyvcp.encoder-count-numeric-display-x
+net y1-encoder-count => pyvcp.encoder-count-numeric-display-y1
+net z-encoder-count  => pyvcp.encoder-count-numeric-display-z
+net y2-encoder-count => pyvcp.encoder-count-numeric-display-y2
 
 #Operations to calculate and route encoder error signals
 #X
