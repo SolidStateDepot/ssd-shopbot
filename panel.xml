@@ -186,15 +186,15 @@ The contents of this file will not be overwritten when you run stepconf again.
 		<tablesticky sticky="new"/>
 		<tablerow/>
 			<label>
-			    <text>"X1"</text>
+			    <text>"X"</text>
 			    <font>"Helvetica",10</font>
 			</label> 
 			<label>
-			    <text>"X2"</text>
+			    <text>"Y1"</text>
 			    <font>"Helvetica",10</font>
 			</label> 
 			<label>
-			    <text>"Y"</text>
+			    <text>"Y2"</text>
 			    <font>"Helvetica",10</font>
 			</label> 
 			<label>
@@ -202,8 +202,8 @@ The contents of this file will not be overwritten when you run stepconf again.
 			    <font>"Helvetica",10</font>
 			</label> 
 		<tablerow/>
-			<meter> <!-- X1 Encoder Error Meter -->
-			    <halpin>"encoder-error-meter-x1"</halpin>
+			<meter> <!-- X Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-x"</halpin>
 			    <size>120</size>
 			    <min_>-50</min_>
 			    <max_>50</max_>
@@ -214,8 +214,8 @@ The contents of this file will not be overwritten when you run stepconf again.
 			    <region2>(-20,20,"green")</region2>
 			    <region3>(20,50,"red")</region3>
 			</meter>
-			<meter> <!-- X2 Encoder Error Meter -->
-			    <halpin>"encoder-error-meter-x2"</halpin>
+			<meter> <!-- Y1 Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-y1"</halpin>
 			    <size>120</size>
 			    <min_>-50</min_>
 			    <max_>50</max_>
@@ -226,8 +226,8 @@ The contents of this file will not be overwritten when you run stepconf again.
 			    <region2>(-20,20,"green")</region2>
 			    <region3>(20,50,"red")</region3>
 			</meter>
-			<meter> <!-- Y Encoder Error Meter -->
-			    <halpin>"encoder-error-meter-y"</halpin>
+			<meter> <!-- Y2 Encoder Error Meter -->
+			    <halpin>"encoder-error-meter-y2"</halpin>
 			    <size>120</size>
 			    <min_>-50</min_>
 			    <max_>50</max_>
@@ -251,18 +251,18 @@ The contents of this file will not be overwritten when you run stepconf again.
 			    <region3>(20,50,"red")</region3>
 			</meter>
 		<tablerow/>
-			<number> <!-- X1 Encoder Error Number Display -->
-				<halpin>"encoder-error-numeric-display-x1"</halpin>
-				<font>("Helvetica",11)</font>
-				<format>"+4.0f"</format>
-			</number>
-			<number> <!-- X2 Encoder Error Number Display -->
-				<halpin>"encoder-error-numeric-display-x2"</halpin>
+			<number> <!-- X Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-x"</halpin>
 				<font>("Helvetica",11)</font> 
 				<format>"+4.0f"</format>
 			</number>
-			<number> <!-- Y Encoder Error Number Display -->
-				<halpin>"encoder-error-numeric-display-y"</halpin>
+			<number> <!-- Y1 Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-y1"</halpin>
+				<font>("Helvetica",11)</font>
+				<format>"+4.0f"</format>
+			</number>
+			<number> <!-- Y2 Encoder Error Number Display -->
+				<halpin>"encoder-error-numeric-display-y2"</halpin>
 				<font>("Helvetica",11)</font> 
 				<format>"+4.0f"</format>
 			</number>
@@ -272,18 +272,18 @@ The contents of this file will not be overwritten when you run stepconf again.
 				<format>"+4.0f"</format>
 			</number>
 			<tablerow/>
-				<s32> <!-- X1 Encoder Count Numeric Display -->
-					<halpin>"encoder-count-numeric-display-x1"</halpin>
-					<font>("Helvetica",11)</font>
-					<format>"+4.0f"</format>
-				</s32>
-				<s32> <!-- X2 Encoder Count Numeric Display -->
-					<halpin>"encoder-count-numeric-display-x2"</halpin>
+				<s32> <!-- X Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-x"</halpin>
 					<font>("Helvetica",11)</font> 
 					<format>"+4.0f"</format>
 				</s32>
-				<s32> <!-- Y Encoder Count Numeric Display -->
-					<halpin>"encoder-count-numeric-display-y"</halpin>
+				<s32> <!-- Y1 Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-y1"</halpin>
+					<font>("Helvetica",11)</font>
+					<format>"+4.0f"</format>
+				</s32>
+				<s32> <!-- Y2 Encoder Count Numeric Display -->
+					<halpin>"encoder-count-numeric-display-y2"</halpin>
 					<font>("Helvetica",11)</font> 
 					<format>"+4.0f"</format>
 				</s32>
@@ -300,104 +300,104 @@ The contents of this file will not be overwritten when you run stepconf again.
 		<table flexible_rows="[2]" flexible_columns="[1,2,3,4]">
 		<tablesticky sticky="new"/>
 		<tablerow/>
-			<labelframe text="X1">
+				<labelframe text="X">
+					<font>"Helvetica",12</font>
+				<vbox>
+				<hbox>
+					<led> <!-- X Prox Sensor LED -->
+				 	        <halpin>"prox-led-x"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "green"</off_color>
+					</led>
+					<label>
+						<text>"      X Prox"</text>
+
+						<font>"Helvetica",10</font>
+					</label> 
+				</hbox>
+				<hbox>
+					<led> <!-- X Alarm LED -->
+				 	        <halpin>"alarm-led-x"</halpin>
+						<on_color> "red"</on_color> 
+						<off_color> "black"</off_color>
+					</led>
+					<label>
+						<text>"X Alarm"</text>
+
+						<font>"Helvetica",8</font>
+					</label> 
+					<button> <!-- X Alarm Clear Button -->
+						<halpin>"alarm-clear-button-x"</halpin>
+						<text>"Clear"</text>
+						<font>"Helvetica",8</font>
+					</button>
+				</hbox>
+				</vbox>
+				</labelframe>
+			<labelframe text="Y1">
 				<font>"Helvetica",12</font>
 				<vbox>
 					<hbox>
-						<led> <!-- X1 Prox Sensor LED -->
-					 	        <halpin>"prox-led-x1"</halpin>
+						<led> <!-- Y1 Prox Sensor LED -->
+					 	        <halpin>"prox-led-y1"</halpin>
 							<on_color> "red"</on_color> 
 							<off_color> "green"</off_color>
 						</led>
 						<label>
-							<text>"      X1 Prox"</text>
+							<text>"      Y1 Prox"</text>
 
 							<font>"Helvetica",10</font>
 						</label> 
 					</hbox>
 					<hbox>
-						<led> <!-- X1 Alarm LED -->
-					 	        <halpin>"alarm-led-x1"</halpin>
+						<led> <!-- Y1 Alarm LED -->
+					 	        <halpin>"alarm-led-y1"</halpin>
 							<on_color> "red"</on_color> 
 							<off_color> "black"</off_color>
 						</led>
 						<label> 
-							<text>"X1 Alarm"</text>
+							<text>"Y1 Alarm"</text>
 							<font>"Helvetica",8</font>
 						</label> 
-						<button> <!-- X1 Alarm Clear Button -->
-							<halpin>"alarm-clear-button-x1"</halpin>
+						<button> <!-- Y1 Alarm Clear Button -->
+							<halpin>"alarm-clear-button-y1"</halpin>
 							<text>"Clear"</text>
 							<font>"Helvetica",8</font>
 						</button>
 					</hbox>
 				</vbox>
 				</labelframe>
-				<labelframe text="X2">
+				<labelframe text="Y2">
 					<font>"Helvetica",12</font>
 				<vbox>
 				<hbox>
-					<led> <!-- X2 Prox Sensor LED -->
-				 	        <halpin>"prox-led-x2"</halpin>
+					<led> <!-- Y2 Prox Sensor LED -->
+				 	        <halpin>"prox-led-y2"</halpin>
 						<on_color> "red"</on_color> 
 						<off_color> "green"</off_color>
 					</led>
 					<label>
-						<text>"      X2 Prox"</text>
+						<text>"      Y2 Prox"</text>
 						<font>"Helvetica",10</font>
 					</label> 
 				</hbox>
 				<hbox>
-					<led> <!-- X2 Alarm LED -->
-				 	        <halpin>"alarm-led-x2"</halpin>
+					<led> <!-- Y2 Alarm LED -->
+				 	        <halpin>"alarm-led-y2"</halpin>
 						<on_color> "red"</on_color> 
 						<off_color> "black"</off_color>
 					</led>
 					<label>
-						<text>"X2 Alarm"</text>
+						<text>"Y2 Alarm"</text>
 
 						<font>"Helvetica",8</font>
 					</label> 
-					<button> <!-- X2 Alarm Clear Button -->
-						<halpin>"alarm-clear-button-x2"</halpin>
+					<button> <!-- Y2 Alarm Clear Button -->
+						<halpin>"alarm-clear-button-y2"</halpin>
 						<text>"Clear"</text>
 						<font>"Helvetica",8</font>
 					</button>
 
-				</hbox>
-				</vbox>
-				</labelframe>
-				<labelframe text="Y">
-					<font>"Helvetica",12</font>
-				<vbox>
-				<hbox>
-					<led> <!-- Y Prox Sensor LED -->
-				 	        <halpin>"prox-led-y"</halpin>
-						<on_color> "red"</on_color> 
-						<off_color> "green"</off_color>
-					</led>
-					<label>
-						<text>"      Y Prox"</text>
-
-						<font>"Helvetica",10</font>
-					</label> 
-				</hbox>
-				<hbox>
-					<led> <!-- Y Alarm LED -->
-				 	        <halpin>"alarm-led-y"</halpin>
-						<on_color> "red"</on_color> 
-						<off_color> "black"</off_color>
-					</led>
-					<label>
-						<text>"Y Alarm"</text>
-
-						<font>"Helvetica",8</font>
-					</label> 
-					<button> <!-- Y Alarm Clear Button -->
-						<halpin>"alarm-clear-button-y"</halpin>
-						<text>"Clear"</text>
-						<font>"Helvetica",8</font>
-					</button>
 				</hbox>
 				</vbox>
 				</labelframe>

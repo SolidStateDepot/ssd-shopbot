@@ -65,22 +65,22 @@ net spindle-speed-freq-abs abs.0.out => arduino.analog-out-09
 # IO
 # ######################################################
 #Prox sensor LEDs
-net prox-x1 => pyvcp.prox-led-x1
-net prox-x2 => pyvcp.prox-led-x2
-net prox-y  => pyvcp.prox-led-y
+net prox-x  => pyvcp.prox-led-x
+net prox-y1 => pyvcp.prox-led-y1
 net prox-z  => pyvcp.prox-led-z
+net prox-y2 => pyvcp.prox-led-y2
 
 #Alarm Indicator LEDs
-net alarm-x1 => pyvcp.alarm-led-x1
-net alarm-x2 => pyvcp.alarm-led-x2
-net alarm-y  => pyvcp.alarm-led-y
+net alarm-x  => pyvcp.alarm-led-x
+net alarm-y1 => pyvcp.alarm-led-y1
 net alarm-z  => pyvcp.alarm-led-z
+net alarm-y2 => pyvcp.alarm-led-y2
 
 #Alarm Clears
-net alarm-clear-x1 <= pyvcp.alarm-clear-button-x1
-net alarm-clear-x2 <= pyvcp.alarm-clear-button-x2
-net alarm-clear-y  <= pyvcp.alarm-clear-button-y
+net alarm-clear-x  <= pyvcp.alarm-clear-button-x
+net alarm-clear-y1 <= pyvcp.alarm-clear-button-y1
 net alarm-clear-z  <= pyvcp.alarm-clear-button-z
+net alarm-clear-y2 <= pyvcp.alarm-clear-button-y2
 
 #System Status LED Indicators#
 #E-Stop LEDnet spindle-speed-scale motion.spindle-speed-out => scale.0.in
@@ -166,44 +166,33 @@ net axis-1-pos-rel pyvcp.halui.axis.1.pos-relative <= halui.axis.1.pos-relative
 net axis-2-pos-rel pyvcp.halui.axis.2.pos-relative <= halui.axis.2.pos-relative
 
 #Encoders
-net encoder-count-x1 pyvcp.encoder-count-numeric-display-x1 <= hm2_5i23.0.encoder.00.count
-net encoder-count-x2 pyvcp.encoder-count-numeric-display-x2 <= hm2_5i23.0.encoder.03.count
-net encoder-count-y  pyvcp.encoder-count-numeric-display-y  <= hm2_5i23.0.encoder.01.count
+net encoder-count-x  pyvcp.encoder-count-numeric-display-x  <= hm2_5i23.0.encoder.01.count
+net encoder-count-y1 pyvcp.encoder-count-numeric-display-y1 <= hm2_5i23.0.encoder.00.count
 net encoder-count-z  pyvcp.encoder-count-numeric-display-z  <= hm2_5i23.0.encoder.02.count
+net encoder-count-y2 pyvcp.encoder-count-numeric-display-y2 <= hm2_5i23.0.encoder.03.count
 
 #Operations to calculate and route encoder error signals
-#X1
-net encoder-count-x1 conv-s32-float.0.in
-net encoder-count-float-x1 conv-s32-float.0.out
-net stepgen-count-x1 hm2_5i23.0.stepgen.00.counts conv-s32-float.1.in 
-net stepgen-count-float-x1 conv-s32-float.1.out
-setp sum2.0.gain0 +1.0
-setp sum2.0.gain1 -4.0
-net encoder-count-float-x1 sum2.0.in0
-net stepgen-count-float-x1 sum2.0.in1
-net encoder-error-float-x1 sum2.0.out pyvcp.encoder-error-numeric-display-x1 pyvcp.encoder-error-meter-x1
-
-#X2
-net encoder-count-x2 conv-s32-float.2.in
-net encoder-count-float-x2 conv-s32-float.2.out
-net stepgen-count-x2 hm2_5i23.0.stepgen.03.counts conv-s32-float.3.in 
-net stepgen-count-float-x2 conv-s32-float.3.out
-setp sum2.1.gain0 +1.0
-setp sum2.1.gain1 -4.0
-net encoder-count-float-x2 sum2.1.in0
-net stepgen-count-float-x2 sum2.1.in1
-net encoder-error-float-x2 sum2.1.out pyvcp.encoder-error-numeric-display-x2 pyvcp.encoder-error-meter-x2
-
-#Y
-net encoder-count-y conv-s32-float.4.in
-net encoder-count-float-y conv-s32-float.4.out
-net stepgen-count-y hm2_5i23.0.stepgen.01.counts conv-s32-float.5.in 
-net stepgen-count-float-y conv-s32-float.5.out
+#X
+net encoder-count-x conv-s32-float.4.in
+net encoder-count-float-x conv-s32-float.4.out
+net stepgen-count-x hm2_5i23.0.stepgen.01.counts conv-s32-float.5.in 
+net stepgen-count-float-x conv-s32-float.5.out
 setp sum2.2.gain0 +1.0
 setp sum2.2.gain1 -4.0
-net encoder-count-float-y sum2.2.in0
-net stepgen-count-float-y sum2.2.in1
-net encoder-error-float-y sum2.2.out pyvcp.encoder-error-numeric-display-y pyvcp.encoder-error-meter-y
+net encoder-count-float-x sum2.2.in0
+net stepgen-count-float-x sum2.2.in1
+net encoder-error-float-x sum2.2.out pyvcp.encoder-error-numeric-display-x pyvcp.encoder-error-meter-x
+
+#Y1
+net encoder-count-y1 conv-s32-float.0.in
+net encoder-count-float-y1 conv-s32-float.0.out
+net stepgen-count-y1 hm2_5i23.0.stepgen.00.counts conv-s32-float.1.in 
+net stepgen-count-float-y1 conv-s32-float.1.out
+setp sum2.0.gain0 +1.0
+setp sum2.0.gain1 -4.0
+net encoder-count-float-y1 sum2.0.in0
+net stepgen-count-float-y1 sum2.0.in1
+net encoder-error-float-y1 sum2.0.out pyvcp.encoder-error-numeric-display-y1 pyvcp.encoder-error-meter-y1
 
 #Z
 net encoder-count-z conv-s32-float.6.in
@@ -215,4 +204,15 @@ setp sum2.3.gain1 -4.0
 net encoder-count-float-z sum2.3.in0
 net stepgen-count-float-z sum2.3.in1
 net encoder-error-float-z sum2.3.out pyvcp.encoder-error-numeric-display-z pyvcp.encoder-error-meter-z
+
+#Y2
+net encoder-count-y2 conv-s32-float.2.in
+net encoder-count-float-y2 conv-s32-float.2.out
+net stepgen-count-y2 hm2_5i23.0.stepgen.03.counts conv-s32-float.3.in 
+net stepgen-count-float-y2 conv-s32-float.3.out
+setp sum2.1.gain0 +1.0
+setp sum2.1.gain1 -4.0
+net encoder-count-float-y2 sum2.1.in0
+net stepgen-count-float-y2 sum2.1.in1
+net encoder-error-float-y2 sum2.1.out pyvcp.encoder-error-numeric-display-y2 pyvcp.encoder-error-meter-y2
 
