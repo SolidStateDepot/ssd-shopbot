@@ -187,15 +187,19 @@ setp hm2_5i23.0.gpio.063.is_output 1
 net contactor-stepper-status     <=  hm2_5i23.0.gpio.064.in
 net contactor-spindle-status     <=  hm2_5i23.0.gpio.066.in
 
-#Control Pendant
-net pendant-green-button    <=  hm2_5i23.0.gpio.065.in_not
-net pendant-green-button    <=  classicladder.0.in-03
-net pendant-blue-button    <=  hm2_5i23.0.gpio.067.in_not
-net pendant-blue-button    =>  classicladder.0.in-02
 
-#Remote E-Stop
-net estop-remote    <=  hm2_5i23.0.gpio.032.in_not
-net estop-remote    =>  classicladder.0.in-01
+# Control Pendant
+# One of the two control pendants has two extra momentary buttons (in
+# addition to the latching red estop button).
+# They're currently unused.  And the green button doesn't seem to be wired
+# up...
+
+net pendant-green-button <= hm2_5i23.0.gpio.065.in_not
+net pendant-blue-button  <= hm2_5i23.0.gpio.067.in_not
+
+#net pendant-green-button <= classicladder.0.in-03
+#net pendant-blue-button  => classicladder.0.in-02
+
 
 #Spindle Key Switch
 net spindle-key-switch    <=  hm2_5i23.0.gpio.034.in_not
@@ -333,9 +337,19 @@ setp hm2_5i23.0.stepgen.03.maxvel          0
 # E-Stop related
 # ######################################################
 
-net gui-estop <= iocontrol.0.user-enable-out
-net gui-estop => classicladder.0.in-00
+# this is the momentary "enable" signal *from* linuxcnc
+# it means: "the user just now decided they want the machine to come out of estop"
+net estop-gui-enable <= iocontrol.0.user-request-enable
+net estop-gui-enable => classicladder.0.in-00
+
+# Control Pendant E-Stop
+# there are two pendants, and each has a latching estop button
+# if either estop button is pressed, this pin is True
+# if both estop buttons are released (not pressed), this pin is False
+net estop-remote    <=  hm2_5i23.0.gpio.033.in_not
+net estop-remote    =>  classicladder.0.in-01
+
+# this is the actual estop feedback signal *to* linuxcnc
 net estop-all-ok <= classicladder.0.out-00
 net estop-all-ok => iocontrol.0.emc-enable-in
-
 

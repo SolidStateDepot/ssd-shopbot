@@ -42,62 +42,65 @@ P2: 7i47 (12-channel RS-422 serial communication interface)
 
 
 P3: 7i37 (isolated digital I/O)
-| IO  | Conn  | Module | Use                     | 7i37 pin
-+-----+-------+--------+-------------------------+----------------
-| 024 | P3-01 | IOPort | x1 prox input (negated) | 1: in0
-| 025 | P3-03 | IOPort |                         | 3: in1
-| 026 | P3-05 | IOPort | y prox input (negated)  | 5: in2
-| 027 | P3-07 | IOPort |                         | 7: in3
-| 028 | P3-09 | IOPort | z prox input (negated)  | 9: in4
-| 029 | P3-11 | IOPort |                         | 11: in5
-| 030 | P3-13 | IOPort | x2 prox input (negated) | 13: in6
-| 031 | P3-15 | IOPort |                         | 15: in7
-| 032 | P3-17 | IOPort |                         | 17: in8
-| 033 | P3-19 | IOPort |                         | 19: in9
-| 034 | P3-21 | IOPort |                         | 21: in10
-| 035 | P3-23 | IOPort |                         | 23: in11
-| 036 | P3-25 | IOPort |                         | 25: in12
-| 037 | P3-27 | IOPort |                         | 27: in13
-| 038 | P3-29 | IOPort |                         | 29: in14
-| 039 | P3-31 | IOPort |                         | 31: in15
-| 040 | P3-33 | IOPort |                         | 33: out0
-| 041 | P3-35 | IOPort |                         | 35: out1
-| 042 | P3-37 | IOPort |                         | 37: out2
-| 043 | P3-39 | IOPort |                         | 39: out3
-| 044 | P3-41 | IOPort |                         | 41: out4
-| 045 | P3-43 | IOPort |                         | 43: out5
-| 046 | P3-45 | IOPort |                         | 45: out6
-| 047 | P3-47 | IOPort |                         | 47: out7
-|     | P3-49 |        |                         | 49: +5
-+-----+----------------+-------------------------+----------------
+| IO  | Conn  | Module | Use                                                         | 7i37 pin
++-----+----------------+-------------------------------------------------------------+-----------
+| 024 | P3-01 | IOPort | x1 prox input (negated)                                     | 1: in0
+| 025 | P3-03 | IOPort |                                                             | 3: in1
+| 026 | P3-05 | IOPort | y prox input (negated)                                      | 5: in2
+| 027 | P3-07 | IOPort |                                                             | 7: in3
+| 028 | P3-09 | IOPort | z prox input (negated)                                      | 9: in4
+| 029 | P3-11 | IOPort |                                                             | 11: in5
+| 030 | P3-13 | IOPort | x2 prox input (negated)                                     | 13: in6
+| 031 | P3-15 | IOPort |                                                             | 15: in7
+| 032 | P3-17 | IOPort |                                                             | 17: in8
+| 033 | P3-19 | IOPort | pendant estop input (True if either estop button is pushed) | 19: in9
+| 034 | P3-21 | IOPort |                                                             | 21: in10
+| 035 | P3-23 | IOPort |                                                             | 23: in11
+| 036 | P3-25 | IOPort |                                                             | 25: in12
+| 037 | P3-27 | IOPort |                                                             | 27: in13
+| 038 | P3-29 | IOPort |                                                             | 29: in14
+| 039 | P3-31 | IOPort |                                                             | 31: in15
+| 040 | P3-33 | IOPort |                                                             | 33: out0
+| 041 | P3-35 | IOPort |                                                             | 35: out1
+| 042 | P3-37 | IOPort |                                                             | 37: out2
+| 043 | P3-39 | IOPort |                                                             | 39: out3
+| 044 | P3-41 | IOPort |                                                             | 41: out4
+| 045 | P3-43 | IOPort |                                                             | 43: out5
+| 046 | P3-45 | IOPort |                                                             | 45: out6
+| 047 | P3-47 | IOPort |                                                             | 47: out7
+|     | P3-49 |        |                                                             | 49: +5
++-----+----------------+-------------------------------------------------------------+-----------
 
 
 P4: 7i42 (over/under voltage protected break-out board)
+| IO  | Conn  | Module | Use                                                         | 7i42 pin
++-----+----------------+-------------------------------------------------------------+-----------
+| 048 | P4-01 | IOPort |                                                             |
+| 049 | P4-03 | IOPort |                                                             |
+| 050 | P4-05 | IOPort |                                                             |
+| 051 | P4-07 | IOPort |                                                             |
+| 052 | P4-09 | IOPort |                                                             |
+| 053 | P4-11 | IOPort |                                                             |
+| 054 | P4-13 | IOPort |                                                             |
+| 055 | P4-15 | IOPort |                                                             |
+| 056 | P4-17 | IOPort |                                                             |
+| 057 | P4-19 | IOPort |                                                             |
+| 058 | P4-21 | IOPort |                                                             |
+| 059 | P4-23 | IOPort |                                                             |
+| 060 | P4-25 | IOPort |                                                             |
+| 061 | P4-27 | IOPort |                                                             |
+| 062 | P4-29 | IOPort |                                                             |
+| 063 | P4-31 | IOPort |                                                             |
+| 064 | P4-33 | IOPort |                                                             |
+| 065 | P4-35 | IOPort | pendant green momentary button (not working)                |
+| 066 | P4-37 | IOPort |                                                             |
+| 067 | P4-39 | IOPort | pendant blue momentary button (release=True, push=False)    |
+| 068 | P4-41 | IOPort |                                                             |
+| 069 | P4-43 | IOPort |                                                             |
+| 070 | P4-45 | IOPort |                                                             |
+| 071 | P4-47 | IOPort |                                                             |
++-----+----------------+-------------------------------------------------------------+-----------
 
-    IO 048 (P4-01): IOPort
-    IO 049 (P4-03): IOPort
-    IO 050 (P4-05): IOPort
-    IO 051 (P4-07): IOPort
-    IO 052 (P4-09): IOPort
-    IO 053 (P4-11): IOPort
-    IO 054 (P4-13): IOPort
-    IO 055 (P4-15): IOPort
-    IO 056 (P4-17): IOPort
-    IO 057 (P4-19): IOPort
-    IO 058 (P4-21): IOPort
-    IO 059 (P4-23): IOPort
-    IO 060 (P4-25): IOPort
-    IO 061 (P4-27): IOPort
-    IO 062 (P4-29): IOPort
-    IO 063 (P4-31): IOPort
-    IO 064 (P4-33): IOPort
-    IO 065 (P4-35): IOPort
-    IO 066 (P4-37): IOPort
-    IO 067 (P4-39): IOPort
-    IO 068 (P4-41): IOPort
-    IO 069 (P4-43): IOPort
-    IO 070 (P4-45): IOPort
-    IO 071 (P4-47): IOPort
 
 The Mesa 5i23 hardware I/O card
 will be loaded with firmware designation: SVST8_4
