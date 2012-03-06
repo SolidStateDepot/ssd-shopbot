@@ -191,14 +191,10 @@ net contactor-spindle-status     <=  hm2_5i23.0.gpio.066.in
 # Control Pendant
 # One of the two control pendants has two extra momentary buttons (in
 # addition to the latching red estop button).
-# They're currently unused.  And the green button doesn't seem to be wired
-# up...
+# The green button doesn't seem to be wired up...
 
 net pendant-green-button <= hm2_5i23.0.gpio.065.in_not
 net pendant-blue-button  <= hm2_5i23.0.gpio.067.in_not
-
-#net pendant-green-button <= classicladder.0.in-03
-#net pendant-blue-button  => classicladder.0.in-02
 
 
 #Spindle Key Switch
@@ -337,19 +333,29 @@ setp hm2_5i23.0.stepgen.03.maxvel          0
 # E-Stop related
 # ######################################################
 
-# this is the momentary "enable" signal *from* linuxcnc
+# this is the momentary "enable request" signal *from* linuxcnc
 # it means: "the user just now decided they want the machine to come out of estop"
-net estop-gui-enable <= iocontrol.0.user-request-enable
-net estop-gui-enable => classicladder.0.in-00
+# it's a positive-edge-detector of the iocontrol.0.user-enable-out pin (used below)
+net estop-user-request-enable <= iocontrol.0.user-request-enable
+net estop-user-request-enable => classicladder.0.in-00
 
 # Control Pendant E-Stop
 # there are two pendants, and each has a latching estop button
 # if either estop button is pressed, this pin is True
 # if both estop buttons are released (not pressed), this pin is False
-net estop-remote    <=  hm2_5i23.0.gpio.033.in_not
-net estop-remote    =>  classicladder.0.in-01
+net estop-pendant-button <=  hm2_5i23.0.gpio.033.in_not
+net estop-pendant-button =>  classicladder.0.in-01
 
-# this is the actual estop feedback signal *to* linuxcnc
+# the blue button on the pendant acts as another "enable request" signal from the user
+# this is handy so they don't have to walk over to the computer and hit F1
+net pendant-blue-button  => classicladder.0.in-02
+
+# this signal from linuxcnc is True if the user wants the machine to be enabled,
+# and False if the user wants the machine to be in estop
+net estop-user-enable <= iocontrol.0.user-enable-out
+net estop-user-enable => classicladder.0.in-03
+
+# this is the machine's estop feedback signal *to* linuxcnc
 net estop-all-ok <= classicladder.0.out-00
 net estop-all-ok => iocontrol.0.emc-enable-in
 
