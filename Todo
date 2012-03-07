@@ -19,7 +19,9 @@ fix dust removal system if needed
 
 linuxcnc config:
 
-    tune acceleration
+    verify stepper amp timings
+
+    tune vel & acceleration
 
     estop:
 
