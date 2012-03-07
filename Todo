@@ -37,8 +37,8 @@ linuxcnc config:
 
     can't disable limit override when not on a limit...
 
-    the X prox switch is very noisy, needs debounce.  Or can it be
-    cleaned up mechanically somehow?  Y2 prox looks fine.  How are the
+    the Y prox switch is very noisy, needs debounce.  Or can it be
+    cleaned up mechanically somehow?  X2 prox looks fine.  How are the
     other proxes?
 
     machine needs rehome after e-stop, how to get around that?
