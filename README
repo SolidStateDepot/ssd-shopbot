@@ -102,6 +102,25 @@ P4: 7i42 (over/under voltage protected break-out board)
 +-----+----------------+-------------------------------------------------------------+-----------
 
 
+
+
+Steppers are labeled ASM98AA-T7.2
+
+Stepper amps are labeled ASD30A-A
+
+The stepper amps take 1625 steps/revolution of the stepper motor,
+which means 1625*7.2 steps per revolution of the output shaft of the
+transmission.
+
+1 encoder line per step, so 4 encoder edges per step
+
+2.5 teeth/cm on the rack
+
+30 teeth on the pinion gear
+
+
+
+
 The Mesa 5i23 hardware I/O card
 will be loaded with firmware designation: SVST8_4
 and has 72 I/O pins
