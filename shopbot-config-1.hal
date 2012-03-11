@@ -216,7 +216,7 @@ net prox-y1 <= hm2_5i23.0.gpio.024.in_not
 net prox-y1 => axis.1.home-sw-in axis.1.neg-lim-sw-in axis.1.pos-lim-sw-in
 
 net prox-z  <= hm2_5i23.0.gpio.028.in_not
-net prox-z  => axis.2.home-sw-in axis.2.pos-lim-sw-in
+net prox-z  => axis.2.home-sw-in axis.2.pos-lim-sw-in axis.2.neg-lim-sw-in
 
 net prox-y2 <= hm2_5i23.0.gpio.030.in_not 
 net prox-y2 => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in
