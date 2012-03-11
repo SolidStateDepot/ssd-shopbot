@@ -44,13 +44,13 @@ P2: 7i47 (12-channel RS-422 serial communication interface)
 P3: 7i37 (isolated digital I/O)
 | IO  | Conn  | Module | Use                                                         | 7i37 pin
 +-----+----------------+-------------------------------------------------------------+-----------
-| 024 | P3-01 | IOPort | x1 prox input (negated)                                     | 1: in0
+| 024 | P3-01 | IOPort | x1 prox input (home, +limit, -limit, negated)               | 1: in0
 | 025 | P3-03 | IOPort |                                                             | 3: in1
-| 026 | P3-05 | IOPort | y prox input (negated)                                      | 5: in2
+| 026 | P3-05 | IOPort | y prox input (home, +limit, -limit, negated)                | 5: in2
 | 027 | P3-07 | IOPort |                                                             | 7: in3
-| 028 | P3-09 | IOPort | z prox input (negated)                                      | 9: in4
+| 028 | P3-09 | IOPort | z prox input (home, +limit, -limit, negated)                | 9: in4
 | 029 | P3-11 | IOPort |                                                             | 11: in5
-| 030 | P3-13 | IOPort | x2 prox input (negated)                                     | 13: in6
+| 030 | P3-13 | IOPort | x2 prox input (home, +limit, -limit, negated)               | 13: in6
 | 031 | P3-15 | IOPort |                                                             | 15: in7
 | 032 | P3-17 | IOPort |                                                             | 17: in8
 | 033 | P3-19 | IOPort | pendant estop input (True if either estop button is pushed) | 19: in9
