@@ -1,11 +1,9 @@
 
 Mechanical:
 
-    align all axes to be perpendicular
+    X axis is good, Y axis is good, Z is loose and off in the X and Y angles
 
     tweak limit positions - try to make it so it has time to stop when jogging in world mode
-
-    square the spindle
 
     check spindle power supply
 
@@ -18,6 +16,11 @@ fix dust removal system if needed
 
 
 linuxcnc config:
+
+    stepper feedback encoders go to stepper amps, amps provide
+    fake(?) encoder ticks to linuxcnc, and an error signal if there are
+    lost steps(?).  See if we can drive both the amp encoder inputs and
+    the linuxcnc encoder inputs from the stepper encoders
 
     verify stepper amp timings
 
