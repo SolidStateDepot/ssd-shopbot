@@ -219,3 +219,16 @@ net sxp.counts-smoothed => axis.0.jog-counts
 net sxp.counts-smoothed => axis.1.jog-counts
 net sxp.counts-smoothed => axis.2.jog-counts
 
+
+
+
+#
+# temporary hack!
+# log the X and Y coordinates to a file when i hit the A button
+#
+
+net sxp.a-button     => halui.mdi-command-12
+
+net sxp.a-button-not <= shuttlexpress.0.button-3-not
+net sxp.a-button-not => halui.mode.teleop
+
