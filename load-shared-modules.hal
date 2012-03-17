@@ -1,0 +1,19 @@
+
+#
+# these are for the main config
+#
+
+loadrt abs names=abs.spindle-speed
+
+loadrt or2 names=or2.spindle-fan-power
+
+loadrt scale names=scale.spindle-speed
+
+loadrt toggle count=7
+
+loadrt sum2 count=4
+
+loadrt conv_s32_float count=8
+
+loadrt and2 names=and2.zero-all,and2.zero-x,and2.zero-y,and2.zero-z,and2.zero-plate
+

@@ -33,11 +33,11 @@ setp arduino.digital-in-12-pullup 1
 setp arduino.digital-in-13-pullup 1
 
 #Spindle Control
-setp scale.0.gain 0.000277778 #origional line
+setp scale.spindle-speed.gain 0.000277778 #origional line
 #setp scale.0.gain 0.014111111
-net spindle-speed-scale motion.spindle-speed-out => scale.0.in
-net spindle-speed-freq scale.0.out => abs.0.in
-net spindle-speed-freq-abs abs.0.out => arduino.analog-out-09
+net spindle-speed-scale motion.spindle-speed-out => scale.spindle-speed.in
+net spindle-speed-freq scale.spindle-speed.out => abs.spindle-speed.in
+net spindle-speed-freq-abs abs.spindle-speed.out => arduino.analog-out-09
 
 
 # ######################################################
@@ -110,9 +110,9 @@ net spindle-power-enable-control => pyvcp.spindle-power-status-led
 #Spindle Fan Logic, Control, and LED
 net spindle-fan-toggle pyvcp.spindle-fan-enable-button => toggle.0.in
 net spindle-fan-toggle-control <= toggle.0.out 
-net spindle-fan-toggle-control => or2.1.in0 
-net spindle-is-on halui.spindle.is-on => or2.1.in1 pyvcp.spindle-is-on-status-led
-net spindle-fan-control <= or2.1.out
+net spindle-fan-toggle-control => or2.spindle-fan-power.in0
+net spindle-is-on halui.spindle.is-on => or2.spindle-fan-power.in1 pyvcp.spindle-is-on-status-led
+net spindle-fan-control <= or2.spindle-fan-power.out
 net spindle-fan-control => pyvcp.spindle-fan-indicator-led
 #Spindle Direction Control and LEDs
 #net spindle-forward-toggle-button => pyvcp.spindle-forward-button => toggle.2.in
@@ -126,21 +126,21 @@ net spindle-stop-button pyvcp.spindle-motion-stop-button => halui.spindle.stop
 
 #Zeroing Buttons / Control
 net zero-enable-toggle-in pyvcp.zero-enable-button => toggle.5.in
-net zero-enable-toggle-out toggle.5.out => and2.0.in0 and2.1.in0 and2.2.in0 and2.3.in0 pyvcp.zero-enable-status-led
-net zero-all-button-and2-in pyvcp.zero-button-all => and2.0.in1
-net zero-all-output and2.0.out => halui.mdi-command-00
-net zero-x-button-and2-in pyvcp.zero-button-x => and2.1.in1
-net zero-x-output and2.1.out => halui.mdi-command-01
-net zero-y-button-and2-in pyvcp.zero-button-y => and2.2.in1
-net zero-y-output and2.2.out => halui.mdi-command-02
-net zero-z-button-and2-in pyvcp.zero-button-z => and2.3.in1
-net zero-z-output and2.3.out => halui.mdi-command-03
+net zero-enable-toggle-out toggle.5.out => and2.zero-all.in0 and2.zero-x.in0 and2.zero-y.in0 and2.zero-z.in0 pyvcp.zero-enable-status-led
+net zero-all-button-and2-in pyvcp.zero-button-all => and2.zero-all.in1
+net zero-all-output and2.zero-all.out => halui.mdi-command-00
+net zero-x-button-and2-in pyvcp.zero-button-x => and2.zero-x.in1
+net zero-x-output and2.zero-x.out => halui.mdi-command-01
+net zero-y-button-and2-in pyvcp.zero-button-y => and2.zero-y.in1
+net zero-y-output and2.zero-y.out => halui.mdi-command-02
+net zero-z-button-and2-in pyvcp.zero-button-z => and2.zero-z.in1
+net zero-z-output and2.zero-z.out => halui.mdi-command-03
 
 #Zero Plate Control
 net zero-plate-enable-toggle-in pyvcp.zero-plate-enable-button => toggle.6.in
-net zero-plate-enable-toggle-out toggle.6.out => and2.5.in0 pyvcp.zero-plate-enable-status-led
-net zero-plate-signal-and2-in hm2_5i23.0.gpio.068.in_not => and2.5.in1
-net zero-plate-signal-and2-out and2.5.out => motion.probe-input pyvcp.zero-plate-signal-status-led
+net zero-plate-enable-toggle-out toggle.6.out => and2.zero-plate.in0 pyvcp.zero-plate-enable-status-led
+net zero-plate-signal-and2-in hm2_5i23.0.gpio.068.in_not => and2.zero-plate.in1
+net zero-plate-signal-and2-out and2.zero-plate.out => motion.probe-input pyvcp.zero-plate-signal-status-led
 
 #Homing Presets
 net goto-home-preset-1 pyvcp.goto-home-1 => halui.mdi-command-04
