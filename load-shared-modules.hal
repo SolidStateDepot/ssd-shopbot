@@ -15,5 +15,29 @@ loadrt sum2 count=4
 
 loadrt conv_s32_float count=8
 
-loadrt and2 names=and2.zero-all,and2.zero-x,and2.zero-y,and2.zero-z,and2.zero-plate
+
+#
+# these are for shuttlexpress
+#
+
+loadrt abs_s32 names=abs_s32.sxp
+
+loadrt select8 names=select8.sxp-jog-speed,select8.sxp-jog-increment
+loadrt mux2 names=mux2.sxp-x-analog,mux2.sxp-y-analog,mux2.sxp-z-analog
+loadrt updown names=updown.sxp
+loadrt tristate_float names=tristate-float.sxp0,tristate-float.sxp1,tristate-float.sxp2,tristate-float.sxp3,tristate-float.sxp4,tristate-float.sxp5,tristate-float.sxp6,tristate-float.sxp7,tristate-float.sxp-jog-increment-0,tristate-float.sxp-jog-increment-1,tristate-float.sxp-jog-increment-2,tristate-float.sxp-jog-increment-3
+loadrt ilowpass names=ilowpass.sxp
+
+
+#
+# these are used by both
+#
+
+# main:
+#loadrt and2 names=and2.zero-all,and2.zero-x,and2.zero-y,and2.zero-z,and2.zero-plate
+
+# shuttlexpress:
+#loadrt and2 names=and2.sxp-x-pos,and2.sxp-x-neg,and2.sxp-y-pos,and2.sxp-y-neg,and2.sxp-z-pos,and2.sxp-z-neg
+
+loadrt and2 names=and2.zero-all,and2.zero-x,and2.zero-y,and2.zero-z,and2.zero-plate,and2.sxp-x-pos,and2.sxp-x-neg,and2.sxp-y-pos,and2.sxp-y-neg,and2.sxp-z-pos,and2.sxp-z-neg
 
