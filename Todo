@@ -46,8 +46,6 @@ linuxcnc config:
 
     clean up pyvcp panel
 
-    no joint-mode jogging of joint 3 (y2)
-
     the X prox switch is very noisy, needs debounce (or was this fixed by
     reseating the cable?).  Or can it be cleaned up mechanically somehow?
     Y2 prox looks fine.  How are the other proxes?
@@ -76,4 +74,15 @@ linuxcnc bugs and feature requests:
     no incremental jogging in coordinated mode on gantry machines :-(
 
     nontrivkins machines need [TRAJ]DEFAULT_ACCELERATION, which is lame
+
+
+    no joint-mode jogging of joint 3 (y2)
+
+        If you set [TRAJ]COORDINATES to 'X Y Z A', you get to jog joints
+        0-3 in joint mode, but you get an A in world mode (which is
+        not right)
+
+        If you set [TRAJ]COORDINATES to 'XYZY', you get to jog just
+        joints 0-2 in joint mode (which is not right), and you get no
+        A in world mode
 
