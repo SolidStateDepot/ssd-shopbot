@@ -76,6 +76,12 @@ linuxcnc bugs and feature requests:
     nontrivkins machines need [TRAJ]DEFAULT_ACCELERATION, which is lame
 
 
+    there should be a way to forbid jogging in joint mode...  Sometimes
+    you want to be able to do that, but usually you don't.  Many, many
+    problems could have been avoided if the machine had not let me jog
+    in joint mode.
+
+
     no joint-mode jogging of joint 3 (y2)
 
         If you set [TRAJ]COORDINATES to 'X Y Z A', you get to jog joints
@@ -85,4 +91,7 @@ linuxcnc bugs and feature requests:
         If you set [TRAJ]COORDINATES to 'XYZY', you get to jog just
         joints 0-2 in joint mode (which is not right), and you get no
         A in world mode
+
+
+    Running MDI via halui seems to switch out of world mode...
 
