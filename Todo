@@ -54,7 +54,15 @@ linuxcnc config:
 
     spindle:
 
-        spindle needs key in engaged position in spindle interlock (on control box)
+        to turn on spindle:
+
+            spindle key in engaged position in spindle interlock (on control box)
+
+            push "Spindle Power" button on VCP
+
+            set spindle speed with S word, 4k-18k
+
+            M3
 
         spindle warm-up first time: 30 minute ramp up to 18k
         
