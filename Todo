@@ -95,3 +95,7 @@ linuxcnc bugs and feature requests:
 
     Running MDI via halui seems to switch out of world mode...
 
+
+    ShuttleXpress driver should try to reconnect if the cable gets
+    unplugged, you currently have to restart enc2...
+
