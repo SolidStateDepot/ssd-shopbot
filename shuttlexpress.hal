@@ -76,14 +76,14 @@ net sxp.select-jog-speed-7 => tristate-float.sxp7.enable
 
 # each of the 8 tristate floats has a constant jog speed on it
 # speeds are specified as "fraction of machine max speed"
-setp tristate-float.sxp0.in    0.0
-setp tristate-float.sxp1.in    0.5
-setp tristate-float.sxp2.in    1.0
-setp tristate-float.sxp3.in    5.0
-setp tristate-float.sxp4.in   10.0
-setp tristate-float.sxp5.in   20.0
-setp tristate-float.sxp6.in  150.0
-setp tristate-float.sxp7.in  240.0
+setp tristate-float.sxp0.in     0.0
+setp tristate-float.sxp1.in     0.5
+setp tristate-float.sxp2.in     1.0
+setp tristate-float.sxp3.in     5.0
+setp tristate-float.sxp4.in    10.0
+setp tristate-float.sxp5.in    20.0
+setp tristate-float.sxp6.in   100.0
+setp tristate-float.sxp7.in   500.0
 
 # all of the 8 tristate floats are connected together, one of them drives
 # the net
