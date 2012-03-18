@@ -131,6 +131,28 @@ For the table, cut one ~33" x 8' strip of 3/4" ply, and bolt it to the left
 
 
 
+Spindle
+
+    to turn on spindle:
+
+        spindle key in engaged position in spindle interlock (on
+        control box)
+
+        push "Spindle Power" button on VCP
+
+        set spindle speed with S word, 4k-18k
+
+        M3
+
+    Each day, when first starting to use the spindle, run the
+    warmup-spindle program.  Power on the machine and home it, then
+    switch to the MDI tab and run "o<warmup-spindle> call".  This will
+    turn on the spindle and ramp the spind speed up from 4k rpm to 18k
+    rpm over 10 minutes.
+
+
+
+
 The Mesa 5i23 hardware I/O card
 will be loaded with firmware designation: SVST8_4
 and has 72 I/O pins
