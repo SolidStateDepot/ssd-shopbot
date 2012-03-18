@@ -1,0 +1,31 @@
+
+;
+; ramp spindle speed from 4k rpm to 18k rpm over the course of 10 minutes
+;
+; Warning: Keep clear of spindle or eat spinning death!
+;
+
+o<warmup-spindle> sub
+    #<start_rpm> = 4000
+    #<end_rpm> = 18000
+    #<duration> = [10 * 60]  ; 10 minutes
+
+    ; how many seconds have we been ramping up so far?
+    #<timer> = 0
+
+    #<rpm_range> = [#<end_rpm> - #<start_rpm>]
+
+    o100 while [ #<timer> LT #<duration> ]
+        #<rpm> = [#<start_rpm> + [#<rpm_range> * #<timer>/#<duration>]]
+        ;(debug, #<rpm> rpm)
+        s#<rpm>
+        m3
+        g4 p1
+        #<timer> = [#<timer> + 1]
+    o100 endwhile
+
+    m5
+o<warmup-spindle> endsub
+
+m2
+
