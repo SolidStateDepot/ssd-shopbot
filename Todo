@@ -36,7 +36,12 @@ linuxcnc config:
 
 	want to see diff between commanded steps and actual encoder feedback (mod backlash)
 
-	discrepancy between the two Y joints should cause estop
+	discrepancy between the two Y joints should cause estop:
+
+	    compare axis.{1,3}.joint-pos-cmd
+
+	    alert iocontrol.0.emc-enable-in (aka estop-all-ok net)
+	    if there's a problem
 
     don't load unused realtime comps
 
