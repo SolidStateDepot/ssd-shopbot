@@ -1,0 +1,26 @@
+
+;
+; Assumes the spindle is positioned with X and Y over the center of the
+; hole, and Z at the top of the surface to cut.
+;
+; Uses all relative motions.
+;
+
+o<countersink-for-table> sub
+    g91
+    g91.1
+
+    #<radius> = [[3/8]/2]
+    #<z_depth> = -0.250
+
+    ;g4 p2  ; dwell to let the spindle come up to speed
+
+    g1 x#<radius> z#<z_depth>
+    g2 i-#<radius>
+
+    g0 x-#<radius> z-#<z_depth>
+    ;m5
+o<countersink-for-table> endsub
+
+m2
+
