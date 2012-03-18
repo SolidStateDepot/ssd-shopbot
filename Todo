@@ -64,6 +64,14 @@ linuxcnc config:
 
         switch interface to spindle vfd from arduino to modbus or mesa
 
+        Spindle fan should come on when the spindle is too hot.
+        This would need temp feedback.  A simpler approach would be to
+        turn on the fan when the spindle turns on, and leave the fan on
+        for X minutes after the spindle turns off.
+
+        The vacuum VFD should come on when the spindle turns on.  It uses
+        a Hitachi SJ200.
+
 
 linuxcnc bugs and feature requests:
 
