@@ -77,6 +77,8 @@ linuxcnc config:
         The vacuum VFD should come on when the spindle turns on.  It uses
         a Hitachi SJ200.
 
+        spindle-at-speed doesnt work
+
 
 linuxcnc bugs and feature requests:
 
