@@ -27,6 +27,8 @@ fix dust removal system if needed
 
 linuxcnc config:
 
+    [TRAJ]AXES vs [TRAJ]JOINTS
+
     stepper feedback encoders go to stepper amps, amps provide
     fake(?) encoder ticks to linuxcnc, and an error signal if there are
     lost steps(?).  See if we can drive both the amp encoder inputs and
