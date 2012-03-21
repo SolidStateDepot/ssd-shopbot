@@ -27,8 +27,6 @@ fix dust removal system if needed
 
 linuxcnc config:
 
-    [TRAJ]AXES vs [TRAJ]JOINTS
-
     stepper feedback encoders go to stepper amps, amps provide
     fake(?) encoder ticks to linuxcnc, and an error signal if there are
     lost steps(?).  See if we can drive both the amp encoder inputs and
@@ -99,17 +97,6 @@ linuxcnc bugs and feature requests:
     you want to be able to do that, but usually you don't.  Many, many
     problems could have been avoided if the machine had not let me jog
     in joint mode.
-
-
-    no joint-mode jogging of joint 3 (y2)
-
-        If you set [TRAJ]COORDINATES to 'X Y Z A', you get to jog joints
-        0-3 in joint mode, but you get an A in world mode (which is
-        not right)
-
-        If you set [TRAJ]COORDINATES to 'XYZY', you get to jog just
-        joints 0-2 in joint mode (which is not right), and you get no
-        A in world mode
 
 
     Running MDI via halui seems to switch out of world mode...
