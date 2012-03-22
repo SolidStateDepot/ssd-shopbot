@@ -9,6 +9,8 @@ Mechanical:
 
         try to make it so it has time to stop when jogging in world mode
 
+    F9 doesn't do the right thing with the spindle
+
     ------
 
     redo spindle control?  later
