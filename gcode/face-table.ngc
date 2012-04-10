@@ -1,0 +1,51 @@
+
+#<z_cut> = -7.400
+#<cutter_diameter> = 1.250  ; pass width is 90% of this
+
+#<x_min> = 0
+#<x_max> = 61.5
+
+#<y_min> = 8
+#<y_max> = 102.5
+
+
+g90
+
+s17000
+m3
+
+f225  ; could go up to maybe 350 or so?
+
+g53 g0 z0
+g53 g0 x#<x_min> y#<y_min>
+
+g53 g1 z#<z_cut>
+
+#<y> = #<y_min>
+
+o100 do
+    g53 g1 x#<x_max>
+
+    #<y> = [ #<y> + [#<cutter_diameter> * 0.9] ]
+    o110 if [ #<y> GT #<y_max> ]
+        #<y> = #<y_max>
+    o110 endif
+
+    g53 g1 y#<y>
+    g53 g1 x#<x_min>
+
+    o120 if [#<y> EQ #<y_max> ]
+        o100 break
+    o120 endif
+
+    #<y> = [ #<y> + [#<cutter_diameter> * 0.9] ]
+    o130 if [#<y> GT #<y_max> ]
+        #<y> = #<y_max>
+    o130 endif
+    g53 g1 y#<y>
+
+o100 while [#<y> LT #<y_max>]
+
+g53 g0 z0
+
+m2
