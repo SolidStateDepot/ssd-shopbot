@@ -37,6 +37,6 @@ o100 do
 o100 while [#<y> lt #<y_max> ]
 
 g53 g0 z0
-g53 g0 x30 y10
+g53 g0 x30 y17
 
 m2
