@@ -8,7 +8,7 @@ G20 (imperial)
 G64 p.1 (best speed, but don't deviate by more than 0.1 mm)
 
 #<x_min> = 0
-#<x_max> = 61.5
+#<x_max> = 61.25
 
 #<y_min> = 12
 #<y_max> = 102.5
