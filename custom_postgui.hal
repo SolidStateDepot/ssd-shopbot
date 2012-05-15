@@ -64,27 +64,8 @@ net spindle-speed-freq-abs abs.spindle-speed.out => arduino.analog-out-09
 # ######################################################
 # IO
 # ######################################################
-#Prox sensor LEDs
-net prox-x  => pyvcp.prox-led-x
-net prox-y1 => pyvcp.prox-led-y1
-net prox-z  => pyvcp.prox-led-z
-net prox-y2 => pyvcp.prox-led-y2
-
-#Alarm Indicator LEDs
-net alarm-x  => pyvcp.alarm-led-x
-net alarm-y1 => pyvcp.alarm-led-y1
-net alarm-z  => pyvcp.alarm-led-z
-net alarm-y2 => pyvcp.alarm-led-y2
-
-#Alarm Clears
-net alarm-clear-x  <= pyvcp.alarm-clear-button-x
-net alarm-clear-y1 <= pyvcp.alarm-clear-button-y1
-net alarm-clear-z  <= pyvcp.alarm-clear-button-z
-net alarm-clear-y2 <= pyvcp.alarm-clear-button-y2
 
 #System Status LED Indicators#
-#E-Stop LEDnet spindle-speed-scale motion.spindle-speed-out => scale.0.in
-net gui-estop-is-activated pyvcp.halui.estop.is-activated <= halui.estop.is-activated
 
 #Stepper Power Enable LED
 net gui-machine-is-on pyvcp.stepper.power.enable.led <= halui.machine.is-on
@@ -142,34 +123,10 @@ net zero-plate-enable-toggle-out toggle.6.out => and2.zero-plate.in0 pyvcp.zero-
 net zero-plate-signal-and2-in hm2_5i23.0.gpio.068.in_not => and2.zero-plate.in1
 net zero-plate-signal-and2-out and2.zero-plate.out => motion.probe-input pyvcp.zero-plate-signal-status-led
 
-#Homing Presets
-net goto-home-preset-1 pyvcp.goto-home-1 => halui.mdi-command-04
-#net goto-home-preset-2 pyvcp.goto-home-2 => halui.mdi-command-05
-#net goto-home-preset-3 pyvcp.goto-home-3 => halui.mdi-command-06
-#net goto-home-preset-4 pyvcp.goto-home-4 => halui.mdi-command-07
-#net goto-home-preset-5 pyvcp.goto-home-5 => halui.mdi-command-08
-#net goto-home-preset-6 pyvcp.goto-home-6 => halui.mdi-command-09
-#net goto-home-preset-7 pyvcp.goto-home-7 => halui.mdi-command-10
-#net goto-home-preset-8 pyvcp.goto-home-8 => halui.mdi-command-11
-
 #Mist Output Control
 net mist-enable-toggle pyvcp.mist-enable-button => toggle.4.in
 net mist-control <= toggle.4.out
 net mist-control => pyvcp.mist-enable-led
-
-#Position Numeric Indicators
-net axis-0-pos-fb pyvcp.halui.axis.0.pos-feedback <= halui.axis.0.pos-feedback
-net axis-1-pos-fb pyvcp.halui.axis.1.pos-feedback <= halui.axis.1.pos-feedback
-net axis-2-pos-fb pyvcp.halui.axis.2.pos-feedback <= halui.axis.2.pos-feedback
-net axis-0-pos-rel pyvcp.halui.axis.0.pos-relative <= halui.axis.0.pos-relative
-net axis-1-pos-rel pyvcp.halui.axis.1.pos-relative <= halui.axis.1.pos-relative
-net axis-2-pos-rel pyvcp.halui.axis.2.pos-relative <= halui.axis.2.pos-relative
-
-#Encoders
-net x-encoder-count  => pyvcp.encoder-count-numeric-display-x
-net y1-encoder-count => pyvcp.encoder-count-numeric-display-y1
-net z-encoder-count  => pyvcp.encoder-count-numeric-display-z
-net y2-encoder-count => pyvcp.encoder-count-numeric-display-y2
 
 #Operations to calculate and route encoder error signals
 #X
@@ -181,7 +138,7 @@ setp sum2.2.gain0 +1.0
 setp sum2.2.gain1 -4.0
 net encoder-count-float-x sum2.2.in0
 net stepgen-count-float-x sum2.2.in1
-net encoder-error-float-x sum2.2.out pyvcp.encoder-error-numeric-display-x pyvcp.encoder-error-meter-x
+#net encoder-error-float-x sum2.2.out pyvcp.encoder-error-numeric-display-x pyvcp.encoder-error-meter-x
 
 #Y1
 net encoder-count-y1 conv-s32-float.0.in
@@ -192,7 +149,7 @@ setp sum2.0.gain0 +1.0
 setp sum2.0.gain1 -4.0
 net encoder-count-float-y1 sum2.0.in0
 net stepgen-count-float-y1 sum2.0.in1
-net encoder-error-float-y1 sum2.0.out pyvcp.encoder-error-numeric-display-y1 pyvcp.encoder-error-meter-y1
+#net encoder-error-float-y1 sum2.0.out pyvcp.encoder-error-numeric-display-y1 pyvcp.encoder-error-meter-y1
 
 #Z
 net encoder-count-z conv-s32-float.6.in
@@ -203,7 +160,7 @@ setp sum2.3.gain0 +1.0
 setp sum2.3.gain1 -4.0
 net encoder-count-float-z sum2.3.in0
 net stepgen-count-float-z sum2.3.in1
-net encoder-error-float-z sum2.3.out pyvcp.encoder-error-numeric-display-z pyvcp.encoder-error-meter-z
+#net encoder-error-float-z sum2.3.out pyvcp.encoder-error-numeric-display-z pyvcp.encoder-error-meter-z
 
 #Y2
 net encoder-count-y2 conv-s32-float.2.in
@@ -214,5 +171,10 @@ setp sum2.1.gain0 +1.0
 setp sum2.1.gain1 -4.0
 net encoder-count-float-y2 sum2.1.in0
 net stepgen-count-float-y2 sum2.1.in1
-net encoder-error-float-y2 sum2.1.out pyvcp.encoder-error-numeric-display-y2 pyvcp.encoder-error-meter-y2
+#net encoder-error-float-y2 sum2.1.out pyvcp.encoder-error-numeric-display-y2 pyvcp.encoder-error-meter-y2
+
+
+net spindle-up       pyvcp.spindle-up-button      => halui.mdi-command-12
+net present-spindle  pyvcp.present-spindle-button => halui.mdi-command-13
+net vacuum-the-table pyvcp.vacuum-table-button    => halui.mdi-command-14
 

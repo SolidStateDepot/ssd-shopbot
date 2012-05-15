@@ -1,0 +1,6 @@
+
+o<spindle-up> sub
+    g53 g0 z0
+o<spindle-up> endsub
+m2
+

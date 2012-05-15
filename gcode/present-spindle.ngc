@@ -1,0 +1,8 @@
+
+o<present-spindle> sub
+    o<spindle-up> call
+    g20 
+    g53 g0 x30 y12
+o<present-spindle> endsub
+m2
+

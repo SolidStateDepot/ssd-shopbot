@@ -1,44 +1,46 @@
 
-G40 (disable tool radius compensation)
-G49 (disable tool length compensation)
-G80 (cancel modal motion)
-G54 (select coordinate system 1)
-G90 (disable incremental moves)
-G20 (imperial)
-G64 p.1 (best speed, but don't deviate by more than 0.1 mm)
+o<vacuum-the-table> sub
+    G40 (disable tool radius compensation)
+    G49 (disable tool length compensation)
+    G80 (cancel modal motion)
+    G54 (select coordinate system 1)
+    G90 (disable incremental moves)
+    G20 (imperial)
+    G64 p.1 (best speed, but don't deviate by more than 0.1 mm)
 
-#<x_min> = 0
-#<x_max> = 61.25
+    #<x_min> = 0
+    #<x_max> = 61.25
 
-#<y_min> = 12
-#<y_max> = 102.5
-#<y_increment> = 9
+    #<y_min> = 12
+    #<y_max> = 102.5
+    #<y_increment> = 9
 
-#<y> = #<y_min>
+    #<y> = #<y_min>
 
-g53 g0 z0
-g53 g0 x#<x_min> y#<y>
-g53 g0 z-6.5
+    g53 g0 z0
+    g53 g0 x#<x_min> y#<y>
+    g53 g0 z-6.5
 
-o100 do
-    g53 g0 y#<y>
-    g53 g0 x#<x_max>
+    o100 do
+        g53 g0 y#<y>
+        g53 g0 x#<x_max>
 
-    #<y> = [ #<y> + #<y_increment> ]
-    o110 if [ #<y> gt #<y_max> ]
-        #<y> = #<y_max>
-    o110 endif
+        #<y> = [ #<y> + #<y_increment> ]
+        o110 if [ #<y> gt #<y_max> ]
+            #<y> = #<y_max>
+        o110 endif
 
-    g53 g0 y#<y>
-    g53 g0 x#<x_min>
+        g53 g0 y#<y>
+        g53 g0 x#<x_min>
 
-    #<y> = [ #<y> + #<y_increment> ]
-    o110 if [ #<y> gt #<y_max> ]
-        #<y> = #<y_max>
-    o110 endif
-o100 while [#<y> lt #<y_max> ]
+        #<y> = [ #<y> + #<y_increment> ]
+        o110 if [ #<y> gt #<y_max> ]
+            #<y> = #<y_max>
+        o110 endif
+    o100 while [#<y> lt #<y_max> ]
 
-g53 g0 z0
-g53 g0 x30 y17
-
+    g53 g0 z0
+    g53 g0 x30 y17
+o<vacuum-the-table> endsub
 m2
+
