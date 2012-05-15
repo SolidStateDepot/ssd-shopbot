@@ -16,7 +16,9 @@ G64 p.1 (best speed, but don't deviate by more than 0.1 mm)
 
 #<y> = #<y_min>
 
+g53 g0 z0
 g53 g0 x#<x_min> y#<y>
+g53 g0 z-6.5
 
 o100 do
     g53 g0 y#<y>
