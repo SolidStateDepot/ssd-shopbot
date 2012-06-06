@@ -1,33 +1,31 @@
 
 Mechanical:
 
-    build a table per the Shopbot instruction
-
-    tweak limit positions
-
-        make the X axis perpendicular to Y
-
-        try to make it so it has time to stop when jogging in world mode
-
-    F9 doesn't do the right thing with the spindle
-
-    ------
-
-    redo spindle control?  later
-
     z prox bracket interferes with the spindle fan
 
     tidy electrical box
 
-    vacuum hose too short
-
-    needs a dust boot
-
-
-fix dust removal system if needed
-
 
 linuxcnc config:
+
+    F9 doesn't do the right thing with the spindle
+
+
+    redo spindle control
+
+        the spindle is run by a yaskawa v7-4x vfd, it's got modbus, so use that
+
+        <mhaberler> says:
+
+            I'm working with robh on a multi-slave modbus
+            driver; maybe that is a better starting
+            point if you have several identical devices:
+            http://git.mah.priv.at/gitweb/emc2-dev.git/shortlog/refs/heads/modbus-generic-driver
+
+            I found the toughest part is making sense of the docs; I
+            wrote a little utility to manually investigate the device
+            over modbus to come up with something remotely coherent:
+            http://git.mah.priv.at/gitweb/modio.git
 
     stepper feedback encoders go to stepper amps, amps provide
     fake(?) encoder ticks to linuxcnc, and an error signal if there are
