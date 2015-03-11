@@ -57,7 +57,7 @@ The contents of this file will not be overwritten when you run stepconf again.
 
 
 	<labelframe text="Quickies">
-            <hbox>
+            <vbox>
 
                 <button>
                     <text>"Spindle Up"</text>
@@ -74,7 +74,12 @@ The contents of this file will not be overwritten when you run stepconf again.
                     <halpin>"vacuum-table-button"</halpin>
                 </button>
 
-            </hbox>
+                <button>
+                    <text>"Warmup Spindle"</text>
+                    <halpin>"warmup-spindle-button"</halpin>
+                </button>
+
+            </vbox>
         </labelframe>
 </vbox>
 

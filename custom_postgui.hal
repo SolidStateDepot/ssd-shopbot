@@ -177,4 +177,5 @@ net stepgen-count-float-y2 sum2.1.in1
 net spindle-up       pyvcp.spindle-up-button      => halui.mdi-command-12
 net present-spindle  pyvcp.present-spindle-button => halui.mdi-command-13
 net vacuum-the-table pyvcp.vacuum-table-button    => halui.mdi-command-14
+net warmup-spindle   pyvcp.warmup-spindle-button  => halui.mdi-command-15
 
