@@ -1,0 +1,76 @@
+
+[  119.963731]  hm2_5i23.0: firmware: requesting hm2/5i23/SVST2_4_7I47.BIT
+[  120.213605] hm2/hm2_5i23.0: 72 I/O Pins used:
+[  120.213618] hm2/hm2_5i23.0:     IO Pin 000 (P2-01): StepGen #0, pin Step (Output)
+[  120.213627] hm2/hm2_5i23.0:     IO Pin 001 (P2-03): StepGen #0, pin Direction (Output)
+[  120.213635] hm2/hm2_5i23.0:     IO Pin 002 (P2-05): StepGen #1, pin Step (Output)
+[  120.213643] hm2/hm2_5i23.0:     IO Pin 003 (P2-07): StepGen #1, pin Direction (Output)
+[  120.213651] hm2/hm2_5i23.0:     IO Pin 004 (P2-09): Encoder #0, pin A (Input)
+[  120.213658] hm2/hm2_5i23.0:     IO Pin 005 (P2-11): Encoder #2, pin A (Input)
+[  120.213666] hm2/hm2_5i23.0:     IO Pin 006 (P2-13): Encoder #0, pin B (Input)
+[  120.213674] hm2/hm2_5i23.0:     IO Pin 007 (P2-15): Encoder #2, pin B (Input)
+[  120.213681] hm2/hm2_5i23.0:     IO Pin 008 (P2-17): Encoder #0, pin Index (Input)
+[  120.213689] hm2/hm2_5i23.0:     IO Pin 009 (P2-19): Encoder #2, pin Index (Input)
+[  120.213697] hm2/hm2_5i23.0:     IO Pin 010 (P2-21): Encoder #1, pin A (Input)
+[  120.213705] hm2/hm2_5i23.0:     IO Pin 011 (P2-23): Encoder #3, pin A (Input)
+[  120.213713] hm2/hm2_5i23.0:     IO Pin 012 (P2-25): Encoder #1, pin B (Input)
+[  120.213720] hm2/hm2_5i23.0:     IO Pin 013 (P2-27): Encoder #3, pin B (Input)
+[  120.213728] hm2/hm2_5i23.0:     IO Pin 014 (P2-29): Encoder #1, pin Index (Input)
+[  120.213736] hm2/hm2_5i23.0:     IO Pin 015 (P2-31): Encoder #3, pin Index (Input)
+[  120.213744] hm2/hm2_5i23.0:     IO Pin 016 (P2-33): StepGen #2, pin Step (Output)
+[  120.213752] hm2/hm2_5i23.0:     IO Pin 017 (P2-35): StepGen #2, pin Direction (Output)
+[  120.213760] hm2/hm2_5i23.0:     IO Pin 018 (P2-37): StepGen #3, pin Step (Output)
+[  120.213768] hm2/hm2_5i23.0:     IO Pin 019 (P2-39): StepGen #3, pin Direction (Output)
+[  120.213776] hm2/hm2_5i23.0:     IO Pin 020 (P2-41): PWMGen #0, pin Out0 (PWM or Up) (Output)
+[  120.213785] hm2/hm2_5i23.0:     IO Pin 021 (P2-43): PWMGen #0, pin Out1 (Dir or Down) (Output)
+[  120.213793] hm2/hm2_5i23.0:     IO Pin 022 (P2-45): PWMGen #1, pin Out0 (PWM or Up) (Output)
+[  120.213802] hm2/hm2_5i23.0:     IO Pin 023 (P2-47): PWMGen #1, pin Out1 (Dir or Down) (Output)
+[  120.213809] hm2/hm2_5i23.0:     IO Pin 024 (P3-01): IOPort
+[  120.213816] hm2/hm2_5i23.0:     IO Pin 025 (P3-03): IOPort
+[  120.213822] hm2/hm2_5i23.0:     IO Pin 026 (P3-05): IOPort
+[  120.213828] hm2/hm2_5i23.0:     IO Pin 027 (P3-07): IOPort
+[  120.213835] hm2/hm2_5i23.0:     IO Pin 028 (P3-09): IOPort
+[  120.213841] hm2/hm2_5i23.0:     IO Pin 029 (P3-11): IOPort
+[  120.213848] hm2/hm2_5i23.0:     IO Pin 030 (P3-13): IOPort
+[  120.213854] hm2/hm2_5i23.0:     IO Pin 031 (P3-15): IOPort
+[  120.213860] hm2/hm2_5i23.0:     IO Pin 032 (P3-17): IOPort
+[  120.213867] hm2/hm2_5i23.0:     IO Pin 033 (P3-19): IOPort
+[  120.213873] hm2/hm2_5i23.0:     IO Pin 034 (P3-21): IOPort
+[  120.213879] hm2/hm2_5i23.0:     IO Pin 035 (P3-23): IOPort
+[  120.213886] hm2/hm2_5i23.0:     IO Pin 036 (P3-25): IOPort
+[  120.213892] hm2/hm2_5i23.0:     IO Pin 037 (P3-27): IOPort
+[  120.213899] hm2/hm2_5i23.0:     IO Pin 038 (P3-29): IOPort
+[  120.213905] hm2/hm2_5i23.0:     IO Pin 039 (P3-31): IOPort
+[  120.213911] hm2/hm2_5i23.0:     IO Pin 040 (P3-33): IOPort
+[  120.213918] hm2/hm2_5i23.0:     IO Pin 041 (P3-35): IOPort
+[  120.213924] hm2/hm2_5i23.0:     IO Pin 042 (P3-37): IOPort
+[  120.213931] hm2/hm2_5i23.0:     IO Pin 043 (P3-39): IOPort
+[  120.213937] hm2/hm2_5i23.0:     IO Pin 044 (P3-41): IOPort
+[  120.213943] hm2/hm2_5i23.0:     IO Pin 045 (P3-43): IOPort
+[  120.213950] hm2/hm2_5i23.0:     IO Pin 046 (P3-45): IOPort
+[  120.213956] hm2/hm2_5i23.0:     IO Pin 047 (P3-47): IOPort
+[  120.213962] hm2/hm2_5i23.0:     IO Pin 048 (P4-01): IOPort
+[  120.213969] hm2/hm2_5i23.0:     IO Pin 049 (P4-03): IOPort
+[  120.213975] hm2/hm2_5i23.0:     IO Pin 050 (P4-05): IOPort
+[  120.213982] hm2/hm2_5i23.0:     IO Pin 051 (P4-07): IOPort
+[  120.213988] hm2/hm2_5i23.0:     IO Pin 052 (P4-09): IOPort
+[  120.213994] hm2/hm2_5i23.0:     IO Pin 053 (P4-11): IOPort
+[  120.214001] hm2/hm2_5i23.0:     IO Pin 054 (P4-13): IOPort
+[  120.214007] hm2/hm2_5i23.0:     IO Pin 055 (P4-15): IOPort
+[  120.214013] hm2/hm2_5i23.0:     IO Pin 056 (P4-17): IOPort
+[  120.214020] hm2/hm2_5i23.0:     IO Pin 057 (P4-19): IOPort
+[  120.214026] hm2/hm2_5i23.0:     IO Pin 058 (P4-21): IOPort
+[  120.214033] hm2/hm2_5i23.0:     IO Pin 059 (P4-23): IOPort
+[  120.214039] hm2/hm2_5i23.0:     IO Pin 060 (P4-25): IOPort
+[  120.214045] hm2/hm2_5i23.0:     IO Pin 061 (P4-27): IOPort
+[  120.214052] hm2/hm2_5i23.0:     IO Pin 062 (P4-29): IOPort
+[  120.214058] hm2/hm2_5i23.0:     IO Pin 063 (P4-31): IOPort
+[  120.214065] hm2/hm2_5i23.0:     IO Pin 064 (P4-33): IOPort
+[  120.214071] hm2/hm2_5i23.0:     IO Pin 065 (P4-35): IOPort
+[  120.214077] hm2/hm2_5i23.0:     IO Pin 066 (P4-37): IOPort
+[  120.214084] hm2/hm2_5i23.0:     IO Pin 067 (P4-39): IOPort
+[  120.214090] hm2/hm2_5i23.0:     IO Pin 068 (P4-41): IOPort
+[  120.214097] hm2/hm2_5i23.0:     IO Pin 069 (P4-43): IOPort
+[  120.214103] hm2/hm2_5i23.0:     IO Pin 070 (P4-45): IOPort
+[  120.214109] hm2/hm2_5i23.0:     IO Pin 071 (P4-47): IOPort
+
