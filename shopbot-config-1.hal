@@ -81,12 +81,13 @@ addf hm2_5i23.0.write         servo-thread
 # External Output Signals
 # ################################################
 #Contactor control for Stepper power
-#net contactor-stepper-control     <=  axis.0.amp-enable-out
-#net contactor-stepper-control     =>  hm2_5i23.0.gpio.044.out
-#net contactor-stepper-control     =>  hm2_5i23.0.stepgen.00.enable
+net contactor-stepper-control     <=  axis.0.amp-enable-out
+net contactor-stepper-control     =>  hm2_5i23.0.gpio.044.out
+net contactor-stepper-control     =>  hm2_5i23.0.stepgen.01.enable
 setp hm2_5i23.0.gpio.044.is_output 1
 setp hm2_5i23.0.gpio.044.is_opendrain 1
 setp hm2_5i23.0.gpio.044.invert_output 1
+#setp hm2_5i23.0.gpio.044.out 1
 
 #Contactor control for Spindle power
 #net contactor-spindle-control     <=  axis.1.amp-enable-out
@@ -164,7 +165,7 @@ net pendant-blue-button  <= hm2_5i23.0.gpio.067.in_not
 
 
 #Spindle Key Switch
-net spindle-key-switch    <=  hm2_5i23.0.gpio.034.in_not
+net spindle-key-switch    <=  hm2_5i23.0.gpio.036.in_not
 #net spindle-key-switch    =>  classicladder.0.in-05
 
 #Zero Plate
@@ -207,7 +208,7 @@ net alarm-y2    <=  hm2_5i23.0.gpio.060.in
 # ######################################################
 
 # axis enable chain
-net axis-enable-chain-x  axis.0.amp-enable-out => hm2_5i23.0.stepgen.01.enable hm2_5i23.0.gpio.044.out
+#net axis-enable-chain-x  axis.0.amp-enable-out => hm2_5i23.0.stepgen.01.enable
 net axis-enable-chain-y1 axis.1.amp-enable-out => hm2_5i23.0.stepgen.00.enable
 net axis-enable-chain-z  axis.2.amp-enable-out => hm2_5i23.0.stepgen.02.enable
 net axis-enable-chain-y2 axis.3.amp-enable-out => hm2_5i23.0.stepgen.03.enable
@@ -309,7 +310,7 @@ net estop-user-request-enable => classicladder.0.in-00
 # there are two pendants, and each has a latching estop button
 # if either estop button is pressed, this pin is True
 # if both estop buttons are released (not pressed), this pin is False
-net estop-pendant-button <=  hm2_5i23.0.gpio.033.in_not
+net estop-pendant-button <=  hm2_5i23.0.gpio.035.in_not
 net estop-pendant-button =>  classicladder.0.in-01
 
 # the blue button on the pendant acts as another "enable request" signal from the user
