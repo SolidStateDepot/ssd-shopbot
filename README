@@ -52,11 +52,11 @@ P3: 7i37 (isolated digital I/O)
 | 029 | P3-11 | IOPort |                                                             | 11: in5
 | 030 | P3-13 | IOPort | x2 prox input (home, +limit, -limit, negated)               | 13: in6
 | 031 | P3-15 | IOPort |                                                             | 15: in7
-| 032 | P3-17 | IOPort |                                                             | 17: in8
-| 033 | P3-19 | IOPort | pendant estop input (True if either estop button is pushed) | 19: in9
-| 034 | P3-21 | IOPort |                                                             | 21: in10
-| 035 | P3-23 | IOPort |                                                             | 23: in11
-| 036 | P3-25 | IOPort |                                                             | 25: in12
+| 032 | P3-17 | IOPort | (input is dead)                                             | 17: in8
+| 033 | P3-19 | IOPort | (input is dead)                                             | 19: in9
+| 034 | P3-21 | IOPort | (input is dead)                                             | 21: in10
+| 035 | P3-23 | IOPort | pendant estop input (no interlock)                          | 23: in11 
+| 036 | P3-25 | IOPort | pendant estop input with interlock                          | 25: in12
 | 037 | P3-27 | IOPort |                                                             | 27: in13
 | 038 | P3-29 | IOPort |                                                             | 29: in14
 | 039 | P3-31 | IOPort |                                                             | 31: in15
@@ -64,9 +64,9 @@ P3: 7i37 (isolated digital I/O)
 | 041 | P3-35 | IOPort |                                                             | 35: out1
 | 042 | P3-37 | IOPort |                                                             | 37: out2
 | 043 | P3-39 | IOPort |                                                             | 39: out3
-| 044 | P3-41 | IOPort |                                                             | 41: out4
+| 044 | P3-41 | IOPort | motion motor contactor                                      | 41: out4
 | 045 | P3-43 | IOPort |                                                             | 43: out5
-| 046 | P3-45 | IOPort |                                                             | 45: out6
+| 046 | P3-45 | IOPort | spindle motor contactor                                     | 45: out6
 | 047 | P3-47 | IOPort |                                                             | 47: out7
 |     | P3-49 |        |                                                             | 49: +5
 +-----+----------------+-------------------------------------------------------------+-----------
