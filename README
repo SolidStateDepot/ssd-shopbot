@@ -75,30 +75,30 @@ P3: 7i37 (isolated digital I/O)
 P4: 7i42 (over/under voltage protected break-out board)
 | IO  | Conn  | Module | Use                                                         | 7i42 pin
 +-----+----------------+-------------------------------------------------------------+-----------
-| 048 | P4-01 | IOPort |                                                             |
-| 049 | P4-03 | IOPort |                                                             |
-| 050 | P4-05 | IOPort |                                                             |
-| 051 | P4-07 | IOPort |                                                             |
-| 052 | P4-09 | IOPort |                                                             |
-| 053 | P4-11 | IOPort |                                                             |
-| 054 | P4-13 | IOPort |                                                             |
-| 055 | P4-15 | IOPort |                                                             |
-| 056 | P4-17 | IOPort |                                                             |
-| 057 | P4-19 | IOPort |                                                             |
-| 058 | P4-21 | IOPort |                                                             |
-| 059 | P4-23 | IOPort |                                                             |
-| 060 | P4-25 | IOPort |                                                             |
-| 061 | P4-27 | IOPort |                                                             |
-| 062 | P4-29 | IOPort |                                                             |
-| 063 | P4-31 | IOPort |                                                             |
-| 064 | P4-33 | IOPort |                                                             |
-| 065 | P4-35 | IOPort | pendant green momentary button (not working)                |
-| 066 | P4-37 | IOPort |                                                             |
-| 067 | P4-39 | IOPort | pendant blue momentary button (release=True, push=False)    |
-| 068 | P4-41 | IOPort |                                                             |
-| 069 | P4-43 | IOPort |                                                             |
-| 070 | P4-45 | IOPort |                                                             |
-| 071 | P4-47 | IOPort |                                                             |
+| 048 | P4-01 | IOPort |                                                             | io0
+| 049 | P4-03 | IOPort |                                                             | io1
+| 050 | P4-05 | IOPort |                                                             | io2
+| 051 | P4-07 | IOPort |                                                             | io3
+| 052 | P4-09 | IOPort |                                                             | io4
+| 053 | P4-11 | IOPort |                                                             | io5
+| 054 | P4-13 | IOPort |                                                             | io6
+| 055 | P4-15 | IOPort |                                                             | io7
+| 056 | P4-17 | IOPort |                                                             | io8
+| 057 | P4-19 | IOPort |                                                             | io9
+| 058 | P4-21 | IOPort |                                                             | io10
+| 059 | P4-23 | IOPort |                                                             | io11
+| 060 | P4-25 | IOPort |                                                             | io12
+| 061 | P4-27 | IOPort |                                                             | io13
+| 062 | P4-29 | IOPort |                                                             | io14
+| 063 | P4-31 | IOPort |                                                             | io15
+| 064 | P4-33 | IOPort | 1-phase contactor closed                                    | io16
+| 065 | P4-35 | IOPort | pendant green momentary button (not working)                | io17
+| 066 | P4-37 | IOPort | 3-phase contactor closed?                                   | io18
+| 067 | P4-39 | IOPort | pendant blue momentary button (release=True, push=False)    | io19
+| 068 | P4-41 | IOPort | zero plate                                                  | io20
+| 069 | P4-43 | IOPort |                                                             | io21
+| 070 | P4-45 | IOPort |                                                             | io22
+| 071 | P4-47 | IOPort |                                                             | io23
 +-----+----------------+-------------------------------------------------------------+-----------
 
 
