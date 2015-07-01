@@ -5,42 +5,6 @@
 # ######################################################
 
 # ######################################################
-# Arduino Interface
-# ######################################################
-loadusr -Wn arduino /home/bes/emc2/configs/shopbot-config-1/arduino /dev/ttyUSB0 3
-
-#Arduino pin connections
-net ain0 arduino.analog-in-00 => #pyvcp.analog-in-00 pyvcp.analog-in-00b
-net ain1 arduino.analog-in-01 => #pyvcp.analog-in-01 pyvcp.analog-in-01b
-net ain2 arduino.analog-in-02 => #pyvcp.analog-in-02 pyvcp.analog-in-02b
-net ain3 arduino.analog-in-03 => #pyvcp.analog-in-03 pyvcp.analog-in-03b
-net ain4 arduino.analog-in-04 => #pyvcp.analog-in-04 pyvcp.analog-in-04b
-net ain5 arduino.analog-in-05 => #pyvcp.analog-in-05 pyvcp.analog-in-05b
-net din0 arduino.digital-in-08 => #pyvcp.digital-in-08
-net din1 arduino.digital-in-12 => #pyvcp.digital-in-12
-net din2 arduino.digital-in-13 => #pyvcp.digital-in-13
-net aout0 arduino.analog-out-03 => #pyvcp.analog-out-03-f
-net aout1 arduino.analog-out-05 => #pyvcp.analog-out-05-f
-net aout2 arduino.analog-out-06 => #pyvcp.analog-out-06-f
-#net aout3 arduino.analog-out-09 => pyvcp.analog-out-09-f
-net aout4 arduino.analog-out-10 => #pyvcp.analog-out-10-f
-net aout5 arduino.analog-out-11 => #pyvcp.analog-out-11-f
-net dout0 arduino.digital-out-02 <= #pyvcp.digital-out-02
-net dout1 arduino.digital-out-04 <= #pyvcp.digital-out-04
-net dout2 arduino.digital-out-07 <= #pyvcp.digital-out-07
-setp arduino.digital-in-08-pullup 1
-setp arduino.digital-in-12-pullup 1
-setp arduino.digital-in-13-pullup 1
-
-#Spindle Control
-setp scale.spindle-speed.gain 0.000277778 #origional line
-#setp scale.0.gain 0.014111111
-net spindle-speed-scale motion.spindle-speed-out => scale.spindle-speed.in
-net spindle-speed-freq scale.spindle-speed.out => abs.spindle-speed.in
-net spindle-speed-freq-abs abs.spindle-speed.out => arduino.analog-out-09
-
-
-# ######################################################
 # Classic Ladder Zero-Plate Control
 # ######################################################
 # set up the z-axis touchoff button
