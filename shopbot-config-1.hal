@@ -35,7 +35,9 @@ setp hm2_5i23.0.pwmgen.pdm_frequency 100000
 #
 
 addf hm2_5i23.0.read servo-thread
-addf hm2_5i23.0.pet_watchdog  servo-thread
+
+# linuxcnc 2.7 pets the watchdog in hm2_write
+#addf hm2_5i23.0.pet_watchdog  servo-thread
 
 addf conv-s32-float.0 servo-thread
 addf conv-s32-float.1 servo-thread
