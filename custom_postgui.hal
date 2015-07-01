@@ -66,7 +66,6 @@ net spindle-forward-toggle-button => halui.spindle.forward
 net spindle-forward-control halui.spindle.runs-forward => hm2_5i23.0.gpio.041.out pyvcp.spindle-forward-led 
 net spindle-reverse-toggle-button => halui.spindle.reverse
 net spindle-reverse-control halui.spindle.runs-backward => hm2_5i23.0.gpio.043.out pyvcp.spindle-reverse-led
-net spindle-speed-scale pyvcp.spindle-speed-numeric-display pyvcp.spindle-speed-meter
 net spindle-stop-button pyvcp.spindle-motion-stop-button => halui.spindle.stop
 
 #Zeroing Buttons / Control
@@ -142,4 +141,9 @@ net spindle-up       pyvcp.spindle-up-button      => halui.mdi-command-12
 net present-spindle  pyvcp.present-spindle-button => halui.mdi-command-13
 net vacuum-the-table pyvcp.vacuum-table-button    => halui.mdi-command-14
 net warmup-spindle   pyvcp.warmup-spindle-button  => halui.mdi-command-15
+
+
+net spindle-speed-fb <= motion.spindle-speed-out-abs
+net spindle-speed-fb => pyvcp.spindle-speed-meter
+net spindle-speed-fb => pyvcp.spindle-speed-numeric-display
 

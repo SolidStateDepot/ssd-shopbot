@@ -328,3 +328,58 @@ net estop-user-enable => classicladder.0.in-03
 net estop-all-ok <= classicladder.0.out-00
 net estop-all-ok => iocontrol.0.emc-enable-in
 
+
+#
+# spindle stuff
+#
+
+loadusr -W hy_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1
+
+#Owner   Type  Dir         Value  Name
+#    32  float OUT             0  hy_vfd.ACV
+#    32  float OUT             0  hy_vfd.CNST
+#    32  bit   OUT         FALSE  hy_vfd.CNST-bracking
+#    32  bit   OUT         FALSE  hy_vfd.CNST-command-rf
+#    32  bit   OUT         FALSE  hy_vfd.CNST-jog
+#    32  bit   OUT         FALSE  hy_vfd.CNST-jogging
+#    32  bit   OUT         FALSE  hy_vfd.CNST-run
+#    32  bit   OUT         FALSE  hy_vfd.CNST-running
+#    32  bit   OUT         FALSE  hy_vfd.CNST-running-rf
+#    32  bit   OUT         FALSE  hy_vfd.CNST-track-start
+#    32  float OUT             0  hy_vfd.CNTR
+#    32  float OUT             0  hy_vfd.Cont
+#    32  float OUT             0  hy_vfd.DCV
+#    32  float OUT             0  hy_vfd.OutA
+#    32  float OUT             0  hy_vfd.OutF
+#    32  float OUT             0  hy_vfd.Rott
+#    32  float OUT             0  hy_vfd.SetF
+#    32  float OUT             0  hy_vfd.Tmp
+#    32  float OUT             0  hy_vfd.base-freq
+#    32  float OUT             0  hy_vfd.freq-lower-limit
+#    32  float OUT             0  hy_vfd.frequency-command
+#    32  float OUT             0  hy_vfd.max-freq
+#    32  bit   OUT         FALSE  hy_vfd.modbus-ok
+#    32  float OUT             0  hy_vfd.motor-pole-number
+#    32  float OUT             0  hy_vfd.rated-motor-current
+#    32  float OUT             0  hy_vfd.rated-motor-rev
+#    32  float OUT             0  hy_vfd.rated-motor-voltage
+
+#    32  bit   IN          FALSE  hy_vfd.enable
+#    32  float IN              0  hy_vfd.speed-command
+#    32  bit   IN          FALSE  hy_vfd.spindle-fwd
+#    32  bit   IN          FALSE  hy_vfd.spindle-on
+#    32  bit   IN          FALSE  hy_vfd.spindle-rev
+
+net spindle-on <= motion.spindle-on
+net spindle-on => hy_vfd.spindle-on
+
+net spindle-fwd <= motion.spindle-forward
+net spindle-fwd => hy_vfd.spindle-fwd
+
+net spindle-reverse <= motion.spindle-reverse
+net spindle-reverse => hy_vfd.spindle-rev
+
+net spindle-speed-cmd <= motion.spindle-speed-out
+net spindle-speed-cmd => hy_vfd.speed-command
+
+setp hy_vfd.enable True
