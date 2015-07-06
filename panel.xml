@@ -98,7 +98,7 @@ The contents of this file will not be overwritten when you run stepconf again.
 					<off_color> "red"</off_color>
 				</led>
 				<label> <!-- Spindle Speed Label -->
-					<text>"Speed (RPM)"</text>
+					<text>"Spindle at Speed"</text>
 					<font>"Helvetica",13</font>
 				</label>
 			</hbox>

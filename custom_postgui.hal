@@ -143,7 +143,9 @@ net vacuum-the-table pyvcp.vacuum-table-button    => halui.mdi-command-14
 net warmup-spindle   pyvcp.warmup-spindle-button  => halui.mdi-command-15
 
 
-net spindle-speed-fb <= motion.spindle-speed-out-abs
+net spindle-speed-fb <= hy_vfd.spindle-speed-fb
 net spindle-speed-fb => pyvcp.spindle-speed-meter
 net spindle-speed-fb => pyvcp.spindle-speed-numeric-display
+
+net spindle-at-speed => pyvcp.spindle-at-speed-led
 
