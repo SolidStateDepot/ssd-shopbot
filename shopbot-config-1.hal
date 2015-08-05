@@ -333,7 +333,7 @@ net estop-all-ok => iocontrol.0.emc-enable-in
 # spindle stuff
 #
 
-loadusr -W hy_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1
+loadusr -W hy_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1 --max-freq=300 --min-freq=1 --motor-voltage=220 --motor-current=13.0 --motor-speed=18000
 
 net spindle-on <= motion.spindle-on
 net spindle-on => hy_vfd.spindle-on
