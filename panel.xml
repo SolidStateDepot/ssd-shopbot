@@ -113,10 +113,25 @@ The contents of this file will not be overwritten when you run stepconf again.
 			    <font>"Helvetica",5</font>
 			</meter>
 		<tablerow/> <!-- Numeric Displays --> 
+                        <label>
+                            <text>"Current Spindle Speed:"</text>
+                            <font>("Helvetica",13)</font>
+                        </label>
 			<number> <!-- Spindle Speed Numeric Display -->
 				<halpin>"spindle-speed-numeric-display"</halpin>
-				<font>("Helvetica",13)</font> 
-				<format>"+4.0f"</format>
+				<font>("Helvetica",13)</font>
+				<format>"5.0f"</format>
+			</number>
+		<tablerow/>
+		<tablerow/>
+                        <label>
+                            <text>"Commanded Spindle Speed:"</text>
+                            <font>("Helvetica",13)</font>
+                        </label>
+			<number>
+				<halpin>"spindle-speed-cmd"</halpin>
+				<font>("Helvetica",13)</font>
+				<format>"5.0f"</format>
 			</number>
 		<tablerow/>
 		</table> 

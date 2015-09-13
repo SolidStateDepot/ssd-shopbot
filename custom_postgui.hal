@@ -147,5 +147,7 @@ net spindle-speed-fb <= hy_vfd.spindle-speed-fb
 net spindle-speed-fb => pyvcp.spindle-speed-meter
 net spindle-speed-fb => pyvcp.spindle-speed-numeric-display
 
+net spindle-speed-cmd => pyvcp.spindle-speed-cmd
+
 net spindle-at-speed => pyvcp.spindle-at-speed-led
 
