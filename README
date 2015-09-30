@@ -93,7 +93,7 @@ P4: 7i42 (over/under voltage protected break-out board)
 | 063 | P4-31 | IOPort |                                                             | io15
 | 064 | P4-33 | IOPort | 1-phase contactor closed                                    | io16
 | 065 | P4-35 | IOPort | pendant green momentary button (not working)                | io17
-| 066 | P4-37 | IOPort | 3-phase contactor closed?                                   | io18
+| 066 | P4-37 | IOPort | 3-phase contactor closed                                    | io18
 | 067 | P4-39 | IOPort | pendant blue momentary button (release=True, push=False)    | io19
 | 068 | P4-41 | IOPort | zero plate                                                  | io20
 | 069 | P4-43 | IOPort |                                                             | io21
