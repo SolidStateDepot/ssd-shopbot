@@ -21,35 +21,45 @@ The contents of this file will not be overwritten when you run stepconf again.
 
             <hbox>
 		<vbox>
-                        <led> <!-- Stepper Power Enable LED -->
-	 	        <halpin>"stepper.power.enable.led"</halpin>
-				<on_color> "green"</on_color> 
-				<off_color> "red"</off_color>
-				<size>16</size> 
-			</led>
+                    <hbox>
 			<led> <!-- Stepper Contactor Status LED -->
 	 	        <halpin>"stepper.contactor.status.led"</halpin>
-				<on_color> "green"</on_color> 
+				<on_color> "green"</on_color>
 				<off_color> "red"</off_color>
-				<size>8</size> 
+				<size>12</size>
 			</led>
+                        <label><text>"Stepper Contactor    "</text>	<font>"Helvetica",11</font></label>
+                    </hbox>
+                    <hbox>
+                        <led> <!-- Stepper Power Enable LED -->
+		        <halpin>"stepper.power.enable.led"</halpin>
+				<on_color> "green"</on_color>
+				<off_color> "red"</off_color>
+				<size>12</size>
+			</led>
+                        <label><text>"Stepper Power Enable"</text>	<font>"Helvetica",11</font></label>
+                    </hbox>
 		</vbox>
-		<label><text>"Stepper Power    "</text>	<font>"Helvetica",11</font></label>
 		<vbox>
+                    <hbox>
 			<led> <!-- Spindle Contactor Status LED-->
 		 	        <halpin>"spindle.contactor.status.led"</halpin>
-				<on_color> "green"</on_color> 
+				<on_color> "green"</on_color>
 				<off_color> "red"</off_color>
-				<size>16</size> 
+				<size>12</size>
 			</led>
+                        <label><text>"Spindle Contactor    "</text><font>"Helvetica",11</font></label>
+                    </hbox>
+                    <hbox>
 			<led> <!-- Spindle Power Enable-->
 		 	        <halpin>"spindle.power.enable.led"</halpin>
-				<on_color> "green"</on_color> 
+				<on_color> "green"</on_color>
 				<off_color> "red"</off_color>
-				<size>8</size> 
+				<size>12</size>
 			</led>
+                        <label><text>"Spindle Power Enable    "</text><font>"Helvetica",11</font></label>
+                    </hbox>
 		</vbox>
-		<label><text>"Spindle Power    "</text><font>"Helvetica",11</font></label>
             </hbox>
 
 	</vbox> 
