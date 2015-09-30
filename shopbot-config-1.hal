@@ -167,7 +167,7 @@ net pendant-blue-button  <= hm2_5i23.0.gpio.067.in_not
 
 
 #Spindle Key Switch
-net spindle-key-switch    <=  hm2_5i23.0.gpio.036.in_not
+net spindle-key-switch    <=  hm2_5i23.0.gpio.038.in_not
 #net spindle-key-switch    =>  classicladder.0.in-05
 
 #Zero Plate
@@ -312,7 +312,7 @@ net estop-user-request-enable => classicladder.0.in-00
 # there are two pendants, and each has a latching estop button
 # if either estop button is pressed, this pin is True
 # if both estop buttons are released (not pressed), this pin is False
-net estop-pendant-button <=  hm2_5i23.0.gpio.035.in_not
+net estop-pendant-button <=  hm2_5i23.0.gpio.037.in_not
 net estop-pendant-button =>  classicladder.0.in-01
 
 # the blue button on the pendant acts as another "enable request" signal from the user

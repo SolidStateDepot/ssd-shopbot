@@ -55,10 +55,10 @@ P3: 7i37 (isolated digital I/O)
 | 032 | P3-17 | IOPort | (input is dead)                                             | 17: in8
 | 033 | P3-19 | IOPort | (input is dead)                                             | 19: in9
 | 034 | P3-21 | IOPort | (input is dead)                                             | 21: in10
-| 035 | P3-23 | IOPort | pendant estop input (no interlock)                          | 23: in11 
-| 036 | P3-25 | IOPort | pendant estop input with interlock                          | 25: in12
-| 037 | P3-27 | IOPort |                                                             | 27: in13
-| 038 | P3-29 | IOPort |                                                             | 29: in14
+| 035 | P3-23 | IOPort | (input is dead)                                             | 23: in11
+| 036 | P3-25 | IOPort | (input is dead)                                             | 25: in12
+| 037 | P3-27 | IOPort | pendant estop input (no key switch)                         | 27: in13
+| 038 | P3-29 | IOPort | pendant estop input with key switch                         | 29: in14
 | 039 | P3-31 | IOPort |                                                             | 31: in15
 | 040 | P3-33 | IOPort |                                                             | 33: out0
 | 041 | P3-35 | IOPort |                                                             | 35: out1
