@@ -1,6 +1,6 @@
 
 #<z_cut> = -7.400
-#<cutter_diameter> = 1.250  ; pass width is 90% of this
+#<cutter_diameter> = [5/8]
 
 #<x_min> = 0
 #<x_max> = 61.5
