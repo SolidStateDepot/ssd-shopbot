@@ -1,0 +1,97 @@
+loadrt not names=spindle-gui-enable-not
+loadrt comp names=air-coolant-comp,air-brake-comp,air-atc-comp
+addf air-atc-comp servo-thread
+addf spindle-gui-enable-not servo-thread
+addf air-coolant-comp servo-thread
+addf air-brake-comp servo-thread
+
+#Setup for the estop LED
+net estop-indicator halui.estop.is-activated gladevcp.hal_led_estop
+
+#Setup for the machine power LED
+net gladevcp-joint-mode gladevcp.hal_led_machinepower halui.machine.is-on
+
+#Setup for AC power contactor LEDs
+net emcmot.00.enable gladevcp.hal_led_contactor_motion
+net vfd-contactor gladevcp.hal_led_contactor_spindle
+
+#Setup for spindle related LEDs and bar-graph
+net spindle-speed-hbar vfdb_vfd.motor-RPM gladevcp.spindle-rpm-hbar # this should be based on the MODBUS feedback from the VFD
+net spindle-safe-to-operate gladevcp.hal_led_spindle_safe # a logical signal indicating that the tool is clamped and present.
+net spindle-power gladevcp.hal_led_spindle_power
+net spindle-tool-presence gladevcp.hal_led_spindle_toolpresent # "S3" from the spindle
+net spindle-cooling gladevcp.hal_led_spindle_coolingair
+
+#Setup for air pressure sensors
+setp air-coolant-comp.in0 [AIR_LEVELS]air_level_coolant
+setp air-brake-comp.in0 [AIR_LEVELS]air_level_brake
+setp air-atc-comp.in1 [AIR_LEVELS]air_level_atc
+#Setup hystersis, with the band defined in unit PSI (5 PSI is our starting guess for a good value)
+setp air-coolant-comp.hyst 5 
+setp air-brake-comp.hyst 5
+setp air-coolant-comp.hyst 5
+#We determined which ADC channel is which by guess and check! (aka 'emperiaclly' (sp?))
+net ain1 arduino.analog-in-01 gladevcp.air_meter_coolant air-coolant-comp.in1
+net ain2 arduino.analog-in-02 gladevcp.air_meter_brake air-brake-comp.in1
+net ain0 arduino.analog-in-00 gladevcp.air_meter_atc air-atc-comp.in0
+net air-coolant-led air-coolant-comp.out gladevcp.hal_led_air_coolant
+net air-brake-led air-brake-comp.out gladevcp.hal_led_air_brake
+net air-atc-led air-atc-comp.out gladevcp.hal_led_air_atc
+
+#Setup for the spindle control
+net atc gladevcp.hal_togglebutton_clamp gladevcp.hal_led_clampstatus
+#net spindle-clamped-sensor gladevcp.hal_led_clampstatus # "S5" from the spindle, needs electrical verification
+net spindle-speed-gui-control gladevcp.hal_button_setspindle halui.mdi-command-10
+net gui-spindle-enable gladevcp.hal_togglebutton_enablespindle spindle-gui-enable-not.in 
+net gui-spindle-enable-not spindle-gui-enable-not.out motion.spindle-inhibit gladevcp.hal_led_guispindleenable
+#net gui-spindle-enable-led gladevcp.hal_togglebutton_enablespindle hal_led_guispindleenable
+net gui-spindle-stop gladevcp.hal_button_spindlestop halui.spindle.stop
+
+#Setup for Z-brake related LEDs and Toggle Buttons
+net z-brake-disengage-button gladevcp.hal_togglebutton_brake
+net z-brake-disengage gladevcp.hal_led_brakestatus
+
+#Setup for Prox switch and axes homed indicators
+net motor.00.prox gladevcp.hal_led_proxx
+net motor.01.prox gladevcp.hal_led_proxy
+net motor.02.prox gladevcp.hal_led_proxz
+net homedxled halui.joint.0.is-homed gladevcp.hal_led_homedx
+net homedyled halui.joint.1.is-homed gladevcp.hal_led_homedy
+net homedzled halui.joint.2.is-homed gladevcp.hal_led_homedz
+
+#Setup for HAL MDI commands for zeroing Buttons
+net gladezerox gladevcp.hal_button_zerox halui.mdi-command-01
+net gladezeroy gladevcp.hal_button_zeroy halui.mdi-command-02
+net gladezeroz gladevcp.hal_button_zeroz halui.mdi-command-03
+net gladezeroall gladevcp.hal_button_zeroall halui.mdi-command-00
+
+#Setup for HAL home command buttons
+net gladehomex gladevcp.hal_button_homex halui.joint.0.home
+net gladehomey gladevcp.hal_button_homey halui.joint.1.home
+net gladehomez gladevcp.hal_button_homez halui.joint.2.home
+net gladehomeall gladevcp.hal_button_homeall halui.home-all
+
+#Setup for motion routines
+net spindle-up gladevcp.hal_button_spindleup halui.mdi-command-04
+net present-spindle gladevcp.hal_button_present halui.mdi-command-05
+net vacuum-table gladevcp.hal_button_vacuumtable halui.mdi-command-06
+net warmup-spindle-full gladevcp.hal_button_warmupfull halui.mdi-command-07
+net warmup-spindle-quick gladevcp.hal_button_warmupquick halui.mdi-command-08
+net stow gladevcp.hal_button_stow halui.mdi-command-09
+net gui-goto gladevcp.hal_button_goto halui.mdi-command-13
+
+#Setup for coordinate system LEDS
+net gladesetg90 gladevcp.hal_button_coordrelative halui.mdi-command-11
+net gladesetg91 gladevcp.hal_button_coordincremental halui.mdi-command-12
+
+# XHC pendant config
+net pendant_gotozerox xhc-hb04.button-goto-zero-x halui.mdi-command-14
+net pendant_gotozeroy xhc-hb04.button-goto-zero-y halui.mdi-command-15
+net pendant_gotozeroz xhc-hb04.button-goto-zero-z halui.mdi-command-16
+net pendant_gotosafez xhc-hb04.button-safe-z halui.mdi-command-17
+net pendant_startpause xhc-hb04.button-start-pause halui.program.pause 
+net pendant_stop xhc-hb04.button-stop halui.program.stop
+net pendant_step xhc-hb04.button-step halui.program.step
+net pendant_reset xhc-hb04.button-reset halui.estop.reset
+net pendant_spindleup xhc-hb04.button-macro-1 halui.mdi-command-18
+#net pendant_spindle xhc-hb04.button-spindle halui.spindle.stop #this pin already in use, maybe make an "OR"

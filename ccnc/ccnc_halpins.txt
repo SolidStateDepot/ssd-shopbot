@@ -1,0 +1,999 @@
+11  float IN  0  classicladder.0.floatin-04
+11  float IN  0  classicladder.0.floatin-05
+11  float IN  0  classicladder.0.floatin-06
+11  float IN  0  classicladder.0.floatin-07
+11  float IN  0  classicladder.0.floatin-08
+11  float IN  0  classicladder.0.floatin-09
+11  float OUT 0  classicladder.0.floatout-00
+11  float OUT 0  classicladder.0.floatout-01
+11  float OUT 0  classicladder.0.floatout-02
+11  float OUT 0  classicladder.0.floatout-03
+11  float OUT 0  classicladder.0.floatout-04
+11  float OUT 0  classicladder.0.floatout-05
+11  float OUT 0  classicladder.0.floatout-06
+11  float OUT 0  classicladder.0.floatout-07
+11  float OUT 0  classicladder.0.floatout-08
+11  float OUT 0  classicladder.0.floatout-09
+11  bit   IN  FALSE  classicladder.0.hide_gui
+11  bit   IN  FALSE  classicladder.0.in-00 <== gui-enable
+11  bit   IN   TRUE  classicladder.0.in-01 <== estop-external-enable
+11  bit   IN  FALSE  classicladder.0.in-02 <== estop-strobe
+11  bit   IN  FALSE  classicladder.0.in-03
+11  bit   IN  FALSE  classicladder.0.in-04
+11  bit   IN  FALSE  classicladder.0.in-05
+11  bit   IN  FALSE  classicladder.0.in-06
+11  bit   IN  FALSE  classicladder.0.in-07
+11  bit   IN  FALSE  classicladder.0.in-08
+11  bit   IN  FALSE  classicladder.0.in-09
+11  bit   OUT FALSE  classicladder.0.out-00 ==> estop-all-ok
+11  bit   OUT FALSE  classicladder.0.out-01
+11  bit   OUT FALSE  classicladder.0.out-02
+11  bit   OUT FALSE  classicladder.0.out-03
+11  bit   OUT FALSE  classicladder.0.out-04
+11  bit   OUT FALSE  classicladder.0.out-05
+11  bit   OUT FALSE  classicladder.0.out-06
+11  bit   OUT FALSE  classicladder.0.out-07
+11  bit   OUT FALSE  classicladder.0.out-08
+11  bit   OUT FALSE  classicladder.0.out-09
+11  s32   OUT 16060  classicladder.0.refresh.time
+11  s32   IN  0  classicladder.0.s32in-00
+11  s32   IN  0  classicladder.0.s32in-01
+11  s32   IN  0  classicladder.0.s32in-02
+11  s32   IN  0  classicladder.0.s32in-03
+11  s32   IN  0  classicladder.0.s32in-04
+11  s32   IN  0  classicladder.0.s32in-05
+11  s32   IN  0  classicladder.0.s32in-06
+11  s32   IN  0  classicladder.0.s32in-07
+11  s32   IN  0  classicladder.0.s32in-08
+11  s32   IN  0  classicladder.0.s32in-09
+11  s32   OUT 0  classicladder.0.s32out-00
+11  s32   OUT 0  classicladder.0.s32out-01
+11  s32   OUT 0  classicladder.0.s32out-02
+11  s32   OUT 0  classicladder.0.s32out-03
+11  s32   OUT 0  classicladder.0.s32out-04
+11  s32   OUT 0  classicladder.0.s32out-05
+11  s32   OUT 0  classicladder.0.s32out-06
+11  s32   OUT 0  classicladder.0.s32out-07
+11  s32   OUT 0  classicladder.0.s32out-08
+11  s32   OUT 0  classicladder.0.s32out-09
+29  bit   OUT FALSE  gladevcp.hal_button_coordincremental ==> gladesetg91
+29  bit   OUT FALSE  gladevcp.hal_button_coordrelative ==> gladesetg90
+29  bit   OUT FALSE  gladevcp.hal_button_goto ==> gui-goto
+29  bit   OUT FALSE  gladevcp.hal_button_homeall ==> gladehomeall
+29  bit   OUT FALSE  gladevcp.hal_button_homex ==> gladehomex
+29  bit   OUT FALSE  gladevcp.hal_button_homey ==> gladehomey
+29  bit   OUT FALSE  gladevcp.hal_button_homez ==> gladehomez
+29  bit   OUT FALSE  gladevcp.hal_button_present ==> present-spindle
+29  bit   OUT FALSE  gladevcp.hal_button_setspindle ==> spindle-speed-gui-control
+29  bit   OUT FALSE  gladevcp.hal_button_spindlestop ==> gui-spindle-stop
+29  bit   OUT FALSE  gladevcp.hal_button_spindleup ==> spindle-up
+29  bit   OUT FALSE  gladevcp.hal_button_stow ==> stow
+29  bit   OUT FALSE  gladevcp.hal_button_vacuumtable ==> vacuum-table
+29  bit   OUT FALSE  gladevcp.hal_button_warmupfull ==> warmup-spindle-full
+29  bit   OUT FALSE  gladevcp.hal_button_warmupquick ==> warmup-spindle-quick
+29  bit   OUT FALSE  gladevcp.hal_button_zeroall ==> gladezeroall
+29  bit   OUT FALSE  gladevcp.hal_button_zerox ==> gladezerox
+29  bit   OUT FALSE  gladevcp.hal_button_zeroy ==> gladezeroy
+29  bit   OUT FALSE  gladevcp.hal_button_zeroz ==> gladezeroz
+29  bit   IN  FALSE  gladevcp.hal_led_brakestatus <== z-brake-disengage
+29  bit   IN  FALSE  gladevcp.hal_led_clampstatus <== atc
+29  bit   IN  FALSE  gladevcp.hal_led_contactor_motion <== emcmot.00.enable
+29  bit   IN   TRUE  gladevcp.hal_led_contactor_spindle <== vfd-contactor
+29  bit   IN   TRUE  gladevcp.hal_led_estop <== estop-indicator
+29  bit   IN   TRUE  gladevcp.hal_led_guispindleenable <== gui-spindle-enable-not
+29  bit   IN  FALSE  gladevcp.hal_led_homedx <== homedxled
+29  bit   IN  FALSE  gladevcp.hal_led_homedy <== homedyled
+29  bit   IN  FALSE  gladevcp.hal_led_homedz <== homedzled
+29  bit   IN  FALSE  gladevcp.hal_led_machinepower <== gladevcp-joint-mode
+29  bit   IN  FALSE  gladevcp.hal_led_proxx <== motor.00.prox
+29  bit   IN  FALSE  gladevcp.hal_led_proxy <== motor.01.prox
+29  bit   IN  FALSE  gladevcp.hal_led_proxz <== motor.02.prox
+29  bit   IN  FALSE  gladevcp.hal_led_spindle_coolingair <== spindle-cooling
+29  bit   IN   TRUE  gladevcp.hal_led_spindle_power <== spindle-power
+29  bit   IN   TRUE  gladevcp.hal_led_spindle_safe <== spindle-safe-to-operate
+29  bit   IN   TRUE  gladevcp.hal_led_spindle_toolpresent <== spindle-tool-presence
+29  float OUT 0  gladevcp.hal_spinbutton_coordx-f
+29  s32   OUT 0  gladevcp.hal_spinbutton_coordx-s
+29  float OUT 0  gladevcp.hal_spinbutton_coordy-f
+29  s32   OUT 0  gladevcp.hal_spinbutton_coordy-s
+29  float OUT 0  gladevcp.hal_spinbutton_coordz-f
+29  s32   OUT 0  gladevcp.hal_spinbutton_coordz-s
+29  float OUT 0  gladevcp.hal_spinbutton_spindlespeed-f
+29  s32   OUT 0  gladevcp.hal_spinbutton_spindlespeed-s
+29  bit   OUT FALSE  gladevcp.hal_togglebutton_brake ==> z-brake-disengage-button
+29  bit   OUT  TRUE  gladevcp.hal_togglebutton_brake-not
+29  bit   OUT FALSE  gladevcp.hal_togglebutton_clamp ==> atc
+29  bit   OUT  TRUE  gladevcp.hal_togglebutton_clamp-not
+29  bit   OUT FALSE  gladevcp.hal_togglebutton_enablespindle ==> gui-spindle-enable
+29  bit   OUT  TRUE  gladevcp.hal_togglebutton_enablespindle-not
+29  float IN  0  gladevcp.spindle-rpm-hbar <== spindle-speed-hbar
+ 7  bit   IN  FALSE  halui.abort
+ 7  float OUT   7.25299  halui.axis.0.pos-commanded
+ 7  float OUT   7.25299  halui.axis.0.pos-feedback ==> pendant:pos-x
+ 7  float OUT  2.892176  halui.axis.0.pos-relative ==> pendant:pos-rel-x
+ 7  float OUT0.03368602  halui.axis.1.pos-commanded
+ 7  float OUT0.03368602  halui.axis.1.pos-feedback ==> pendant:pos-y
+ 7  float OUT0.03368602  halui.axis.1.pos-relative ==> pendant:pos-rel-y
+ 7  float OUT   -0.07322835  halui.axis.2.pos-commanded
+ 7  float OUT   -0.07322835  halui.axis.2.pos-feedback ==> pendant:pos-z
+ 7  float OUT   -0.07322835  halui.axis.2.pos-relative ==> pendant:pos-rel-z
+ 7  float OUT 0  halui.axis.3.pos-commanded
+ 7  float OUT 0  halui.axis.3.pos-feedback
+ 7  float OUT 0  halui.axis.3.pos-relative
+ 7  float OUT 0  halui.axis.4.pos-commanded
+ 7  float OUT 0  halui.axis.4.pos-feedback
+ 7  float OUT 0  halui.axis.4.pos-relative
+ 7  float OUT 0  halui.axis.5.pos-commanded
+ 7  float OUT 0  halui.axis.5.pos-feedback
+ 7  float OUT 0  halui.axis.5.pos-relative
+ 7  float OUT 0  halui.axis.6.pos-commanded
+ 7  float OUT 0  halui.axis.6.pos-feedback
+ 7  float OUT 0  halui.axis.6.pos-relative
+ 7  float OUT 0  halui.axis.7.pos-commanded
+ 7  float OUT 0  halui.axis.7.pos-feedback
+ 7  float OUT 0  halui.axis.7.pos-relative
+ 7  float OUT 0  halui.axis.8.pos-commanded
+ 7  float OUT 0  halui.axis.8.pos-feedback
+ 7  float OUT 0  halui.axis.8.pos-relative
+ 7  bit   IN  FALSE  halui.estop.activate
+ 7  bit   OUT  TRUE  halui.estop.is-activated ==> estop-indicator
+ 7  bit   IN  FALSE  halui.estop.reset <== pendant_reset
+ 7  bit   IN   TRUE  halui.feed-override.count-enable <== pendant:jog-feed
+ 7  s32   IN  0  halui.feed-override.counts <== pendant:jog-counts
+ 7  bit   IN  FALSE  halui.feed-override.decrease
+ 7  bit   IN  FALSE  halui.feed-override.direct-value
+ 7  bit   IN  FALSE  halui.feed-override.increase
+ 7  float IN   0.01  halui.feed-override.scale
+ 7  float OUT 1  halui.feed-override.value ==> pendant:jog-feed2
+ 7  bit   OUT FALSE  halui.flood.is-on
+ 7  bit   IN  FALSE  halui.flood.off
+ 7  bit   IN  FALSE  halui.flood.on
+ 7  bit   IN  FALSE  halui.home-all <== gladehomeall
+ 7  float IN0.2  halui.jog-deadband
+ 7  float IN  0  halui.jog-speed
+ 7  float IN  0  halui.jog.0.analog
+ 7  float IN  0  halui.jog.0.increment
+ 7  bit   IN  FALSE  halui.jog.0.increment-minus
+ 7  bit   IN  FALSE  halui.jog.0.increment-plus
+ 7  bit   IN  FALSE  halui.jog.0.minus
+ 7  bit   IN  FALSE  halui.jog.0.plus
+ 7  float IN  0  halui.jog.1.analog
+ 7  float IN  0  halui.jog.1.increment
+ 7  bit   IN  FALSE  halui.jog.1.increment-minus
+ 7  bit   IN  FALSE  halui.jog.1.increment-plus
+ 7  bit   IN  FALSE  halui.jog.1.minus
+ 7  bit   IN  FALSE  halui.jog.1.plus
+ 7  float IN  0  halui.jog.2.analog
+ 7  float IN  0  halui.jog.2.increment
+ 7  bit   IN  FALSE  halui.jog.2.increment-minus
+ 7  bit   IN  FALSE  halui.jog.2.increment-plus
+ 7  bit   IN  FALSE  halui.jog.2.minus
+ 7  bit   IN  FALSE  halui.jog.2.plus
+ 7  float IN  0  halui.jog.selected.increment
+ 7  bit   IN  FALSE  halui.jog.selected.increment-minus
+ 7  bit   IN  FALSE  halui.jog.selected.increment-plus
+ 7  bit   IN  FALSE  halui.jog.selected.minus
+ 7  bit   IN  FALSE  halui.jog.selected.plus
+ 7  bit   OUT FALSE  halui.joint.0.has-fault
+ 7  bit   IN  FALSE  halui.joint.0.home <== gladehomex
+ 7  bit   OUT FALSE  halui.joint.0.is-homed ==> homedxled
+ 7  bit   OUT FALSE  halui.joint.0.is-selected
+ 7  bit   OUT FALSE  halui.joint.0.on-hard-max-limit
+ 7  bit   OUT FALSE  halui.joint.0.on-hard-min-limit
+ 7  bit   OUT FALSE  halui.joint.0.on-soft-max-limit
+ 7  bit   OUT FALSE  halui.joint.0.on-soft-min-limit
+ 7  bit   IN  FALSE  halui.joint.0.select
+ 7  bit   IN  FALSE  halui.joint.0.unhome
+ 7  bit   OUT FALSE  halui.joint.1.has-fault
+ 7  bit   IN  FALSE  halui.joint.1.home <== gladehomey
+ 7  bit   OUT FALSE  halui.joint.1.is-homed ==> homedyled
+ 7  bit   OUT FALSE  halui.joint.1.is-selected
+ 7  bit   OUT FALSE  halui.joint.1.on-hard-max-limit
+ 7  bit   OUT FALSE  halui.joint.1.on-hard-min-limit
+ 7  bit   OUT FALSE  halui.joint.1.on-soft-max-limit
+ 7  bit   OUT FALSE  halui.joint.1.on-soft-min-limit
+ 7  bit   IN  FALSE  halui.joint.1.select
+ 7  bit   IN  FALSE  halui.joint.1.unhome
+ 7  bit   OUT FALSE  halui.joint.2.has-fault
+ 7  bit   IN  FALSE  halui.joint.2.home <== gladehomez
+ 7  bit   OUT FALSE  halui.joint.2.is-homed ==> homedzled
+ 7  bit   OUT FALSE  halui.joint.2.is-selected
+ 7  bit   OUT FALSE  halui.joint.2.on-hard-max-limit
+ 7  bit   OUT FALSE  halui.joint.2.on-hard-min-limit
+ 7  bit   OUT FALSE  halui.joint.2.on-soft-max-limit
+ 7  bit   OUT FALSE  halui.joint.2.on-soft-min-limit
+ 7  bit   IN  FALSE  halui.joint.2.select
+ 7  bit   IN  FALSE  halui.joint.2.unhome
+ 7  u32   OUT0x00000000  halui.joint.selected
+ 7  bit   OUT FALSE  halui.joint.selected.has-fault
+ 7  bit   IN  FALSE  halui.joint.selected.home
+ 7  bit   OUT FALSE  halui.joint.selected.is_homed
+ 7  bit   OUT FALSE  halui.joint.selected.on-hard-max-limit
+ 7  bit   OUT FALSE  halui.joint.selected.on-hard-min-limit
+ 7  bit   OUT FALSE  halui.joint.selected.on-soft-limit
+ 7  bit   OUT FALSE  halui.joint.selected.on-soft-min-limit
+ 7  bit   IN  FALSE  halui.joint.selected.unhome
+ 7  bit   OUT FALSE  halui.lube.is-on
+ 7  bit   IN  FALSE  halui.lube.off
+ 7  bit   IN  FALSE  halui.lube.on
+ 7  bit   OUT FALSE  halui.machine.is-on ==> gladevcp-joint-mode
+ 7  bit   IN  FALSE  halui.machine.off
+ 7  bit   IN  FALSE  halui.machine.on
+ 7  bit   IN   TRUE  halui.max-velocity.count-enable
+ 7  s32   IN  0  halui.max-velocity.counts
+ 7  bit   IN  FALSE  halui.max-velocity.decrease
+ 7  bit   IN  FALSE  halui.max-velocity.direct-value
+ 7  bit   IN  FALSE  halui.max-velocity.increase
+ 7  float IN  0  halui.max-velocity.scale
+ 7  float OUT18  halui.max-velocity.value ==> pendant:jog-speed
+ 7  bit   IN  FALSE  halui.mdi-command-00 <== gladezeroall
+ 7  bit   IN  FALSE  halui.mdi-command-01 <== gladezerox
+ 7  bit   IN  FALSE  halui.mdi-command-02 <== gladezeroy
+ 7  bit   IN  FALSE  halui.mdi-command-03 <== gladezeroz
+ 7  bit   IN  FALSE  halui.mdi-command-04 <== spindle-up
+ 7  bit   IN  FALSE  halui.mdi-command-05 <== present-spindle
+ 7  bit   IN  FALSE  halui.mdi-command-06 <== vacuum-table
+ 7  bit   IN  FALSE  halui.mdi-command-07 <== warmup-spindle-full
+ 7  bit   IN  FALSE  halui.mdi-command-08 <== warmup-spindle-quick
+ 7  bit   IN  FALSE  halui.mdi-command-09 <== stow
+ 7  bit   IN  FALSE  halui.mdi-command-10 <== spindle-speed-gui-control
+ 7  bit   IN  FALSE  halui.mdi-command-11 <== gladesetg90
+ 7  bit   IN  FALSE  halui.mdi-command-12 <== gladesetg91
+ 7  bit   IN  FALSE  halui.mdi-command-13 <== gui-goto
+ 7  bit   IN  FALSE  halui.mdi-command-14 <== pendant_gotozerox
+ 7  bit   IN  FALSE  halui.mdi-command-15 <== pendant_gotozeroy
+ 7  bit   IN  FALSE  halui.mdi-command-16 <== pendant_gotozeroz
+ 7  bit   IN  FALSE  halui.mdi-command-17 <== pendant_gotosafez
+ 7  bit   OUT FALSE  halui.mist.is-on
+ 7  bit   IN  FALSE  halui.mist.off
+ 7  bit   IN  FALSE  halui.mist.on
+ 7  bit   IN  FALSE  halui.mode.auto
+ 7  bit   OUT  TRUE  halui.mode.is-auto
+ 7  bit   OUT  TRUE  halui.mode.is-joint
+ 7  bit   OUT FALSE  halui.mode.is-manual
+ 7  bit   OUT FALSE  halui.mode.is-mdi
+ 7  bit   OUT FALSE  halui.mode.is-teleop
+ 7  bit   IN  FALSE  halui.mode.joint
+ 7  bit   IN  FALSE  halui.mode.manual
+ 7  bit   IN  FALSE  halui.mode.mdi
+ 7  bit   IN  FALSE  halui.mode.teleop
+ 7  bit   OUT  TRUE  halui.program.block-delete.is-on
+ 7  bit   IN  FALSE  halui.program.block-delete.off
+ 7  bit   IN  FALSE  halui.program.block-delete.on
+ 7  bit   OUT  TRUE  halui.program.is-idle
+ 7  bit   OUT FALSE  halui.program.is-paused
+ 7  bit   OUT FALSE  halui.program.is-running
+ 7  bit   OUT  TRUE  halui.program.optional-stop.is-on
+ 7  bit   IN  FALSE  halui.program.optional-stop.off
+ 7  bit   IN  FALSE  halui.program.optional-stop.on
+ 7  bit   IN  FALSE  halui.program.pause <== pendant_startpause
+ 7  bit   IN  FALSE  halui.program.resume
+ 7  bit   IN  FALSE  halui.program.run
+ 7  bit   IN  FALSE  halui.program.step <== pendant_step
+ 7  bit   IN  FALSE  halui.program.stop <== pendant_stop
+ 7  bit   IN   TRUE  halui.rapid-override.count-enable
+ 7  s32   IN  0  halui.rapid-override.counts
+ 7  bit   IN  FALSE  halui.rapid-override.decrease
+ 7  bit   IN  FALSE  halui.rapid-override.direct-value
+ 7  bit   IN  FALSE  halui.rapid-override.increase
+ 7  float IN0.1  halui.rapid-override.scale
+ 7  float OUT 1  halui.rapid-override.value
+ 7  bit   IN   TRUE  halui.spindle-override.count-enable <== pendant:jog-spindle
+ 7  s32   IN  0  halui.spindle-override.counts <== pendant:jog-counts
+ 7  bit   IN  FALSE  halui.spindle-override.decrease
+ 7  bit   IN  FALSE  halui.spindle-override.direct-value
+ 7  bit   IN  FALSE  halui.spindle-override.increase
+ 7  float IN   0.01  halui.spindle-override.scale
+ 7  float OUT 1  halui.spindle-override.value ==> pendant:jog-spindle2
+ 7  bit   OUT  TRUE  halui.spindle.brake-is-on
+ 7  bit   IN  FALSE  halui.spindle.brake-off
+ 7  bit   IN  FALSE  halui.spindle.brake-on
+ 7  bit   IN  FALSE  halui.spindle.decrease
+ 7  bit   IN  FALSE  halui.spindle.forward
+ 7  bit   IN  FALSE  halui.spindle.increase
+ 7  bit   OUT FALSE  halui.spindle.is-on
+ 7  bit   IN  FALSE  halui.spindle.reverse
+ 7  bit   OUT FALSE  halui.spindle.runs-backward
+ 7  bit   OUT FALSE  halui.spindle.runs-forward
+ 7  bit   IN  FALSE  halui.spindle.start
+ 7  bit   IN  FALSE  halui.spindle.stop <== gui-spindle-stop
+ 7  float OUT 0  halui.tool.length_offset.a
+ 7  float OUT 0  halui.tool.length_offset.b
+ 7  float OUT 0  halui.tool.length_offset.c
+ 7  float OUT 0  halui.tool.length_offset.u
+ 7  float OUT 0  halui.tool.length_offset.v
+ 7  float OUT 0  halui.tool.length_offset.w
+ 7  float OUT 0  halui.tool.length_offset.x
+ 7  float OUT 0  halui.tool.length_offset.y
+ 7  float OUT 0  halui.tool.length_offset.z
+ 7  u32   OUT0x00000000  halui.tool.number
+16  s32   OUT 0  hm2_5i22.0.encoder.00.count
+16  s32   OUT 0  hm2_5i22.0.encoder.00.count-latched
+16  bit   I/O FALSE  hm2_5i22.0.encoder.00.index-enable
+16  bit   OUT FALSE  hm2_5i22.0.encoder.00.input-a
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.00.input-b
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.00.input-index
+16  bit   IN  FALSE  hm2_5i22.0.encoder.00.latch-enable
+16  bit   IN  FALSE  hm2_5i22.0.encoder.00.latch-polarity
+16  float OUT 0  hm2_5i22.0.encoder.00.position ==> motor.00.pos-fb
+16  float OUT 0  hm2_5i22.0.encoder.00.position-latched
+16  bit   OUT FALSE  hm2_5i22.0.encoder.00.quad-error
+16  bit   IN  FALSE  hm2_5i22.0.encoder.00.quad-error-enable
+16  s32   OUT 65535  hm2_5i22.0.encoder.00.rawcounts
+16  s32   OUT 65535  hm2_5i22.0.encoder.00.rawlatch
+16  bit   IN  FALSE  hm2_5i22.0.encoder.00.reset
+16  float OUT 0  hm2_5i22.0.encoder.00.velocity
+16  s32   OUT 0  hm2_5i22.0.encoder.01.count
+16  s32   OUT 0  hm2_5i22.0.encoder.01.count-latched
+16  bit   I/O FALSE  hm2_5i22.0.encoder.01.index-enable
+16  bit   OUT FALSE  hm2_5i22.0.encoder.01.input-a
+16  bit   OUT FALSE  hm2_5i22.0.encoder.01.input-b
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.01.input-index
+16  bit   IN  FALSE  hm2_5i22.0.encoder.01.latch-enable
+16  bit   IN  FALSE  hm2_5i22.0.encoder.01.latch-polarity
+16  float OUT-0  hm2_5i22.0.encoder.01.position ==> motor.01.pos-fb
+16  float OUT-0  hm2_5i22.0.encoder.01.position-latched
+16  bit   OUT FALSE  hm2_5i22.0.encoder.01.quad-error
+16  bit   IN  FALSE  hm2_5i22.0.encoder.01.quad-error-enable
+16  s32   OUT 0  hm2_5i22.0.encoder.01.rawcounts
+16  s32   OUT 0  hm2_5i22.0.encoder.01.rawlatch
+16  bit   IN  FALSE  hm2_5i22.0.encoder.01.reset
+16  float OUT 0  hm2_5i22.0.encoder.01.velocity
+16  s32   OUT 0  hm2_5i22.0.encoder.02.count
+16  s32   OUT 0  hm2_5i22.0.encoder.02.count-latched
+16  bit   I/O FALSE  hm2_5i22.0.encoder.02.index-enable
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.02.input-a
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.02.input-b
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.02.input-index
+16  bit   IN  FALSE  hm2_5i22.0.encoder.02.latch-enable
+16  bit   IN  FALSE  hm2_5i22.0.encoder.02.latch-polarity
+16  float OUT 0  hm2_5i22.0.encoder.02.position ==> motor.02.pos-fb
+16  float OUT 0  hm2_5i22.0.encoder.02.position-latched
+16  bit   OUT FALSE  hm2_5i22.0.encoder.02.quad-error
+16  bit   IN  FALSE  hm2_5i22.0.encoder.02.quad-error-enable
+16  s32   OUT 0  hm2_5i22.0.encoder.02.rawcounts
+16  s32   OUT 0  hm2_5i22.0.encoder.02.rawlatch
+16  bit   IN  FALSE  hm2_5i22.0.encoder.02.reset
+16  float OUT 0  hm2_5i22.0.encoder.02.velocity
+16  s32   OUT 0  hm2_5i22.0.encoder.03.count
+16  s32   OUT 0  hm2_5i22.0.encoder.03.count-latched
+16  bit   I/O FALSE  hm2_5i22.0.encoder.03.index-enable
+16  bit   OUT FALSE  hm2_5i22.0.encoder.03.input-a
+16  bit   OUT FALSE  hm2_5i22.0.encoder.03.input-b
+16  bit   OUT  TRUE  hm2_5i22.0.encoder.03.input-index
+16  bit   IN  FALSE  hm2_5i22.0.encoder.03.latch-enable
+16  bit   IN  FALSE  hm2_5i22.0.encoder.03.latch-polarity
+16  float OUT 0  hm2_5i22.0.encoder.03.position
+16  float OUT 0  hm2_5i22.0.encoder.03.position-latched
+16  bit   OUT FALSE  hm2_5i22.0.encoder.03.quad-error
+16  bit   IN  FALSE  hm2_5i22.0.encoder.03.quad-error-enable
+16  s32   OUT 0  hm2_5i22.0.encoder.03.rawcounts
+16  s32   OUT 0  hm2_5i22.0.encoder.03.rawlatch
+16  bit   IN  FALSE  hm2_5i22.0.encoder.03.reset
+16  float OUT 0  hm2_5i22.0.encoder.03.velocity
+16  u32   IN 0x00002DC3  hm2_5i22.0.encoder.sample-frequency
+16  bit   OUT FALSE  hm2_5i22.0.gpio.000.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.000.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.001.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.001.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.002.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.002.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.003.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.003.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.004.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.004.in_not
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.005.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.005.in_not
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.006.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.006.in_not
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.007.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.007.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.008.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.008.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.009.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.009.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.010.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.010.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.011.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.011.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.012.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.012.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.013.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.013.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.014.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.014.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.015.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.015.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.016.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.016.in_not
+16  bit   OUT FALSE  hm2_5i22.0.gpio.017.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.017.in_not
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.018.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.018.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.018.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.019.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.019.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.019.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.020.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.020.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.020.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.021.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.021.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.021.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.022.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.022.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.022.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.023.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.023.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.023.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.024.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.024.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.024.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.025.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.025.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.025.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.026.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.026.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.026.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.027.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.027.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.027.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.028.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.028.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.028.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.029.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.029.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.029.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.030.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.030.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.030.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.031.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.031.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.031.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.032.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.032.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.032.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.033.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.033.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.033.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.034.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.034.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.034.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.035.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.035.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.035.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.036.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.036.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.036.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.037.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.037.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.037.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.038.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.038.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.038.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.039.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.039.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.039.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.040.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.040.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.040.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.041.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.041.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.041.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.042.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.042.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.042.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.043.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.043.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.043.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.044.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.044.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.044.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.045.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.045.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.045.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.046.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.046.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.046.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.047.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.047.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.047.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.048.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.048.in_not ==> estop-pendant-enable
+16  bit   IN  FALSE  hm2_5i22.0.gpio.048.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.049.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.049.in_not ==> estop-control-box-enable
+16  bit   IN  FALSE  hm2_5i22.0.gpio.049.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.050.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.050.in_not ==> motor.00.prox
+16  bit   IN  FALSE  hm2_5i22.0.gpio.050.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.051.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.051.in_not ==> motor.01.prox
+16  bit   IN  FALSE  hm2_5i22.0.gpio.051.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.052.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.052.in_not ==> motor.02.prox
+16  bit   IN  FALSE  hm2_5i22.0.gpio.052.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.053.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.053.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.053.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.054.in ==> spindle-tool-presence
+16  bit   OUT FALSE  hm2_5i22.0.gpio.054.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.054.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.055.in ==> spindle-clamped-sensor
+16  bit   OUT FALSE  hm2_5i22.0.gpio.055.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.055.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.056.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.056.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.056.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.057.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.057.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.057.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.058.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.058.in_not ==> spindle-power
+16  bit   IN  FALSE  hm2_5i22.0.gpio.058.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.059.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.059.in_not ==> x-amp-fault
+16  bit   IN  FALSE  hm2_5i22.0.gpio.059.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.060.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.060.in_not ==> z-amp-fault
+16  bit   IN  FALSE  hm2_5i22.0.gpio.060.out
+16  bit   OUT FALSE  hm2_5i22.0.gpio.061.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.061.in_not ==> y-amp-fault
+16  bit   IN  FALSE  hm2_5i22.0.gpio.061.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.062.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.062.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.062.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.063.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.063.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.063.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.064.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.064.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.064.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.065.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.065.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.065.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.066.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.066.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.066.out <== z-brake-disengage
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.067.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.067.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.067.out <== emcmot.00.enable
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.068.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.068.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.068.out <== spindle-cooling
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.069.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.069.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.069.out <== atc
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.070.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.070.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.070.out <== emcmot.00.enable
+16  bit   OUT FALSE  hm2_5i22.0.gpio.071.in
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.071.in_not
+16  bit   IN   TRUE  hm2_5i22.0.gpio.071.out <== vfd-contactor
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.072.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.072.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.072.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.073.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.073.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.073.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.074.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.074.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.074.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.075.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.075.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.075.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.076.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.076.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.076.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.077.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.077.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.077.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.078.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.078.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.078.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.079.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.079.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.079.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.080.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.080.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.080.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.081.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.081.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.081.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.082.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.082.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.082.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.083.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.083.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.083.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.084.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.084.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.084.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.085.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.085.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.085.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.086.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.086.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.086.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.087.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.087.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.087.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.088.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.088.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.088.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.089.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.089.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.089.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.090.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.090.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.090.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.091.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.091.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.091.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.092.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.092.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.092.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.093.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.093.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.093.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.094.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.094.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.094.out
+16  bit   OUT  TRUE  hm2_5i22.0.gpio.095.in
+16  bit   OUT FALSE  hm2_5i22.0.gpio.095.in_not
+16  bit   IN  FALSE  hm2_5i22.0.gpio.095.out
+16  bit   IN  FALSE  hm2_5i22.0.led.CR01
+16  bit   IN  FALSE  hm2_5i22.0.led.CR02
+16  bit   IN  FALSE  hm2_5i22.0.led.CR03
+16  bit   IN  FALSE  hm2_5i22.0.led.CR04
+16  bit   IN  FALSE  hm2_5i22.0.led.CR05
+16  bit   IN  FALSE  hm2_5i22.0.led.CR06
+16  bit   IN  FALSE  hm2_5i22.0.led.CR07
+16  bit   IN  FALSE  hm2_5i22.0.led.CR08
+16  s32   OUT 71350  hm2_5i22.0.read.time
+16  s32   OUT 0  hm2_5i22.0.read_gpio.time
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.00.control-type
+16  s32   OUT 0  hm2_5i22.0.stepgen.00.counts
+16  float OUT 0  hm2_5i22.0.stepgen.00.dbg_err_at_match
+16  float OUT 0  hm2_5i22.0.stepgen.00.dbg_ff_vel
+16  float OUT 0  hm2_5i22.0.stepgen.00.dbg_pos_minus_prev_cmd
+16  float OUT 0  hm2_5i22.0.stepgen.00.dbg_s_to_match
+16  s32   OUT 0  hm2_5i22.0.stepgen.00.dbg_step_rate
+16  float OUT 0  hm2_5i22.0.stepgen.00.dbg_vel_error
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.00.enable <== emcmot.00.enable
+16  float IN  0  hm2_5i22.0.stepgen.00.position-cmd <== emcmot.00.pos-cmd
+16  float OUT-0  hm2_5i22.0.stepgen.00.position-fb
+16  float IN  0  hm2_5i22.0.stepgen.00.velocity-cmd
+16  float OUT 0  hm2_5i22.0.stepgen.00.velocity-fb
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.01.control-type
+16  s32   OUT 0  hm2_5i22.0.stepgen.01.counts
+16  float OUT 0  hm2_5i22.0.stepgen.01.dbg_err_at_match
+16  float OUT 0  hm2_5i22.0.stepgen.01.dbg_ff_vel
+16  float OUT 0  hm2_5i22.0.stepgen.01.dbg_pos_minus_prev_cmd
+16  float OUT 0  hm2_5i22.0.stepgen.01.dbg_s_to_match
+16  s32   OUT 0  hm2_5i22.0.stepgen.01.dbg_step_rate
+16  float OUT 0  hm2_5i22.0.stepgen.01.dbg_vel_error
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.01.enable <== emcmot.01.enable
+16  float IN  0  hm2_5i22.0.stepgen.01.position-cmd <== emcmot.01.pos-cmd
+16  float OUT 0  hm2_5i22.0.stepgen.01.position-fb
+16  float IN  0  hm2_5i22.0.stepgen.01.velocity-cmd
+16  float OUT 0  hm2_5i22.0.stepgen.01.velocity-fb
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.02.control-type
+16  s32   OUT 0  hm2_5i22.0.stepgen.02.counts
+16  float OUT 0  hm2_5i22.0.stepgen.02.dbg_err_at_match
+16  float OUT 0  hm2_5i22.0.stepgen.02.dbg_ff_vel
+16  float OUT 0  hm2_5i22.0.stepgen.02.dbg_pos_minus_prev_cmd
+16  float OUT 0  hm2_5i22.0.stepgen.02.dbg_s_to_match
+16  s32   OUT 0  hm2_5i22.0.stepgen.02.dbg_step_rate
+16  float OUT 0  hm2_5i22.0.stepgen.02.dbg_vel_error
+16  bit   IN  FALSE  hm2_5i22.0.stepgen.02.enable <== z-brake-disengage
+16  float IN  0  hm2_5i22.0.stepgen.02.position-cmd <== emcmot.02.pos-cmd
+16  float OUT-0  hm2_5i22.0.stepgen.02.position-fb
+16  float IN  0  hm2_5i22.0.stepgen.02.velocity-cmd
+16  float OUT 0  hm2_5i22.0.stepgen.02.velocity-fb
+16  bit   I/O FALSE  hm2_5i22.0.watchdog.has_bit
+16  s32   OUT 23930  hm2_5i22.0.write.time
+16  s32   OUT 0  hm2_5i22.0.write_gpio.time
+23  float IN  0  ini.0.backlash
+23  float IN  1  ini.0.ferror
+23  float IN   54.5  ini.0.max_acceleration
+23  float IN   54.5  ini.0.max_limit
+23  float IN 10  ini.0.max_velocity
+23  float IN   0.01  ini.0.min_ferror
+23  float IN   -0.1  ini.0.min_limit
+23  float IN  0  ini.1.backlash
+23  float IN  1  ini.1.ferror
+23  float IN 50  ini.1.max_acceleration
+23  float IN 70  ini.1.max_limit
+23  float IN 10  ini.1.max_velocity
+23  float IN   0.01  ini.1.min_ferror
+23  float IN  -0.01  ini.1.min_limit
+23  float IN  0  ini.2.backlash
+23  float IN  1  ini.2.ferror
+23  float IN  4  ini.2.max_acceleration
+23  float IN0.1  ini.2.max_limit
+23  float IN  1  ini.2.max_velocity
+23  float IN   0.05  ini.2.min_ferror
+23  float IN-24  ini.2.min_limit
+23  float IN  0  ini.3.backlash
+23  float IN  0  ini.3.ferror
+23  float IN  0  ini.3.max_acceleration
+23  float IN  0  ini.3.max_limit
+23  float IN  0  ini.3.max_velocity
+23  float IN  0  ini.3.min_ferror
+23  float IN  0  ini.3.min_limit
+23  float IN  0  ini.4.backlash
+23  float IN  0  ini.4.ferror
+23  float IN  0  ini.4.max_acceleration
+23  float IN  0  ini.4.max_limit
+23  float IN  0  ini.4.max_velocity
+23  float IN  0  ini.4.min_ferror
+23  float IN  0  ini.4.min_limit
+23  float IN  0  ini.5.backlash
+23  float IN  0  ini.5.ferror
+23  float IN  0  ini.5.max_acceleration
+23  float IN  0  ini.5.max_limit
+23  float IN  0  ini.5.max_velocity
+23  float IN  0  ini.5.min_ferror
+23  float IN  0  ini.5.min_limit
+23  float IN  0  ini.6.backlash
+23  float IN  0  ini.6.ferror
+23  float IN  0  ini.6.max_acceleration
+23  float IN  0  ini.6.max_limit
+23  float IN  0  ini.6.max_velocity
+23  float IN  0  ini.6.min_ferror
+23  float IN  0  ini.6.min_limit
+23  float IN  0  ini.7.backlash
+23  float IN  0  ini.7.ferror
+23  float IN  0  ini.7.max_acceleration
+23  float IN  0  ini.7.max_limit
+23  float IN  0  ini.7.max_velocity
+23  float IN  0  ini.7.min_ferror
+23  float IN  0  ini.7.min_limit
+23  float IN  0  ini.8.backlash
+23  float IN  0  ini.8.ferror
+23  float IN  0  ini.8.max_acceleration
+23  float IN  0  ini.8.max_limit
+23  float IN  0  ini.8.max_velocity
+23  float IN  0  ini.8.min_ferror
+23  float IN  0  ini.8.min_limit
+23  bit   IN   TRUE  ini.traj_arc_blend_enable
+23  bit   IN  FALSE  ini.traj_arc_blend_fallback_enable
+23  float IN  4  ini.traj_arc_blend_gap_cycles
+23  s32   IN 50  ini.traj_arc_blend_optimization_depth
+23  float IN100  ini.traj_arc_blend_ramp_freq
+23  float IN0.1  ini.traj_arc_blend_tangent_kink_ratio
+23  float IN 20  ini.traj_default_acceleration
+23  float IN  3  ini.traj_default_velocity
+23  float IN 20  ini.traj_max_acceleration
+23  float IN   18.01201  ini.traj_max_velocity
+ 5  bit   OUT FALSE  iocontrol.0.coolant-flood
+ 5  bit   OUT FALSE  iocontrol.0.coolant-mist
+ 5  bit   IN  FALSE  iocontrol.0.emc-enable-in <== estop-all-ok
+ 5  bit   OUT FALSE  iocontrol.0.lube
+ 5  bit   IN  FALSE  iocontrol.0.lube_level
+ 5  bit   OUT FALSE  iocontrol.0.tool-change ==> tool-change-loop
+ 5  bit   IN  FALSE  iocontrol.0.tool-changed <== tool-change-loop
+ 5  s32   OUT 0  iocontrol.0.tool-number
+ 5  s32   OUT 0  iocontrol.0.tool-prep-number
+ 5  s32   OUT 0  iocontrol.0.tool-prep-pocket
+ 5  bit   OUT FALSE  iocontrol.0.tool-prepare ==> tool-prep-loop
+ 5  bit   IN  FALSE  iocontrol.0.tool-prepared <== tool-prep-loop
+ 5  bit   OUT FALSE  iocontrol.0.user-enable-out ==> gui-enable
+ 5  bit   OUT FALSE  iocontrol.0.user-request-enable ==> estop-strobe
+ 9  s32   OUT  2690  motion-command-handler.time
+ 9  s32   OUT 43560  motion-controller.time
+ 9  float IN  1  motion.adaptive-feed
+ 9  float IN  0  motion.analog-in-00
+ 9  float IN  0  motion.analog-in-01
+ 9  float IN  0  motion.analog-in-02
+ 9  float IN  0  motion.analog-in-03
+ 9  float OUT 0  motion.analog-out-00
+ 9  float OUT 0  motion.analog-out-01
+ 9  float OUT 0  motion.analog-out-02
+ 9  float OUT 0  motion.analog-out-03
+ 9  bit   OUT FALSE  motion.coord-error
+ 9  bit   OUT  TRUE  motion.coord-mode
+ 9  float OUT 0  motion.current-vel
+ 9  bit   IN  FALSE  motion.digital-in-00
+ 9  bit   IN  FALSE  motion.digital-in-01
+ 9  bit   IN  FALSE  motion.digital-in-02
+ 9  bit   IN  FALSE  motion.digital-in-03
+ 9  bit   OUT FALSE  motion.digital-out-00
+ 9  bit   OUT FALSE  motion.digital-out-01
+ 9  bit   OUT FALSE  motion.digital-out-02
+ 9  bit   OUT FALSE  motion.digital-out-03
+ 9  float OUT 0  motion.distance-to-go
+ 9  bit   IN   TRUE  motion.enable
+ 9  bit   IN  FALSE  motion.feed-hold
+ 9  bit   IN  FALSE  motion.feed-inhibit
+ 9  bit   OUT  TRUE  motion.in-position
+ 9  bit   OUT FALSE  motion.motion-enabled ==> motion-enabled
+ 9  s32   OUT 0  motion.motion-type
+ 9  bit   OUT FALSE  motion.on-soft-limit
+ 9  bit   IN  FALSE  motion.probe-input
+ 9  s32   OUT 0  motion.program-line
+ 9  float OUT 0  motion.requested-vel
+ 9  bit   IN   TRUE  motion.spindle-at-speed <== spindle-at-speed
+ 9  bit   OUT  TRUE  motion.spindle-brake
+ 9  bit   OUT FALSE  motion.spindle-forward
+ 9  bit   I/O FALSE  motion.spindle-index-enable
+ 9  bit   IN   TRUE  motion.spindle-inhibit <== gui-spindle-enable-not
+ 9  bit   IN  FALSE  motion.spindle-is-oriented
+ 9  bit   OUT FALSE  motion.spindle-locked
+ 9  bit   OUT FALSE  motion.spindle-on ==> spindle-on
+ 9  bit   OUT FALSE  motion.spindle-orient
+ 9  float OUT 0  motion.spindle-orient-angle
+ 9  s32   IN  0  motion.spindle-orient-fault
+ 9  s32   OUT 0  motion.spindle-orient-mode
+ 9  bit   OUT FALSE  motion.spindle-reverse
+ 9  float IN  0  motion.spindle-revs
+ 9  float OUT 0  motion.spindle-speed-cmd-rps ==> pendant:spindle-rps
+ 9  float IN  0  motion.spindle-speed-in
+ 9  float OUT 0  motion.spindle-speed-out ==> spindle-speed
+ 9  float OUT 0  motion.spindle-speed-out-abs
+ 9  float OUT 0  motion.spindle-speed-out-rps
+ 9  float OUT 0  motion.spindle-speed-out-rps-abs
+ 9  bit   OUT FALSE  motion.teleop-mode
+ 9  float OUT 0  motion.tooloffset.a
+ 9  float OUT 0  motion.tooloffset.b
+ 9  float OUT 0  motion.tooloffset.c
+ 9  float OUT 0  motion.tooloffset.u
+ 9  float OUT 0  motion.tooloffset.v
+ 9  float OUT 0  motion.tooloffset.w
+ 9  float OUT 0  motion.tooloffset.x
+ 9  float OUT 0  motion.tooloffset.y
+ 9  float OUT 0  motion.tooloffset.z
+12  bit   IN  FALSE  oneshot.spindle-cooling.in <== spindle-on
+12  bit   OUT FALSE  oneshot.spindle-cooling.out ==> spindle-was-on-recently
+12  bit   OUT  TRUE  oneshot.spindle-cooling.out-not
+12  s32   OUT  1360  oneshot.spindle-cooling.time
+12  float OUT 0  oneshot.spindle-cooling.time-left
+12  float IN600  oneshot.spindle-cooling.width
+14  bit   IN  FALSE  or2.0.in0 <== spindle-on
+14  bit   IN  FALSE  or2.0.in1 <== spindle-was-on-recently
+14  bit   OUT FALSE  or2.0.out ==> spindle-cooling
+14  s32   OUT   710  or2.0.time
+22  float IN  0  pendant_util.amux0-in0
+22  float IN  0  pendant_util.amux0-in1
+22  float OUT 0  pendant_util.amux0-out
+22  float IN  0  pendant_util.amux1-in0
+22  float IN  0  pendant_util.amux1-in1
+22  float OUT 0  pendant_util.amux1-out
+22  float IN  0  pendant_util.amux2-in0
+22  float IN  0  pendant_util.amux2-in1
+22  float OUT 0  pendant_util.amux2-out
+22  float IN  0  pendant_util.amux3-in0
+22  float IN  0  pendant_util.amux3-in1
+22  float OUT 0  pendant_util.amux3-out
+22  float IN  1  pendant_util.coef0
+22  float IN  1  pendant_util.coef1
+22  float IN  1  pendant_util.coef2
+22  float IN  1  pendant_util.coef3
+22  float IN  0  pendant_util.divide-by-k-in
+22  float OUT 0  pendant_util.divide-by-k-out
+22  s32   IN  0  pendant_util.in0 <== pendant:jog-counts
+22  s32   IN  0  pendant_util.in1 <== pendant:jog-counts
+22  s32   IN  0  pendant_util.in2 <== pendant:jog-counts
+22  s32   IN  0  pendant_util.in3
+22  bit   IN  FALSE  pendant_util.is-idle
+22  bit   IN  FALSE  pendant_util.is-manual
+22  bit   IN  FALSE  pendant_util.is-paused
+22  bit   IN  FALSE  pendant_util.is-running
+22  bit   IN  FALSE  pendant_util.jogenable-off
+22  float IN  1  pendant_util.k
+22  s32   OUT 0  pendant_util.out0 ==> pendant:jog-counts-x-filtered
+22  s32   OUT 0  pendant_util.out1 ==> pendant:jog-counts-y-filtered
+22  s32   OUT 0  pendant_util.out2 ==> pendant:jog-counts-z-filtered
+22  s32   OUT 0  pendant_util.out3
+22  bit   OUT FALSE  pendant_util.pause
+22  bit   OUT FALSE  pendant_util.resume
+22  bit   OUT FALSE  pendant_util.run
+22  float IN  1  pendant_util.scale0
+22  float IN -1  pendant_util.scale1
+22  float IN  1  pendant_util.scale2
+22  float IN  1  pendant_util.scale3
+22  bit   IN  FALSE  pendant_util.start-or-pause
+22  s32   OUT  8150  pendant_util.time
+10  s32   OUT149420  servo-thread.time
+30  bit   IN  FALSE  spindle-gui-enable-not.in <== gui-spindle-enable
+30  bit   OUT  TRUE  spindle-gui-enable-not.out ==> gui-spindle-enable-not
+30  s32   OUT   310  spindle-gui-enable-not.time
+13  float OUT 0  timedelay.z-brake.elapsed
+13  bit   IN  FALSE  timedelay.z-brake.in <== z-motion-enable
+13  float IN  0  timedelay.z-brake.off-delay
+13  float IN  1  timedelay.z-brake.on-delay
+13  bit   OUT FALSE  timedelay.z-brake.out ==> z-brake-disengage
+13  s32   OUT   450  timedelay.z-brake.time
+ 3  bit   OUT  TRUE  vfdb_vfd.at-speed ==> spindle-at-speed
+ 3  bit   IN  FALSE  vfdb_vfd.enable <== motion-enabled
+ 3  s32   OUT 0  vfdb_vfd.error-code
+ 3  s32   OUT10  vfdb_vfd.error-count
+ 3  float OUT 0  vfdb_vfd.frequency-command
+ 3  float OUT   400  vfdb_vfd.frequency-limit
+ 3  float OUT 0  vfdb_vfd.frequency-out
+ 3  float OUT 0  vfdb_vfd.inverter-load-percentage
+ 3  bit   OUT FALSE  vfdb_vfd.is-e-stopped
+ 3  bit   OUT  TRUE  vfdb_vfd.is-stopped
+ 3  bit   IN  FALSE  vfdb_vfd.jog-mode
+ 3  float OUT 24000  vfdb_vfd.max-rpm
+ 3  bit   IN  FALSE  vfdb_vfd.max-speed
+ 3  bit   OUT  TRUE  vfdb_vfd.modbus-ok
+ 3  float OUT 0  vfdb_vfd.motor-RPM ==> spindle-speed-hbar
+ 3  float OUT 0  vfdb_vfd.motor-RPS
+ 3  float OUT 0  vfdb_vfd.output-current
+ 3  float OUT 0  vfdb_vfd.output-voltage
+ 3  float IN  0  vfdb_vfd.speed-command <== spindle-speed
+ 3  bit   IN  FALSE  vfdb_vfd.spindle-on <== spindle-on
+ 3  s32   OUT  1322  vfdb_vfd.status
+21  float IN  0  xhc-hb04.a.pos-absolute
+21  float IN  0  xhc-hb04.a.pos-relative
+21  bit   OUT FALSE  xhc-hb04.button-goto-zero
+21  bit   OUT FALSE  xhc-hb04.button-goto-zero-a
+21  bit   OUT FALSE  xhc-hb04.button-goto-zero-x ==> pendant_gotozerox
+21  bit   OUT FALSE  xhc-hb04.button-goto-zero-y ==> pendant_gotozeroy
+21  bit   OUT FALSE  xhc-hb04.button-goto-zero-z ==> pendant_gotozeroz
+21  bit   OUT FALSE  xhc-hb04.button-half
+21  bit   OUT FALSE  xhc-hb04.button-half-a
+21  bit   OUT FALSE  xhc-hb04.button-half-x
+21  bit   OUT FALSE  xhc-hb04.button-half-y
+21  bit   OUT FALSE  xhc-hb04.button-half-z
+21  bit   OUT FALSE  xhc-hb04.button-home
+21  bit   OUT FALSE  xhc-hb04.button-macro-1
+21  bit   OUT FALSE  xhc-hb04.button-macro-2
+21  bit   OUT FALSE  xhc-hb04.button-macro-3
+21  bit   OUT FALSE  xhc-hb04.button-macro-6
+21  bit   OUT FALSE  xhc-hb04.button-macro-7
+21  bit   OUT FALSE  xhc-hb04.button-mode
+21  bit   OUT FALSE  xhc-hb04.button-probe-z
+21  bit   OUT FALSE  xhc-hb04.button-reset ==> pendant_reset
+21  bit   OUT FALSE  xhc-hb04.button-rewind
+21  bit   OUT FALSE  xhc-hb04.button-safe-z ==> pendant_gotosafez
+21  bit   OUT FALSE  xhc-hb04.button-spindle
+21  bit   OUT FALSE  xhc-hb04.button-start-pause ==> pendant_startpause
+21  bit   OUT FALSE  xhc-hb04.button-step ==> pendant_step
+21  bit   OUT FALSE  xhc-hb04.button-stop ==> pendant_stop
+21  bit   OUT FALSE  xhc-hb04.button-zero
+21  bit   OUT FALSE  xhc-hb04.button-zero-a
+21  bit   OUT FALSE  xhc-hb04.button-zero-x
+21  bit   OUT FALSE  xhc-hb04.button-zero-y
+21  bit   OUT FALSE  xhc-hb04.button-zero-z
+21  bit   OUT  TRUE  xhc-hb04.connected
+21  float IN  1  xhc-hb04.feed-override <== pendant:jog-feed2
+21  float IN  0  xhc-hb04.feed-value
+21  bit   IN  FALSE  xhc-hb04.inch-icon
+21  s32   OUT 0  xhc-hb04.jog.counts ==> pendant:jog-counts
+21  s32   OUT 0  xhc-hb04.jog.counts-neg ==> pendant:jog-counts-neg
+21  bit   OUT FALSE  xhc-hb04.jog.enable-a
+21  bit   OUT  TRUE  xhc-hb04.jog.enable-feed-override ==> pendant:jog-feed
+21  bit   OUT FALSE  xhc-hb04.jog.enable-off
+21  bit   OUT  TRUE  xhc-hb04.jog.enable-spindle-override ==> pendant:jog-spindle
+21  bit   OUT FALSE  xhc-hb04.jog.enable-x ==> pendant:jog-x
+21  bit   OUT FALSE  xhc-hb04.jog.enable-y ==> pendant:jog-y
+21  bit   OUT FALSE  xhc-hb04.jog.enable-z ==> pendant:jog-z
+21  float OUT 0  xhc-hb04.jog.increment
+21  float IN  0  xhc-hb04.jog.max-velocity
+21  bit   OUT FALSE  xhc-hb04.jog.minus-a
+21  bit   OUT FALSE  xhc-hb04.jog.minus-x
+21  bit   OUT FALSE  xhc-hb04.jog.minus-y
+21  bit   OUT FALSE  xhc-hb04.jog.minus-z
+21  bit   OUT FALSE  xhc-hb04.jog.plus-a
+21  bit   OUT FALSE  xhc-hb04.jog.plus-x
+21  bit   OUT FALSE  xhc-hb04.jog.plus-y
+21  bit   OUT FALSE  xhc-hb04.jog.plus-z
+21  float OUT 0.001  xhc-hb04.jog.scale ==> pendant:jog-scale
+21  float OUT 0  xhc-hb04.jog.velocity
+21  bit   OUT  TRUE  xhc-hb04.require_pendant
+21  bit   OUT FALSE  xhc-hb04.sleeping
+21  float IN  1  xhc-hb04.spindle-override <== pendant:jog-spindle2
+21  float IN  0  xhc-hb04.spindle-rps <== pendant:spindle-rps
+21  s32   OUT 1  xhc-hb04.stepsize
+21  bit   IN  FALSE  xhc-hb04.stepsize-down
+21  bit   IN  FALSE  xhc-hb04.stepsize-up
+21  float IN7.25299  xhc-hb04.x.pos-absolute <== pendant:pos-x
+21  float IN   2.892176  xhc-hb04.x.pos-relative <== pendant:pos-rel-x
+21  float IN 0.03368602  xhc-hb04.y.pos-absolute <== pendant:pos-y
+21  float IN 0.03368602  xhc-hb04.y.pos-relative <== pendant:pos-rel-y
+21  float IN-0.07322835  xhc-hb04.z.pos-absolute <== pendant:pos-z
+21  float IN-0.07322835  xhc-hb04.z.pos-relative <== pendant:pos-rel-z
+

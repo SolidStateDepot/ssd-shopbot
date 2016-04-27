@@ -1,0 +1,991 @@
+    14  float OUT             0  hm2_5i22.0.stepgen.01.dbg_ff_vel
+    14  float OUT             0  hm2_5i22.0.stepgen.01.dbg_pos_minus_prev_cmd
+    14  float OUT             0  hm2_5i22.0.stepgen.01.dbg_s_to_match
+    14  s32   OUT             0  hm2_5i22.0.stepgen.01.dbg_step_rate
+    14  float OUT             0  hm2_5i22.0.stepgen.01.dbg_vel_error
+    14  bit   IN          FALSE  hm2_5i22.0.stepgen.01.enable <== emcmot.01.enable
+    14  float IN              0  hm2_5i22.0.stepgen.01.position-cmd <== emcmot.01.pos-cmd
+    14  float OUT             0  hm2_5i22.0.stepgen.01.position-fb
+    14  float IN              0  hm2_5i22.0.stepgen.01.velocity-cmd
+    14  float OUT             0  hm2_5i22.0.stepgen.01.velocity-fb
+    14  bit   IN          FALSE  hm2_5i22.0.stepgen.02.control-type
+    14  s32   OUT             0  hm2_5i22.0.stepgen.02.counts
+    14  float OUT             0  hm2_5i22.0.stepgen.02.dbg_err_at_match
+    14  float OUT             0  hm2_5i22.0.stepgen.02.dbg_ff_vel
+    14  float OUT             0  hm2_5i22.0.stepgen.02.dbg_pos_minus_prev_cmd
+    14  float OUT             0  hm2_5i22.0.stepgen.02.dbg_s_to_match
+    14  s32   OUT             0  hm2_5i22.0.stepgen.02.dbg_step_rate
+    14  float OUT             0  hm2_5i22.0.stepgen.02.dbg_vel_error
+    14  bit   IN          FALSE  hm2_5i22.0.stepgen.02.enable <== z-brake-disengage
+    14  float IN              0  hm2_5i22.0.stepgen.02.position-cmd <== emcmot.02.pos-cmd
+    14  float OUT            -0  hm2_5i22.0.stepgen.02.position-fb
+    14  float IN              0  hm2_5i22.0.stepgen.02.velocity-cmd
+    14  float OUT             0  hm2_5i22.0.stepgen.02.velocity-fb
+    14  bit   I/O         FALSE  hm2_5i22.0.watchdog.has_bit
+    14  s32   OUT         17090  hm2_5i22.0.write.time
+    14  s32   OUT             0  hm2_5i22.0.write_gpio.time
+    18  float IN              0  ini.0.backlash
+    18  float IN              1  ini.0.ferror
+    18  float IN             50  ini.0.max_acceleration
+    18  float IN             50  ini.0.max_limit
+    18  float IN             10  ini.0.max_velocity
+    18  float IN           0.01  ini.0.min_ferror
+    18  float IN              0  ini.0.min_limit
+    18  float IN              0  ini.1.backlash
+    18  float IN              1  ini.1.ferror
+    18  float IN             50  ini.1.max_acceleration
+    18  float IN             70  ini.1.max_limit
+    18  float IN             10  ini.1.max_velocity
+    18  float IN           0.01  ini.1.min_ferror
+    18  float IN              0  ini.1.min_limit
+    18  float IN              0  ini.2.backlash
+    18  float IN              1  ini.2.ferror
+    18  float IN              4  ini.2.max_acceleration
+    18  float IN            0.5  ini.2.max_limit
+    18  float IN              1  ini.2.max_velocity
+    18  float IN           0.05  ini.2.min_ferror
+    18  float IN            -24  ini.2.min_limit
+    18  float IN              0  ini.3.backlash
+    18  float IN              0  ini.3.ferror
+    18  float IN              0  ini.3.max_acceleration
+    18  float IN              0  ini.3.max_limit
+    18  float IN              0  ini.3.max_velocity
+    18  float IN              0  ini.3.min_ferror
+    18  float IN              0  ini.3.min_limit
+    18  float IN              0  ini.4.backlash
+    18  float IN              0  ini.4.ferror
+    18  float IN              0  ini.4.max_acceleration
+    18  float IN              0  ini.4.max_limit
+    18  float IN              0  ini.4.max_velocity
+    18  float IN              0  ini.4.min_ferror
+    18  float IN              0  ini.4.min_limit
+    18  float IN              0  ini.5.backlash
+    18  float IN              0  ini.5.ferror
+    18  float IN              0  ini.5.max_acceleration
+    18  float IN              0  ini.5.max_limit
+    18  float IN              0  ini.5.max_velocity
+    18  float IN              0  ini.5.min_ferror
+    18  float IN              0  ini.5.min_limit
+    18  float IN              0  ini.6.backlash
+    18  float IN              0  ini.6.ferror
+    18  float IN              0  ini.6.max_acceleration
+    18  float IN              0  ini.6.max_limit
+    18  float IN              0  ini.6.max_velocity
+    18  float IN              0  ini.6.min_ferror
+    18  float IN              0  ini.6.min_limit
+    18  float IN              0  ini.7.backlash
+    18  float IN              0  ini.7.ferror
+    18  float IN              0  ini.7.max_acceleration
+    18  float IN              0  ini.7.max_limit
+    18  float IN              0  ini.7.max_velocity
+    18  float IN              0  ini.7.min_ferror
+    18  float IN              0  ini.7.min_limit
+    18  float IN              0  ini.8.backlash
+    18  float IN              0  ini.8.ferror
+    18  float IN              0  ini.8.max_acceleration
+    18  float IN              0  ini.8.max_limit
+    18  float IN              0  ini.8.max_velocity
+    18  float IN              0  ini.8.min_ferror
+    18  float IN              0  ini.8.min_limit
+    18  bit   IN           TRUE  ini.traj_arc_blend_enable
+    18  bit   IN          FALSE  ini.traj_arc_blend_fallback_enable
+    18  float IN              4  ini.traj_arc_blend_gap_cycles
+    18  s32   IN             50  ini.traj_arc_blend_optimization_depth
+    18  float IN            100  ini.traj_arc_blend_ramp_freq
+    18  float IN            0.1  ini.traj_arc_blend_tangent_kink_ratio
+    18  float IN             20  ini.traj_default_acceleration
+    18  float IN              3  ini.traj_default_velocity
+    18  float IN             20  ini.traj_max_acceleration
+    18  float IN       18.01201  ini.traj_max_velocity
+     5  bit   OUT         FALSE  iocontrol.0.coolant-flood
+     5  bit   OUT         FALSE  iocontrol.0.coolant-mist
+     5  bit   IN          FALSE  iocontrol.0.emc-enable-in <== estop-all-ok
+     5  bit   OUT         FALSE  iocontrol.0.lube
+     5  bit   IN          FALSE  iocontrol.0.lube_level
+     5  bit   OUT         FALSE  iocontrol.0.tool-change ==> tool-change-loop
+     5  bit   IN          FALSE  iocontrol.0.tool-changed <== tool-change-loop
+     5  s32   OUT             0  iocontrol.0.tool-number
+     5  s32   OUT             0  iocontrol.0.tool-prep-number
+     5  s32   OUT             0  iocontrol.0.tool-prep-pocket
+     5  bit   OUT         FALSE  iocontrol.0.tool-prepare ==> tool-prep-loop
+     5  bit   IN          FALSE  iocontrol.0.tool-prepared <== tool-prep-loop
+     5  bit   OUT         FALSE  iocontrol.0.user-enable-out ==> gui-enable
+     5  bit   OUT         FALSE  iocontrol.0.user-request-enable ==> estop-strobe
+     7  s32   OUT           410  motion-command-handler.time
+     7  s32   OUT          7500  motion-controller.time
+     7  float IN              1  motion.adaptive-feed
+     7  float IN              0  motion.analog-in-00
+     7  float IN              0  motion.analog-in-01
+     7  float IN              0  motion.analog-in-02
+     7  float IN              0  motion.analog-in-03
+     7  float OUT             0  motion.analog-out-00
+     7  float OUT             0  motion.analog-out-01
+     7  float OUT             0  motion.analog-out-02
+     7  float OUT             0  motion.analog-out-03
+     7  bit   OUT         FALSE  motion.coord-error
+     7  bit   OUT          TRUE  motion.coord-mode
+     7  float OUT             0  motion.current-vel
+     7  bit   IN          FALSE  motion.digital-in-00
+     7  bit   IN          FALSE  motion.digital-in-01
+     7  bit   IN          FALSE  motion.digital-in-02
+     7  bit   IN          FALSE  motion.digital-in-03
+     7  bit   OUT         FALSE  motion.digital-out-00
+     7  bit   OUT         FALSE  motion.digital-out-01
+     7  bit   OUT         FALSE  motion.digital-out-02
+     7  bit   OUT         FALSE  motion.digital-out-03
+     7  float OUT             0  motion.distance-to-go
+     7  bit   IN           TRUE  motion.enable
+     7  bit   IN          FALSE  motion.feed-hold
+     7  bit   IN          FALSE  motion.feed-inhibit
+     7  bit   OUT          TRUE  motion.in-position
+     7  bit   OUT         FALSE  motion.motion-enabled ==> motion-enabled
+     7  s32   OUT             0  motion.motion-type
+     7  bit   OUT         FALSE  motion.on-soft-limit
+     7  bit   IN          FALSE  motion.probe-input
+     7  s32   OUT             0  motion.program-line
+     7  float OUT             0  motion.requested-vel
+     7  bit   IN          FALSE  motion.spindle-at-speed <== spindle-at-speed
+     7  bit   OUT          TRUE  motion.spindle-brake
+     7  bit   OUT         FALSE  motion.spindle-forward
+     7  bit   I/O         FALSE  motion.spindle-index-enable
+     7  bit   IN          FALSE  motion.spindle-inhibit
+     7  bit   IN          FALSE  motion.spindle-is-oriented
+     7  bit   OUT         FALSE  motion.spindle-locked
+     7  bit   OUT         FALSE  motion.spindle-on ==> spindle-on
+     7  bit   OUT         FALSE  motion.spindle-orient
+     7  float OUT             0  motion.spindle-orient-angle
+     7  s32   IN              0  motion.spindle-orient-fault
+     7  s32   OUT             0  motion.spindle-orient-mode
+     7  bit   OUT         FALSE  motion.spindle-reverse
+     7  float IN              0  motion.spindle-revs
+     7  float OUT             0  motion.spindle-speed-cmd-rps
+     7  float IN              0  motion.spindle-speed-in
+     7  float OUT             0  motion.spindle-speed-out ==> spindle-speed
+     7  float OUT             0  motion.spindle-speed-out-abs
+     7  float OUT             0  motion.spindle-speed-out-rps
+     7  float OUT             0  motion.spindle-speed-out-rps-abs
+     7  bit   OUT         FALSE  motion.teleop-mode
+     7  float OUT             0  motion.tooloffset.a
+     7  float OUT             0  motion.tooloffset.b
+     7  float OUT             0  motion.tooloffset.c
+     7  float OUT             0  motion.tooloffset.u
+     7  float OUT             0  motion.tooloffset.v
+     7  float OUT             0  motion.tooloffset.w
+     7  float OUT             0  motion.tooloffset.x
+     7  float OUT             0  motion.tooloffset.y
+     7  float OUT             0  motion.tooloffset.z
+    10  bit   IN          FALSE  oneshot.spindle-cooling.in <== spindle-on
+    10  bit   OUT         FALSE  oneshot.spindle-cooling.out ==> spindle-was-on-recently
+    10  bit   OUT          TRUE  oneshot.spindle-cooling.out-not
+    10  s32   OUT          1470  oneshot.spindle-cooling.time
+    10  float OUT             0  oneshot.spindle-cooling.time-left
+    10  float IN            600  oneshot.spindle-cooling.width
+    12  bit   IN          FALSE  or2.0.in0 <== spindle-on
+    12  bit   IN          FALSE  or2.0.in1 <== spindle-was-on-recently
+    12  bit   OUT         FALSE  or2.0.out ==> spindle-cooling
+    12  s32   OUT           600  or2.0.time
+     8  s32   OUT        157050  servo-thread.time
+    11  float OUT             0  timedelay.z-brake.elapsed
+    11  bit   IN          FALSE  timedelay.z-brake.in <== z-motion-enable
+    11  float IN              0  timedelay.z-brake.off-delay
+    11  float IN              5  timedelay.z-brake.on-delay
+    11  bit   OUT         FALSE  timedelay.z-brake.out ==> z-brake-disengage
+    11  s32   OUT           520  timedelay.z-brake.time
+     3  bit   OUT         FALSE  vfdb_vfd.at-speed ==> spindle-at-speed
+     3  bit   IN          FALSE  vfdb_vfd.enable <== motion-enabled
+     3  s32   OUT             0  vfdb_vfd.error-code
+     3  s32   OUT            24  vfdb_vfd.error-count
+     3  float OUT             0  vfdb_vfd.frequency-command
+     3  float OUT             0  vfdb_vfd.frequency-limit
+     3  float OUT             0  vfdb_vfd.frequency-out
+     3  float OUT             0  vfdb_vfd.inverter-load-percentage
+     3  bit   OUT         FALSE  vfdb_vfd.is-e-stopped
+     3  bit   OUT         FALSE  vfdb_vfd.is-stopped
+     3  bit   IN          FALSE  vfdb_vfd.jog-mode
+     3  float OUT             0  vfdb_vfd.max-rpm
+     3  bit   IN          FALSE  vfdb_vfd.max-speed
+     3  bit   OUT         FALSE  vfdb_vfd.modbus-ok
+     3  float OUT             0  vfdb_vfd.motor-RPM
+     3  float OUT             0  vfdb_vfd.motor-RPS
+     3  float OUT             0  vfdb_vfd.output-current
+     3  float OUT             0  vfdb_vfd.output-voltage
+     3  float IN              0  vfdb_vfd.speed-command <== spindle-speed
+     3  bit   IN          FALSE  vfdb_vfd.spindle-on <== spindle-on
+     3  s32   OUT             0  vfdb_vfd.status
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show and2.estop.out
+<commandline>:0: Unknown 'show' type 'and2.estop.out'
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin and2.estop.out
+Component Pins:
+Owner   Type  Dir         Value  Name
+    15  bit   OUT         FALSE  and2.estop.out ==> estop-led-state
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop*
+Component Pins:
+Owner   Type  Dir         Value  Name
+    25  bit   IN          FALSE  estop-not.in
+    25  bit   OUT          TRUE  estop-not.out
+    25  s32   OUT          1470  estop-not.time
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop*
+Component Pins:
+Owner   Type  Dir         Value  Name
+    25  bit   IN          FALSE  estop-not.in
+    25  bit   OUT          TRUE  estop-not.out
+    25  s32   OUT          1190  estop-not.time
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop*
+Component Pins:
+Owner   Type  Dir         Value  Name
+    25  bit   IN          FALSE  estop-not.in
+    25  bit   OUT          TRUE  estop-not.out
+    25  s32   OUT           550  estop-not.time
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop*
+Component Pins:
+Owner   Type  Dir         Value  Name
+    25  bit   IN          FALSE  estop-not.in
+    25  bit   OUT          TRUE  estop-not.out
+    25  s32   OUT          1050  estop-not.time
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop*
+Component Pins:
+Owner   Type  Dir         Value  Name
+    25  bit   IN          FALSE  estop-not.in
+    25  bit   OUT          TRUE  estop-not.out
+    25  s32   OUT           330  estop-not.time
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin estop-pendant-enable
+Component Pins:
+Owner   Type  Dir         Value  Name
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show net estop-pendant-enable
+<commandline>:0: Unknown 'show' type 'net'
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show net estop-pendant-enabl^C
+root@ccnc:/home/ccnc-operator/.ssh# halcmd --help
+halcmd: invalid option -- '-'
+root@ccnc:/home/ccnc-operator/.ssh# halcmd -help
+No help for unknown command '-help'
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig estop-pendant-enable
+Signals:
+Type          Value  Name     (linked to)
+bit            TRUE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig estop-pendant-enable
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig estop*
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  estop-all-ok
+                         <== classicladder.0.out-00
+                         ==> iocontrol.0.emc-enable-in
+bit            TRUE  estop-control-box-enable
+                         ==> and2.estop-external-in.in1
+                         <== hm2_5i22.0.gpio.049.in_not
+bit            TRUE  estop-external-enable
+                         <== and2.estop-external-in.out
+                         ==> classicladder.0.in-01
+bit           FALSE  estop-led-state
+                         <== and2.estop.out
+                         ==> gladevcp.hal_led_estop
+bit            TRUE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+bit           FALSE  estop-strobe
+                         ==> classicladder.0.in-02
+                         <== iocontrol.0.user-request-enable
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig estop*
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  estop-all-ok
+                         <== classicladder.0.out-00
+                         ==> iocontrol.0.emc-enable-in
+bit            TRUE  estop-control-box-enable
+                         ==> and2.estop-external-in.in1
+                         <== hm2_5i22.0.gpio.049.in_not
+bit           FALSE  estop-external-enable
+                         <== and2.estop-external-in.out
+                         ==> classicladder.0.in-01
+bit           FALSE  estop-led-state
+                         <== and2.estop.out
+                         ==> gladevcp.hal_led_estop
+bit           FALSE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+bit           FALSE  estop-strobe
+                         ==> classicladder.0.in-02
+                         <== iocontrol.0.user-request-enable
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig estop*
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  estop-all-ok
+                         <== classicladder.0.out-00
+                         ==> iocontrol.0.emc-enable-in
+bit            TRUE  estop-control-box-enable
+                         ==> and2.estop-external-in.in1
+                         <== hm2_5i22.0.gpio.049.in_not
+bit            TRUE  estop-external-enable
+                         <== and2.estop-external-in.out
+                         ==> classicladder.0.in-01
+bit           FALSE  estop-led-state
+                         <== and2.estop.out
+                         ==> gladevcp.hal_led_estop
+bit            TRUE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+bit           FALSE  estop-strobe
+                         ==> classicladder.0.in-02
+                         <== iocontrol.0.user-request-enable
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig *stop*
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  estop-all-ok
+                         <== classicladder.0.out-00
+                         ==> iocontrol.0.emc-enable-in
+bit            TRUE  estop-control-box-enable
+                         ==> and2.estop-external-in.in1
+                         <== hm2_5i22.0.gpio.049.in_not
+bit            TRUE  estop-external-enable
+                         <== and2.estop-external-in.out
+                         ==> classicladder.0.in-01
+bit           FALSE  estop-led-state
+                         <== and2.estop.out
+                         ==> gladevcp.hal_led_estop
+bit            TRUE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+bit           FALSE  estop-strobe
+                         ==> classicladder.0.in-02
+                         <== iocontrol.0.user-request-enable
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig *enable*
+Signals:
+Type          Value  Name     (linked to)
+bit           FALSE  emcmot.00.enable
+                         <== axis.0.amp-enable-out
+                         ==> hm2_5i22.0.gpio.067.out
+                         ==> hm2_5i22.0.gpio.070.out
+                         ==> hm2_5i22.0.stepgen.00.enable
+bit           FALSE  emcmot.01.enable
+                         <== axis.1.amp-enable-out
+                         ==> hm2_5i22.0.stepgen.01.enable
+bit           FALSE  emcmot.02.enable
+                         ==> and2.z-brake.in1
+                         <== axis.2.amp-enable-out
+bit            TRUE  estop-control-box-enable
+                         ==> and2.estop-external-in.in1
+                         <== hm2_5i22.0.gpio.049.in_not
+bit            TRUE  estop-external-enable
+                         <== and2.estop-external-in.out
+                         ==> classicladder.0.in-01
+bit            TRUE  estop-pendant-enable
+                         ==> and2.estop-external-in.in0
+                         <== hm2_5i22.0.gpio.048.in_not
+bit           FALSE  gui-enable
+                         ==> classicladder.0.in-00
+                         <== iocontrol.0.user-enable-out
+bit           FALSE  motion-enabled
+                         <== motion.motion-enabled
+                         ==> vfdb_vfd.enable
+bit           FALSE  z-motion-enable
+                         <== and2.z-brake.out
+                         ==> timedelay.z-brake.in
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show sig *halui*
+Signals:
+Type          Value  Name     (linked to)
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin *halui*
+Component Pins:
+Owner   Type  Dir         Value  Name
+     7  bit   IN          FALSE  halui.abort
+     7  float OUT      27.19048  halui.axis.0.pos-commanded
+     7  float OUT      27.19048  halui.axis.0.pos-feedback
+     7  float OUT      27.19048  halui.axis.0.pos-relative
+     7  float OUT      4.999434  halui.axis.1.pos-commanded
+     7  float OUT      4.999434  halui.axis.1.pos-feedback
+     7  float OUT      4.999434  halui.axis.1.pos-relative
+     7  float OUT     -10.80526  halui.axis.2.pos-commanded
+     7  float OUT     -10.80526  halui.axis.2.pos-feedback
+     7  float OUT     -10.80526  halui.axis.2.pos-relative
+     7  float OUT             0  halui.axis.3.pos-commanded
+     7  float OUT             0  halui.axis.3.pos-feedback
+     7  float OUT             0  halui.axis.3.pos-relative
+     7  float OUT             0  halui.axis.4.pos-commanded
+     7  float OUT             0  halui.axis.4.pos-feedback
+     7  float OUT             0  halui.axis.4.pos-relative
+     7  float OUT             0  halui.axis.5.pos-commanded
+     7  float OUT             0  halui.axis.5.pos-feedback
+     7  float OUT             0  halui.axis.5.pos-relative
+     7  float OUT             0  halui.axis.6.pos-commanded
+     7  float OUT             0  halui.axis.6.pos-feedback
+     7  float OUT             0  halui.axis.6.pos-relative
+     7  float OUT             0  halui.axis.7.pos-commanded
+     7  float OUT             0  halui.axis.7.pos-feedback
+     7  float OUT             0  halui.axis.7.pos-relative
+     7  float OUT             0  halui.axis.8.pos-commanded
+     7  float OUT             0  halui.axis.8.pos-feedback
+     7  float OUT             0  halui.axis.8.pos-relative
+     7  bit   IN          FALSE  halui.estop.activate
+     7  bit   OUT          TRUE  halui.estop.is-activated
+     7  bit   IN          FALSE  halui.estop.reset
+     7  bit   IN           TRUE  halui.feed-override.count-enable
+     7  s32   IN              0  halui.feed-override.counts
+     7  bit   IN          FALSE  halui.feed-override.decrease
+     7  bit   IN          FALSE  halui.feed-override.direct-value
+     7  bit   IN          FALSE  halui.feed-override.increase
+     7  float IN            0.1  halui.feed-override.scale
+     7  float OUT             1  halui.feed-override.value
+     7  bit   OUT         FALSE  halui.flood.is-on
+     7  bit   IN          FALSE  halui.flood.off
+     7  bit   IN          FALSE  halui.flood.on
+     7  bit   IN          FALSE  halui.home-all
+     7  float IN            0.2  halui.jog-deadband
+     7  float IN              0  halui.jog-speed
+     7  float IN              0  halui.jog.0.analog
+     7  float IN              0  halui.jog.0.increment
+     7  bit   IN          FALSE  halui.jog.0.increment-minus
+     7  bit   IN          FALSE  halui.jog.0.increment-plus
+     7  bit   IN          FALSE  halui.jog.0.minus
+     7  bit   IN          FALSE  halui.jog.0.plus
+     7  float IN              0  halui.jog.1.analog
+     7  float IN              0  halui.jog.1.increment
+     7  bit   IN          FALSE  halui.jog.1.increment-minus
+     7  bit   IN          FALSE  halui.jog.1.increment-plus
+     7  bit   IN          FALSE  halui.jog.1.minus
+     7  bit   IN          FALSE  halui.jog.1.plus
+     7  float IN              0  halui.jog.2.analog
+     7  float IN              0  halui.jog.2.increment
+     7  bit   IN          FALSE  halui.jog.2.increment-minus
+     7  bit   IN          FALSE  halui.jog.2.increment-plus
+     7  bit   IN          FALSE  halui.jog.2.minus
+     7  bit   IN          FALSE  halui.jog.2.plus
+     7  float IN              0  halui.jog.selected.increment
+     7  bit   IN          FALSE  halui.jog.selected.increment-minus
+     7  bit   IN          FALSE  halui.jog.selected.increment-plus
+     7  bit   IN          FALSE  halui.jog.selected.minus
+     7  bit   IN          FALSE  halui.jog.selected.plus
+     7  bit   OUT         FALSE  halui.joint.0.has-fault
+     7  bit   IN          FALSE  halui.joint.0.home
+     7  bit   OUT         FALSE  halui.joint.0.is-homed
+     7  bit   OUT         FALSE  halui.joint.0.is-selected
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.0.select
+     7  bit   IN          FALSE  halui.joint.0.unhome
+     7  bit   OUT         FALSE  halui.joint.1.has-fault
+     7  bit   IN          FALSE  halui.joint.1.home
+     7  bit   OUT         FALSE  halui.joint.1.is-homed
+     7  bit   OUT         FALSE  halui.joint.1.is-selected
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.1.select
+     7  bit   IN          FALSE  halui.joint.1.unhome
+     7  bit   OUT         FALSE  halui.joint.2.has-fault
+     7  bit   IN          FALSE  halui.joint.2.home
+     7  bit   OUT         FALSE  halui.joint.2.is-homed
+     7  bit   OUT         FALSE  halui.joint.2.is-selected
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.2.select
+     7  bit   IN          FALSE  halui.joint.2.unhome
+     7  u32   OUT    0x00000000  halui.joint.selected
+     7  bit   OUT         FALSE  halui.joint.selected.has-fault
+     7  bit   IN          FALSE  halui.joint.selected.home
+     7  bit   OUT         FALSE  halui.joint.selected.is_homed
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.selected.unhome
+     7  bit   OUT         FALSE  halui.lube.is-on
+     7  bit   IN          FALSE  halui.lube.off
+     7  bit   IN          FALSE  halui.lube.on
+     7  bit   OUT         FALSE  halui.machine.is-on
+     7  bit   IN          FALSE  halui.machine.off
+     7  bit   IN          FALSE  halui.machine.on
+     7  bit   IN           TRUE  halui.max-velocity.count-enable
+     7  s32   IN              0  halui.max-velocity.counts
+     7  bit   IN          FALSE  halui.max-velocity.decrease
+     7  bit   IN          FALSE  halui.max-velocity.direct-value
+     7  bit   IN          FALSE  halui.max-velocity.increase
+     7  float IN              0  halui.max-velocity.scale
+     7  float OUT            18  halui.max-velocity.value
+     7  bit   OUT         FALSE  halui.mist.is-on
+     7  bit   IN          FALSE  halui.mist.off
+     7  bit   IN          FALSE  halui.mist.on
+     7  bit   IN          FALSE  halui.mode.auto
+     7  bit   OUT          TRUE  halui.mode.is-auto
+     7  bit   OUT          TRUE  halui.mode.is-joint
+     7  bit   OUT         FALSE  halui.mode.is-manual
+     7  bit   OUT         FALSE  halui.mode.is-mdi
+     7  bit   OUT         FALSE  halui.mode.is-teleop
+     7  bit   IN          FALSE  halui.mode.joint
+     7  bit   IN          FALSE  halui.mode.manual
+     7  bit   IN          FALSE  halui.mode.mdi
+     7  bit   IN          FALSE  halui.mode.teleop
+     7  bit   OUT          TRUE  halui.program.block-delete.is-on
+     7  bit   IN          FALSE  halui.program.block-delete.off
+     7  bit   IN          FALSE  halui.program.block-delete.on
+     7  bit   OUT          TRUE  halui.program.is-idle
+     7  bit   OUT         FALSE  halui.program.is-paused
+     7  bit   OUT         FALSE  halui.program.is-running
+     7  bit   OUT          TRUE  halui.program.optional-stop.is-on
+     7  bit   IN          FALSE  halui.program.optional-stop.off
+     7  bit   IN          FALSE  halui.program.optional-stop.on
+     7  bit   IN          FALSE  halui.program.pause
+     7  bit   IN          FALSE  halui.program.resume
+     7  bit   IN          FALSE  halui.program.run
+     7  bit   IN          FALSE  halui.program.step
+     7  bit   IN          FALSE  halui.program.stop
+     7  bit   IN           TRUE  halui.rapid-override.count-enable
+     7  s32   IN              0  halui.rapid-override.counts
+     7  bit   IN          FALSE  halui.rapid-override.decrease
+     7  bit   IN          FALSE  halui.rapid-override.direct-value
+     7  bit   IN          FALSE  halui.rapid-override.increase
+     7  float IN            0.1  halui.rapid-override.scale
+     7  float OUT             1  halui.rapid-override.value
+     7  bit   IN           TRUE  halui.spindle-override.count-enable
+     7  s32   IN              0  halui.spindle-override.counts
+     7  bit   IN          FALSE  halui.spindle-override.decrease
+     7  bit   IN          FALSE  halui.spindle-override.direct-value
+     7  bit   IN          FALSE  halui.spindle-override.increase
+     7  float IN            0.1  halui.spindle-override.scale
+     7  float OUT             1  halui.spindle-override.value
+     7  bit   OUT          TRUE  halui.spindle.brake-is-on
+     7  bit   IN          FALSE  halui.spindle.brake-off
+     7  bit   IN          FALSE  halui.spindle.brake-on
+     7  bit   IN          FALSE  halui.spindle.decrease
+     7  bit   IN          FALSE  halui.spindle.forward
+     7  bit   IN          FALSE  halui.spindle.increase
+     7  bit   OUT         FALSE  halui.spindle.is-on
+     7  bit   IN          FALSE  halui.spindle.reverse
+     7  bit   OUT         FALSE  halui.spindle.runs-backward
+     7  bit   OUT         FALSE  halui.spindle.runs-forward
+     7  bit   IN          FALSE  halui.spindle.start
+     7  bit   IN          FALSE  halui.spindle.stop
+     7  float OUT             0  halui.tool.length_offset.a
+     7  float OUT             0  halui.tool.length_offset.b
+     7  float OUT             0  halui.tool.length_offset.c
+     7  float OUT             0  halui.tool.length_offset.u
+     7  float OUT             0  halui.tool.length_offset.v
+     7  float OUT             0  halui.tool.length_offset.w
+     7  float OUT             0  halui.tool.length_offset.x
+     7  float OUT             0  halui.tool.length_offset.y
+     7  float OUT             0  halui.tool.length_offset.z
+     7  u32   OUT    0x00000000  halui.tool.number
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin *halui*
+Component Pins:
+Owner   Type  Dir         Value  Name
+     7  bit   IN          FALSE  halui.abort
+     7  float OUT      27.19048  halui.axis.0.pos-commanded
+     7  float OUT      27.19048  halui.axis.0.pos-feedback
+     7  float OUT      27.19048  halui.axis.0.pos-relative
+     7  float OUT      4.999434  halui.axis.1.pos-commanded
+     7  float OUT      4.999434  halui.axis.1.pos-feedback
+     7  float OUT      4.999434  halui.axis.1.pos-relative
+     7  float OUT     -10.80526  halui.axis.2.pos-commanded
+     7  float OUT     -10.80526  halui.axis.2.pos-feedback
+     7  float OUT     -10.80526  halui.axis.2.pos-relative
+     7  float OUT             0  halui.axis.3.pos-commanded
+     7  float OUT             0  halui.axis.3.pos-feedback
+     7  float OUT             0  halui.axis.3.pos-relative
+     7  float OUT             0  halui.axis.4.pos-commanded
+     7  float OUT             0  halui.axis.4.pos-feedback
+     7  float OUT             0  halui.axis.4.pos-relative
+     7  float OUT             0  halui.axis.5.pos-commanded
+     7  float OUT             0  halui.axis.5.pos-feedback
+     7  float OUT             0  halui.axis.5.pos-relative
+     7  float OUT             0  halui.axis.6.pos-commanded
+     7  float OUT             0  halui.axis.6.pos-feedback
+     7  float OUT             0  halui.axis.6.pos-relative
+     7  float OUT             0  halui.axis.7.pos-commanded
+     7  float OUT             0  halui.axis.7.pos-feedback
+     7  float OUT             0  halui.axis.7.pos-relative
+     7  float OUT             0  halui.axis.8.pos-commanded
+     7  float OUT             0  halui.axis.8.pos-feedback
+     7  float OUT             0  halui.axis.8.pos-relative
+     7  bit   IN          FALSE  halui.estop.activate
+     7  bit   OUT          TRUE  halui.estop.is-activated ==> estop
+     7  bit   IN          FALSE  halui.estop.reset
+     7  bit   IN           TRUE  halui.feed-override.count-enable
+     7  s32   IN              0  halui.feed-override.counts
+     7  bit   IN          FALSE  halui.feed-override.decrease
+     7  bit   IN          FALSE  halui.feed-override.direct-value
+     7  bit   IN          FALSE  halui.feed-override.increase
+     7  float IN            0.1  halui.feed-override.scale
+     7  float OUT             1  halui.feed-override.value
+     7  bit   OUT         FALSE  halui.flood.is-on
+     7  bit   IN          FALSE  halui.flood.off
+     7  bit   IN          FALSE  halui.flood.on
+     7  bit   IN          FALSE  halui.home-all
+     7  float IN            0.2  halui.jog-deadband
+     7  float IN              0  halui.jog-speed
+     7  float IN              0  halui.jog.0.analog
+     7  float IN              0  halui.jog.0.increment
+     7  bit   IN          FALSE  halui.jog.0.increment-minus
+     7  bit   IN          FALSE  halui.jog.0.increment-plus
+     7  bit   IN          FALSE  halui.jog.0.minus
+     7  bit   IN          FALSE  halui.jog.0.plus
+     7  float IN              0  halui.jog.1.analog
+     7  float IN              0  halui.jog.1.increment
+     7  bit   IN          FALSE  halui.jog.1.increment-minus
+     7  bit   IN          FALSE  halui.jog.1.increment-plus
+     7  bit   IN          FALSE  halui.jog.1.minus
+     7  bit   IN          FALSE  halui.jog.1.plus
+     7  float IN              0  halui.jog.2.analog
+     7  float IN              0  halui.jog.2.increment
+     7  bit   IN          FALSE  halui.jog.2.increment-minus
+     7  bit   IN          FALSE  halui.jog.2.increment-plus
+     7  bit   IN          FALSE  halui.jog.2.minus
+     7  bit   IN          FALSE  halui.jog.2.plus
+     7  float IN              0  halui.jog.selected.increment
+     7  bit   IN          FALSE  halui.jog.selected.increment-minus
+     7  bit   IN          FALSE  halui.jog.selected.increment-plus
+     7  bit   IN          FALSE  halui.jog.selected.minus
+     7  bit   IN          FALSE  halui.jog.selected.plus
+     7  bit   OUT         FALSE  halui.joint.0.has-fault
+     7  bit   IN          FALSE  halui.joint.0.home
+     7  bit   OUT         FALSE  halui.joint.0.is-homed
+     7  bit   OUT         FALSE  halui.joint.0.is-selected
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.0.select
+     7  bit   IN          FALSE  halui.joint.0.unhome
+     7  bit   OUT         FALSE  halui.joint.1.has-fault
+     7  bit   IN          FALSE  halui.joint.1.home
+     7  bit   OUT         FALSE  halui.joint.1.is-homed
+     7  bit   OUT         FALSE  halui.joint.1.is-selected
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.1.select
+     7  bit   IN          FALSE  halui.joint.1.unhome
+     7  bit   OUT         FALSE  halui.joint.2.has-fault
+     7  bit   IN          FALSE  halui.joint.2.home
+     7  bit   OUT         FALSE  halui.joint.2.is-homed
+     7  bit   OUT         FALSE  halui.joint.2.is-selected
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.2.select
+     7  bit   IN          FALSE  halui.joint.2.unhome
+     7  u32   OUT    0x00000000  halui.joint.selected
+     7  bit   OUT         FALSE  halui.joint.selected.has-fault
+     7  bit   IN          FALSE  halui.joint.selected.home
+     7  bit   OUT         FALSE  halui.joint.selected.is_homed
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.selected.unhome
+     7  bit   OUT         FALSE  halui.lube.is-on
+     7  bit   IN          FALSE  halui.lube.off
+     7  bit   IN          FALSE  halui.lube.on
+     7  bit   OUT         FALSE  halui.machine.is-on
+     7  bit   IN          FALSE  halui.machine.off
+     7  bit   IN          FALSE  halui.machine.on
+     7  bit   IN           TRUE  halui.max-velocity.count-enable
+     7  s32   IN              0  halui.max-velocity.counts
+     7  bit   IN          FALSE  halui.max-velocity.decrease
+     7  bit   IN          FALSE  halui.max-velocity.direct-value
+     7  bit   IN          FALSE  halui.max-velocity.increase
+     7  float IN              0  halui.max-velocity.scale
+     7  float OUT            18  halui.max-velocity.value
+     7  bit   OUT         FALSE  halui.mist.is-on
+     7  bit   IN          FALSE  halui.mist.off
+     7  bit   IN          FALSE  halui.mist.on
+     7  bit   IN          FALSE  halui.mode.auto
+     7  bit   OUT          TRUE  halui.mode.is-auto
+     7  bit   OUT          TRUE  halui.mode.is-joint
+     7  bit   OUT         FALSE  halui.mode.is-manual
+     7  bit   OUT         FALSE  halui.mode.is-mdi
+     7  bit   OUT         FALSE  halui.mode.is-teleop
+     7  bit   IN          FALSE  halui.mode.joint
+     7  bit   IN          FALSE  halui.mode.manual
+     7  bit   IN          FALSE  halui.mode.mdi
+     7  bit   IN          FALSE  halui.mode.teleop
+     7  bit   OUT          TRUE  halui.program.block-delete.is-on
+     7  bit   IN          FALSE  halui.program.block-delete.off
+     7  bit   IN          FALSE  halui.program.block-delete.on
+     7  bit   OUT          TRUE  halui.program.is-idle
+     7  bit   OUT         FALSE  halui.program.is-paused
+     7  bit   OUT         FALSE  halui.program.is-running
+     7  bit   OUT          TRUE  halui.program.optional-stop.is-on
+     7  bit   IN          FALSE  halui.program.optional-stop.off
+     7  bit   IN          FALSE  halui.program.optional-stop.on
+     7  bit   IN          FALSE  halui.program.pause
+     7  bit   IN          FALSE  halui.program.resume
+     7  bit   IN          FALSE  halui.program.run
+     7  bit   IN          FALSE  halui.program.step
+     7  bit   IN          FALSE  halui.program.stop
+     7  bit   IN           TRUE  halui.rapid-override.count-enable
+     7  s32   IN              0  halui.rapid-override.counts
+     7  bit   IN          FALSE  halui.rapid-override.decrease
+     7  bit   IN          FALSE  halui.rapid-override.direct-value
+     7  bit   IN          FALSE  halui.rapid-override.increase
+     7  float IN            0.1  halui.rapid-override.scale
+     7  float OUT             1  halui.rapid-override.value
+     7  bit   IN           TRUE  halui.spindle-override.count-enable
+     7  s32   IN              0  halui.spindle-override.counts
+     7  bit   IN          FALSE  halui.spindle-override.decrease
+     7  bit   IN          FALSE  halui.spindle-override.direct-value
+     7  bit   IN          FALSE  halui.spindle-override.increase
+     7  float IN            0.1  halui.spindle-override.scale
+     7  float OUT             1  halui.spindle-override.value
+     7  bit   OUT          TRUE  halui.spindle.brake-is-on
+     7  bit   IN          FALSE  halui.spindle.brake-off
+     7  bit   IN          FALSE  halui.spindle.brake-on
+     7  bit   IN          FALSE  halui.spindle.decrease
+     7  bit   IN          FALSE  halui.spindle.forward
+     7  bit   IN          FALSE  halui.spindle.increase
+     7  bit   OUT         FALSE  halui.spindle.is-on
+     7  bit   IN          FALSE  halui.spindle.reverse
+     7  bit   OUT         FALSE  halui.spindle.runs-backward
+     7  bit   OUT         FALSE  halui.spindle.runs-forward
+     7  bit   IN          FALSE  halui.spindle.start
+     7  bit   IN          FALSE  halui.spindle.stop
+     7  float OUT             0  halui.tool.length_offset.a
+     7  float OUT             0  halui.tool.length_offset.b
+     7  float OUT             0  halui.tool.length_offset.c
+     7  float OUT             0  halui.tool.length_offset.u
+     7  float OUT             0  halui.tool.length_offset.v
+     7  float OUT             0  halui.tool.length_offset.w
+     7  float OUT             0  halui.tool.length_offset.x
+     7  float OUT             0  halui.tool.length_offset.y
+     7  float OUT             0  halui.tool.length_offset.z
+     7  u32   OUT    0x00000000  halui.tool.number
+
+root@ccnc:/home/ccnc-operator/.ssh# clear
+
+root@ccnc:/home/ccnc-operator/.ssh# halcmd show pin *halui*
+Component Pins:
+Owner   Type  Dir         Value  Name
+     7  bit   IN          FALSE  halui.abort
+     7  float OUT      27.19048  halui.axis.0.pos-commanded
+     7  float OUT      27.19048  halui.axis.0.pos-feedback
+     7  float OUT      27.19048  halui.axis.0.pos-relative
+     7  float OUT      4.999434  halui.axis.1.pos-commanded
+     7  float OUT      4.999434  halui.axis.1.pos-feedback
+     7  float OUT      4.999434  halui.axis.1.pos-relative
+     7  float OUT     -10.80526  halui.axis.2.pos-commanded
+     7  float OUT     -10.80526  halui.axis.2.pos-feedback
+     7  float OUT     -10.80526  halui.axis.2.pos-relative
+     7  float OUT             0  halui.axis.3.pos-commanded
+     7  float OUT             0  halui.axis.3.pos-feedback
+     7  float OUT             0  halui.axis.3.pos-relative
+     7  float OUT             0  halui.axis.4.pos-commanded
+     7  float OUT             0  halui.axis.4.pos-feedback
+     7  float OUT             0  halui.axis.4.pos-relative
+     7  float OUT             0  halui.axis.5.pos-commanded
+     7  float OUT             0  halui.axis.5.pos-feedback
+     7  float OUT             0  halui.axis.5.pos-relative
+     7  float OUT             0  halui.axis.6.pos-commanded
+     7  float OUT             0  halui.axis.6.pos-feedback
+     7  float OUT             0  halui.axis.6.pos-relative
+     7  float OUT             0  halui.axis.7.pos-commanded
+     7  float OUT             0  halui.axis.7.pos-feedback
+     7  float OUT             0  halui.axis.7.pos-relative
+     7  float OUT             0  halui.axis.8.pos-commanded
+     7  float OUT             0  halui.axis.8.pos-feedback
+     7  float OUT             0  halui.axis.8.pos-relative
+     7  bit   IN          FALSE  halui.estop.activate
+     7  bit   OUT          TRUE  halui.estop.is-activated ==> estop
+     7  bit   IN          FALSE  halui.estop.reset
+     7  bit   IN           TRUE  halui.feed-override.count-enable
+     7  s32   IN              0  halui.feed-override.counts
+     7  bit   IN          FALSE  halui.feed-override.decrease
+     7  bit   IN          FALSE  halui.feed-override.direct-value
+     7  bit   IN          FALSE  halui.feed-override.increase
+     7  float IN            0.1  halui.feed-override.scale
+     7  float OUT             1  halui.feed-override.value
+     7  bit   OUT         FALSE  halui.flood.is-on
+     7  bit   IN          FALSE  halui.flood.off
+     7  bit   IN          FALSE  halui.flood.on
+     7  bit   IN          FALSE  halui.home-all
+     7  float IN            0.2  halui.jog-deadband
+     7  float IN              0  halui.jog-speed
+     7  float IN              0  halui.jog.0.analog
+     7  float IN              0  halui.jog.0.increment
+     7  bit   IN          FALSE  halui.jog.0.increment-minus
+     7  bit   IN          FALSE  halui.jog.0.increment-plus
+     7  bit   IN          FALSE  halui.jog.0.minus
+     7  bit   IN          FALSE  halui.jog.0.plus
+     7  float IN              0  halui.jog.1.analog
+     7  float IN              0  halui.jog.1.increment
+     7  bit   IN          FALSE  halui.jog.1.increment-minus
+     7  bit   IN          FALSE  halui.jog.1.increment-plus
+     7  bit   IN          FALSE  halui.jog.1.minus
+     7  bit   IN          FALSE  halui.jog.1.plus
+     7  float IN              0  halui.jog.2.analog
+     7  float IN              0  halui.jog.2.increment
+     7  bit   IN          FALSE  halui.jog.2.increment-minus
+     7  bit   IN          FALSE  halui.jog.2.increment-plus
+     7  bit   IN          FALSE  halui.jog.2.minus
+     7  bit   IN          FALSE  halui.jog.2.plus
+     7  float IN              0  halui.jog.selected.increment
+     7  bit   IN          FALSE  halui.jog.selected.increment-minus
+     7  bit   IN          FALSE  halui.jog.selected.increment-plus
+     7  bit   IN          FALSE  halui.jog.selected.minus
+     7  bit   IN          FALSE  halui.jog.selected.plus
+     7  bit   OUT         FALSE  halui.joint.0.has-fault
+     7  bit   IN          FALSE  halui.joint.0.home
+     7  bit   OUT         FALSE  halui.joint.0.is-homed
+     7  bit   OUT         FALSE  halui.joint.0.is-selected
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.0.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.0.select
+     7  bit   IN          FALSE  halui.joint.0.unhome
+     7  bit   OUT         FALSE  halui.joint.1.has-fault
+     7  bit   IN          FALSE  halui.joint.1.home
+     7  bit   OUT         FALSE  halui.joint.1.is-homed
+     7  bit   OUT         FALSE  halui.joint.1.is-selected
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.1.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.1.select
+     7  bit   IN          FALSE  halui.joint.1.unhome
+     7  bit   OUT         FALSE  halui.joint.2.has-fault
+     7  bit   IN          FALSE  halui.joint.2.home
+     7  bit   OUT         FALSE  halui.joint.2.is-homed
+     7  bit   OUT         FALSE  halui.joint.2.is-selected
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-max-limit
+     7  bit   OUT         FALSE  halui.joint.2.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.2.select
+     7  bit   IN          FALSE  halui.joint.2.unhome
+     7  u32   OUT    0x00000000  halui.joint.selected
+     7  bit   OUT         FALSE  halui.joint.selected.has-fault
+     7  bit   IN          FALSE  halui.joint.selected.home
+     7  bit   OUT         FALSE  halui.joint.selected.is_homed
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-max-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-hard-min-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-limit
+     7  bit   OUT         FALSE  halui.joint.selected.on-soft-min-limit
+     7  bit   IN          FALSE  halui.joint.selected.unhome
+     7  bit   OUT         FALSE  halui.lube.is-on
+     7  bit   IN          FALSE  halui.lube.off
+     7  bit   IN          FALSE  halui.lube.on
+     7  bit   OUT         FALSE  halui.machine.is-on
+     7  bit   IN          FALSE  halui.machine.off
+     7  bit   IN          FALSE  halui.machine.on
+     7  bit   IN           TRUE  halui.max-velocity.count-enable
+     7  s32   IN              0  halui.max-velocity.counts
+     7  bit   IN          FALSE  halui.max-velocity.decrease
+     7  bit   IN          FALSE  halui.max-velocity.direct-value
+     7  bit   IN          FALSE  halui.max-velocity.increase
+     7  float IN              0  halui.max-velocity.scale
+     7  float OUT            18  halui.max-velocity.value
+     7  bit   OUT         FALSE  halui.mist.is-on
+     7  bit   IN          FALSE  halui.mist.off
+     7  bit   IN          FALSE  halui.mist.on
+     7  bit   IN          FALSE  halui.mode.auto
+     7  bit   OUT          TRUE  halui.mode.is-auto
+     7  bit   OUT          TRUE  halui.mode.is-joint
+     7  bit   OUT         FALSE  halui.mode.is-manual
+     7  bit   OUT         FALSE  halui.mode.is-mdi
+     7  bit   OUT         FALSE  halui.mode.is-teleop
+     7  bit   IN          FALSE  halui.mode.joint
+     7  bit   IN          FALSE  halui.mode.manual
+     7  bit   IN          FALSE  halui.mode.mdi
+     7  bit   IN          FALSE  halui.mode.teleop
+     7  bit   OUT          TRUE  halui.program.block-delete.is-on
+     7  bit   IN          FALSE  halui.program.block-delete.off
+     7  bit   IN          FALSE  halui.program.block-delete.on
+     7  bit   OUT          TRUE  halui.program.is-idle
+     7  bit   OUT         FALSE  halui.program.is-paused
+     7  bit   OUT         FALSE  halui.program.is-running
+     7  bit   OUT          TRUE  halui.program.optional-stop.is-on
+     7  bit   IN          FALSE  halui.program.optional-stop.off
+     7  bit   IN          FALSE  halui.program.optional-stop.on
+     7  bit   IN          FALSE  halui.program.pause
+     7  bit   IN          FALSE  halui.program.resume
+     7  bit   IN          FALSE  halui.program.run
+     7  bit   IN          FALSE  halui.program.step
+     7  bit   IN          FALSE  halui.program.stop
+     7  bit   IN           TRUE  halui.rapid-override.count-enable
+     7  s32   IN              0  halui.rapid-override.counts
+     7  bit   IN          FALSE  halui.rapid-override.decrease
+     7  bit   IN          FALSE  halui.rapid-override.direct-value
+     7  bit   IN          FALSE  halui.rapid-override.increase
+     7  float IN            0.1  halui.rapid-override.scale
+     7  float OUT             1  halui.rapid-override.value
+     7  bit   IN           TRUE  halui.spindle-override.count-enable
+     7  s32   IN              0  halui.spindle-override.counts
+     7  bit   IN          FALSE  halui.spindle-override.decrease
+     7  bit   IN          FALSE  halui.spindle-override.direct-value
+     7  bit   IN          FALSE  halui.spindle-override.increase
+     7  float IN            0.1  halui.spindle-override.scale
+     7  float OUT             1  halui.spindle-override.value
+     7  bit   OUT          TRUE  halui.spindle.brake-is-on
+     7  bit   IN          FALSE  halui.spindle.brake-off
+     7  bit   IN          FALSE  halui.spindle.brake-on
+     7  bit   IN          FALSE  halui.spindle.decrease
+     7  bit   IN          FALSE  halui.spindle.forward
+     7  bit   IN          FALSE  halui.spindle.increase
+     7  bit   OUT         FALSE  halui.spindle.is-on
+     7  bit   IN          FALSE  halui.spindle.reverse
+     7  bit   OUT         FALSE  halui.spindle.runs-backward
+     7  bit   OUT         FALSE  halui.spindle.runs-forward
+     7  bit   IN          FALSE  halui.spindle.start
+     7  bit   IN          FALSE  halui.spindle.stop
+     7  float OUT             0  halui.tool.length_offset.a
+     7  float OUT             0  halui.tool.length_offset.b
+     7  float OUT             0  halui.tool.length_offset.c
+     7  float OUT             0  halui.tool.length_offset.u
+     7  float OUT             0  halui.tool.length_offset.v
+     7  float OUT             0  halui.tool.length_offset.w
+     7  float OUT             0  halui.tool.length_offset.x
+     7  float OUT             0  halui.tool.length_offset.y
+     7  float OUT             0  halui.tool.length_offset.z
+     7  u32   OUT    0x00000000  halui.tool.number

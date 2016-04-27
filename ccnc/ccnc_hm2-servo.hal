@@ -1,0 +1,288 @@
+# Arduino interface for analog inputs
+loadusr -W ./arduino /dev/ttyACM0 3
+
+# the pwmgens are connected to a 7i33 servo interface board
+# it wants PDM (pwmgen output type 3) at 6 MHz
+#setp hm2_[HOSTMOT2](BOARD).0.pwmgen.pdm_frequency 6000000
+
+
+# GPIO 67 is a MOSFET output on the 7i37.
+# It is connected to the Enable~ pin of the Eclipse servo amps on one side, and to Ground on the other side.
+setp hm2_[HOSTMOT2](BOARD).0.gpio.067.invert_output 1
+setp hm2_[HOSTMOT2](BOARD).0.gpio.067.out 0
+setp hm2_[HOSTMOT2](BOARD).0.gpio.067.is_output 1
+
+
+# GPIO 58 is an input on the 7i37.
+# It is connected to the spindle power contactor
+setp hm2_[HOSTMOT2](BOARD).0.gpio.058.is_output 0
+net spindle-power <= hm2_[HOSTMOT2](BOARD).0.gpio.058.in_not
+
+
+# GPIO 53 is an input on the 7i37.
+# It is connected to the "Spindle Rotation" signal on the spindle.
+# This signal has a 2 pulse-per-revolution tachometer on it.
+# FIXME: this signal needs to be connected to P2-23 (Encoder 3 "A")
+
+
+# ################
+# X [0] Axis
+# ################
+
+# stepper timings & config
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.step_type [AXIS_0]STEPGEN_STEPTYPE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.steplen   [AXIS_0]STEPGEN_STEPLEN
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.stepspace [AXIS_0]STEPGEN_STEPSPACE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.dirsetup  [AXIS_0]STEPGEN_DIRSETUP
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.dirhold   [AXIS_0]STEPGEN_DIRHOLD
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.maxvel    [AXIS_0]STEPGEN_MAXVEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.maxaccel  [AXIS_0]STEPGEN_MAXACCEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.00.position-scale [AXIS_0]STEPGEN_SCALE
+
+# axis enable chain
+# All amps get enabled/disabled at the same time, so we arbitrarily use amp
+# 0's pin to turn on/off all the Eclipse amps.
+net emcmot.00.enable <= axis.0.amp-enable-out
+net emcmot.00.enable => hm2_[HOSTMOT2](BOARD).0.stepgen.00.enable
+net emcmot.00.enable => hm2_[HOSTMOT2](BOARD).0.gpio.067.out
+
+# position feedback from the encoder
+setp hm2_[HOSTMOT2](BOARD).0.encoder.00.scale [AXIS_0]ENCODER_SCALE
+net motor.00.pos-fb <= hm2_[HOSTMOT2](BOARD).0.encoder.00.position
+net motor.00.pos-fb => axis.0.motor-pos-fb
+
+# position command to the stepgen
+net emcmot.00.pos-cmd <= axis.0.motor-pos-cmd
+net emcmot.00.pos-cmd => hm2_5i22.0.stepgen.00.position-cmd
+
+# This input is the Not-Ready signal from the amp.
+net x-amp-fault <= hm2_[HOSTMOT2](BOARD).0.gpio.059.in_not
+
+# This prox sensor finds both the negative and positive limit switches,
+# and the negative limit switch also acts as home.
+net motor.00.prox <= hm2_[HOSTMOT2](BOARD).0.gpio.050.in_not
+net motor.00.prox => axis.0.home-sw-in
+net motor.00.prox => axis.0.neg-lim-sw-in
+net motor.00.prox => axis.0.pos-lim-sw-in
+
+
+# ################
+# Y [1] Axis
+# ################
+
+# stepper timings & config
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.step_type [AXIS_1]STEPGEN_STEPTYPE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.steplen   [AXIS_1]STEPGEN_STEPLEN
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.stepspace [AXIS_1]STEPGEN_STEPSPACE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.dirsetup  [AXIS_1]STEPGEN_DIRSETUP
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.dirhold   [AXIS_1]STEPGEN_DIRHOLD
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.maxvel    [AXIS_1]STEPGEN_MAXVEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.maxaccel  [AXIS_1]STEPGEN_MAXACCEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.01.position-scale [AXIS_1]STEPGEN_SCALE
+
+# axis enable chain
+# The Y Eclipse (like all Eclipses) is turned on by the X Axis enable signal.
+net emcmot.01.enable <= axis.1.amp-enable-out 
+net emcmot.01.enable => hm2_[HOSTMOT2](BOARD).0.stepgen.01.enable
+
+# position feedback from the encoder
+setp hm2_[HOSTMOT2](BOARD).0.encoder.01.scale [AXIS_1]ENCODER_SCALE
+net motor.01.pos-fb <= hm2_[HOSTMOT2](BOARD).0.encoder.01.position
+net motor.01.pos-fb => axis.1.motor-pos-fb
+
+# position command to the stepgen
+net emcmot.01.pos-cmd <= axis.1.motor-pos-cmd
+net emcmot.01.pos-cmd => hm2_[HOSTMOT2](BOARD).0.stepgen.01.position-cmd
+
+# This input is the Not-Ready signal from the amp.
+net y-amp-fault <= hm2_[HOSTMOT2](BOARD).0.gpio.061.in_not
+
+# This prox sensor finds both the negative and positive limit switches,
+# and the negative limit switch also acts as home.
+net motor.01.prox <= hm2_[HOSTMOT2](BOARD).0.gpio.051.in_not
+net motor.01.prox => axis.1.home-sw-in
+net motor.01.prox => axis.1.neg-lim-sw-in
+net motor.01.prox => axis.1.pos-lim-sw-in
+
+
+# ################
+# Z [2] Axis
+# ################
+
+# stepper timings & config
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.step_type [AXIS_2]STEPGEN_STEPTYPE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.steplen   [AXIS_2]STEPGEN_STEPLEN
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.stepspace [AXIS_2]STEPGEN_STEPSPACE
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.dirsetup  [AXIS_2]STEPGEN_DIRSETUP
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.dirhold   [AXIS_2]STEPGEN_DIRHOLD
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.maxvel    [AXIS_2]STEPGEN_MAXVEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.maxaccel  [AXIS_2]STEPGEN_MAXACCEL
+setp hm2_[HOSTMOT2](BOARD).0.stepgen.02.position-scale [AXIS_2]STEPGEN_SCALE
+
+# axis enable chain
+# All amps get enabled/disabled at the same time, so we arbitrarily use amp
+# 0's pin to turn on/off all the Eclipse amps.
+net z-brake-disengage-button => and2.z-brake.in0
+net emcmot.02.enable <= axis.2.amp-enable-out 
+net emcmot.02.enable => and2.z-brake.in1
+net z-motion-enable <= and2.z-brake.out
+
+net z-brake-disengage => hm2_[HOSTMOT2](BOARD).0.stepgen.02.enable
+
+# position feedback from the encoder
+setp hm2_[HOSTMOT2](BOARD).0.encoder.02.scale [AXIS_2]ENCODER_SCALE
+net motor.02.pos-fb <= hm2_[HOSTMOT2](BOARD).0.encoder.02.position
+net motor.02.pos-fb => axis.2.motor-pos-fb
+
+# position command to the stepgen
+net emcmot.02.pos-cmd <= axis.2.motor-pos-cmd
+net emcmot.02.pos-cmd => hm2_[HOSTMOT2](BOARD).0.stepgen.02.position-cmd
+
+# This input is the Not-Ready signal from the amp.
+net z-amp-fault <= hm2_[HOSTMOT2](BOARD).0.gpio.060.in_not
+
+# This prox sensor finds both the negative and positive limit switches,
+# and the negative limit switch also acts as home.
+net motor.02.prox <= hm2_[HOSTMOT2](BOARD).0.gpio.052.in_not
+net motor.02.prox => axis.2.home-sw-in
+net motor.02.prox => axis.2.neg-lim-sw-in
+net motor.02.prox => axis.2.pos-lim-sw-in
+
+
+# ##################################################
+# estop
+# ##################################################
+
+net gui-enable <= iocontrol.0.user-enable-out
+net gui-enable => classicladder.0.in-00
+
+net estop-pendant-enable     <= hm2_5i22.0.gpio.048.in_not
+net estop-pendant-enable     => and2.estop-external-in.in0
+
+net estop-control-box-enable <= hm2_5i22.0.gpio.049.in_not
+net estop-control-box-enable => and2.estop-external-in.in1
+
+net estop-external-enable <= and2.estop-external-in.out
+net estop-external-enable => classicladder.0.in-01
+
+net estop-strobe <= iocontrol.0.user-request-enable
+net estop-strobe => classicladder.0.in-02
+
+net estop-all-ok <= classicladder.0.out-00
+net estop-all-ok => iocontrol.0.emc-enable-in
+
+
+# ##################################################
+# tool changer
+# ##################################################
+
+# create signals for tool loading loopback
+net tool-prep-loop iocontrol.0.tool-prepare => iocontrol.0.tool-prepared
+net tool-change-loop iocontrol.0.tool-change => iocontrol.0.tool-changed
+
+
+#
+# GPIOs 66, 68, and 69 are low-side switches for the air valves.
+# We invert the polarity here so that setting the pin to True turns the air
+# valve on.
+#
+
+# GPIO 66 is connected to Solenoid 1, which brakes the Z axis.  It stops
+# the Z axis from falling under its own weight.
+setp hm2_5i22.0.gpio.066.is_output 1
+setp hm2_5i22.0.gpio.066.invert_output 1
+net z-brake-disengage => hm2_5i22.0.gpio.066.out
+
+# GPIO 68 is connected to Solenoids 2 and 3, which provide cooling air to
+# the spindle.
+setp hm2_5i22.0.gpio.068.is_output 1
+setp hm2_5i22.0.gpio.068.invert_output 1
+net spindle-cooling => hm2_5i22.0.gpio.068.out
+
+# GPIO 69 is connected to Solenoids 4, which we don't use yet
+# FIXME: no atc hardware yet, untested
+setp hm2_5i22.0.gpio.069.is_output 1
+setp hm2_5i22.0.gpio.069.invert_output 1
+net atc => hm2_5i22.0.gpio.069.out
+
+
+#
+# gpio 70-71 are low-side switches for the contactors
+# we invert the polarity here so that setting the pin to True turns the contactor on
+#
+
+# GPIO 70 is connected to the contactor that supplies power to all the
+# servo amps.  It's connected to axis.0.amp-enable-out (via the net
+# emcmot.00.enable), but it could be connected to any axis' enable pin.
+setp hm2_5i22.0.gpio.070.is_output 1
+setp hm2_5i22.0.gpio.070.invert_output 1
+net emcmot.00.enable => hm2_5i22.0.gpio.070.out
+
+# GPIO 71 is the contactor that supplies 240 VAC to the VFD
+# The VFD gets power when LinuxCNC starts, and stays powered until LinuxCNC
+# shuts down.  Specifically, the VFD remains powered during E-stop.
+setp hm2_5i22.0.gpio.071.is_output 1
+setp hm2_5i22.0.gpio.071.invert_output 1
+net vfd-contactor => hm2_5i22.0.gpio.071.out
+sets vfd-contactor True
+
+
+
+
+#
+# Delta VFD-B and spindle
+#
+
+net spindle-on <= motion.spindle-on
+net spindle-on => vfdb_vfd.spindle-on
+
+net motion-enabled <= motion.motion-enabled
+net motion-enabled => vfdb_vfd.enable
+
+net spindle-speed <= motion.spindle-speed-out
+net spindle-speed => vfdb_vfd.speed-command
+
+# consider the spindle "at speed" if it's within 2% of the commanded speed
+setp vfdb_vfd.tolerance 0.02
+
+net spindle-at-speed <= vfdb_vfd.at-speed
+net spindle-at-speed => motion.spindle-at-speed
+
+
+# When it's time to enable motion on Z, power up the motor before releasing
+# the Z brake, to prevent the axis falling under gravity.
+# 1s is too short
+# 2s is too short?  maybe not
+# 5s is ok
+# 10s seems fine
+# 2015-01-07: I'm going to try out lower values (John)
+setp timedelay.z-brake.on-delay 1.0
+setp timedelay.z-brake.off-delay 0.0
+
+net z-motion-enable => timedelay.z-brake.in
+net z-brake-disengage <= timedelay.z-brake.out
+
+
+# spindle cooling air logic:
+# spindle-on OR (< 10 minutes since spindle turned off) => spindle-cooling
+# set up a oneshot to make a 10 minute pulse after a falling edge on its input
+# make it retriggerable
+setp oneshot.spindle-cooling.falling       True
+setp oneshot.spindle-cooling.rising        False
+setp oneshot.spindle-cooling.retriggerable True
+setp oneshot.spindle-cooling.width         600 # 60 seconds/minute * 10 minutes
+
+net spindle-on => oneshot.spindle-cooling.in
+net spindle-was-on-recently <= oneshot.spindle-cooling.out
+
+net spindle-on              => or2.0.in0
+net spindle-was-on-recently => or2.0.in1
+
+net spindle-cooling <= or2.0.out
+
+
+net spindle-tool-presence <= hm2_[HOSTMOT2](BOARD).0.gpio.054.in
+net spindle-clamped-sensor <= hm2_[HOSTMOT2](BOARD).0.gpio.055.in
+net spindle-tool-presence => and2.spindle-tool-clamp.in0
+net spindle-clamped-sensor => and2.spindle-tool-clamp.in1
+net spindle-safe-to-operate <= and2.spindle-tool-clamp.out
