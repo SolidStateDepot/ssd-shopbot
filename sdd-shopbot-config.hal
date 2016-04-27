@@ -17,7 +17,7 @@ setp gantrykins.joint-3 1
 # Load the realtime portion of classic ladder
 loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonostables=2 numPhysInputs=16 numPhysOutputs=16 numArithmExpr=4 numSections=4
 # Loader the userspace portion of Classic Ladder to silently load the program
-loadusr classicladder --modmaster --nogui shopbot-ladder-1.clp
+loadusr classicladder --modmaster --nogui shopbot-ladder.clp
 
 # motion controller, get name and thread periods from ini file
 loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES

@@ -297,46 +297,6 @@ The contents of this file will not be overwritten when you run stepconf again.
 	</hbox>
     </vbox>
     <vbox>
-	<labelframe text="Goto Controls"> <!-- Buttons and Status LEDs for misc controls -->
-	<vbox>
-		<hbox>
-			<led> <!-- Mist Enable LED -->
-		 	        <halpin>"mist-enable-led"</halpin>
-				<on_color> "green"</on_color> 
-				<off_color> "black"</off_color>
-			</led>
-			<button> <!-- Mist Enable Button -->
-				<halpin>"mist-enable-button"</halpin>
-				<text>"Mist Enable"</text>
-				<font>"Helvetica",10</font>
-			</button>
-		</hbox>
-		<hbox>
-			<led> <!-- Vacuum Enable LED -->
-		 	        <halpin>"vacuum-enable-led"</halpin>
-				<on_color> "green"</on_color> 
-				<off_color> "black"</off_color>
-			</led>
-			<button> <!-- Vacuum Enable Button -->
-				<halpin>"vacuum-enable-button"</halpin>
-				<text>"Vacuum Enable"</text>
-				<font>"Helvetica",10</font>
-			</button>
-		</hbox>
-		<hbox>
-			<led> <!-- Dust Collection Enable LED -->
-		 	        <halpin>"dust-collection-enable-led"</halpin>
-				<on_color> "green"</on_color> 
-				<off_color> "black"</off_color>
-				</led>
-			<button> <!-- Dust Collection Enable Button -->
-				<halpin>"dust-collection-enable-button"</halpin>
-				<text>"Dust Collection Enable"</text>
-				<font>"Helvetica",10</font>
-			</button>
-		</hbox>
-	</vbox>
-	</labelframe>
 	<labelframe text="External Controls"> <!-- Buttons and Status LEDs for misc controls -->
 	<vbox>
 		<hbox>
