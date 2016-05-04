@@ -8,12 +8,8 @@
 # Joint 0 and joint 3 are motors on either side of the gantry, driving the gantry along the X axis
 # Joint 1 is a motor on the gantry, driving the spindle sled side to side on the gantry along the Y axis
 # Joint 2 is a motor on the spindle sled, driving the spindle along the Z axis
-loadrt [KINS]KINEMATICS
+loadrt [KINS]KINEMATICS coordinates=xyzy kinstype=BOTH
 #autoconverted  gantrykins coordinates=xyzy
-setp gantrykins.joint-0 0
-setp gantrykins.joint-1 1
-setp gantrykins.joint-2 2
-setp gantrykins.joint-3 1
 
 # Load the realtime portion of classic ladder
 loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonostables=2 numPhysInputs=16 numPhysOutputs=16 numArithmExpr=4 numSections=4
