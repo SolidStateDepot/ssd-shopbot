@@ -10,6 +10,7 @@
 
 
 g90
+g64 p.010  ; best speed, but don't deviate from the programmed path by more than .010 inches
 
 s17000
 m3
