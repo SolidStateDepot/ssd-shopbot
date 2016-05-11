@@ -46,6 +46,11 @@ o100 do
 
 o100 while [#<y> LT #<y_max>]
 
+g1 x#<x_max>
+g1 y#<y_min>
+g1 x#<x_min>
+g1 y#<y_max>
+
 g53 g0 z0
 
 m2
