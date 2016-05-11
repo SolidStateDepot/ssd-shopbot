@@ -14,7 +14,7 @@ g90
 s17000
 m3
 
-f225  ; could go up to maybe 350 or so?
+f350
 
 g53 g0 z0
 g53 g0 x#<x_min> y#<y_min>
