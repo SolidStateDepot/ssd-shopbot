@@ -1,0 +1,46 @@
+;2nd part
+o<staff-part2> sub
+#<tool_dia> = 0.25
+#<OD1_dia> = 1.255
+#<OD1_tool_radius> =[#<OD1_dia> / 2 ] - [#<tool_dia> / 2]
+#<OD1_cut_depth> = #<OD1_first_faceheight>  - 0.42
+#<OD1_zstart> = 5 ; height above the surface to begin
+#<OD1_zcommand> = 5 ; current commanded z position
+#<OD1_final_height> = 3.00; inches
+#<OD1_first_faceheight> = #<OD1_final_height> + 0.1; inches
+#<OD1_zcut_begin> = #<OD1_first_faceheight> + 0.5
+#<OD1_zstep> = 0.02 ; inches
+#<finishing_xyoffset> = 0.0 ; inches
+
+;assumes x,y are zeroed to center axis of workpiece, z zeroed on bottom of clamp surface
+
+; setup coordinate space
+53 g0 z0
+
+; go up above the workpiece
+g1 #<OD1_zstart>
+g0 x0y0
+g1 z#<OD1_zcut_begin>
+G02 ; (Set up the clockwise arc mode)
+X#<OD1_tool_radius>Y0 I0J-#<OD1_tool_radius>
+
+o100 while [ #<OD1_zcommand> GT #<OD1_cut_depth> ]
+    g1 z#<OD1_zcommand>
+    G02 ; (Set up the clockwise arc mode)
+    X#<OD1_tool_radius>Y0 I0J-#<OD1_tool_radius>
+    #<OD1_zcommand> - #<OD1_zstep> ; increment the z position down
+o100 endwhile
+
+; do the final cut
+g1 z#<OD1_cut_depth>
+G02 ; (Set up the clockwise arc mode)
+X#<OD1_tool_radius>Y0 I0J-#<OD1_tool_radius>
+
+; do finishing pass
+g1 #<OD1_first_faceheight>
+G02 ; (Set up the clockwise arc mode)
+X#<OD1_tool_radius>Y0 I0J-#<OD1_tool_radius>
+G02 ; (Set up the clockwise arc mode)
+X#<OD1_dia>Y0 I0J-#<OD1_dia>
+
+o<staff-part2> endsub

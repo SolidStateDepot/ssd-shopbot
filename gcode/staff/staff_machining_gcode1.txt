@@ -1,0 +1,52 @@
+;2nd part
+o<staff-part2> sub
+#<tool_dia> = 0.25
+#<rect_dia> = 1.255
+#<rect_tool_x> = 0.38 / 2; x offset from 0, inches
+#<rect_tool_y> = 0.21 /2; y offset from 0, inches
+#<rect_cut_depth> = #<rect_first_faceheight>  - 0.42
+#<rect_zstart> = 5 ; height above the surface to begin
+#<rect_final_height> = 3.00; inches
+#<rect_first_faceheight> = #<rect_final_height> + 0.1; inches
+#<rect_zcut_begin> = #<rect_first_faceheight> + 0.5
+#<rect_zcommand> = #<rect_zcut_begin> ; current commanded z position
+#<rect_zstep> = 0.02 ; inches
+#<finishing_xyoffset> = 0.0 ; inches
+
+;assumes x,y are zeroed to center axis of workpiece, z zeroed on bottom of clamp surface
+
+; setup coordinate space
+53 g0 z0
+
+; go up above the workpiece
+    g1 z#<rect_zcut_begin>
+    g0 x0y0
+
+o100 while [ #<rect_zcommand> GT #<rect_cut_depth> ]
+    g1 z#<rect_zcommand>
+    g1 x#<rect_tool_x>
+    g1 y#<rect_tool_y>
+    g1 x-#<rect_tool_x>
+    g1 y-#<rect_tool_y>
+    g1 x#<rect_tool_x>
+    #<rect_zcommand> - #<rect_zstep> ; increment the z position down
+o100 endwhile
+
+; do the final cut
+g1 x#<rect_tool_x>
+g1 y#<rect_tool_y>
+g1 x-#<rect_tool_x>
+g1 y-#<rect_tool_y>
+g1 x#<rect_tool_x>
+
+; do finishing pass
+g1 #<rect_first_faceheight>
+g1 x#<rect_tool_x>
+g1 y#<rect_tool_y>
+g1 x-#<rect_tool_x>
+g1 y-#<rect_tool_y>
+g1 x#<rect_tool_x>
+
+g1 z#<rect_zstart>
+
+o<staff-part2> endsub
