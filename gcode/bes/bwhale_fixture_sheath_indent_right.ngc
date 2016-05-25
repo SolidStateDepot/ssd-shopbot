@@ -1,0 +1,18 @@
+; this program assumes that the Z is zeroed at the shopbot table height
+#1 = 2.25 (clearance height)
+#2 = 0.225 (indent hole depth)
+
+G20         ; Set units to inches
+G90         ; Absolute positioning
+
+S6000
+M3
+F60
+
+G0 Z[#1]
+
+G0 X-1.161 Y1.342
+G1 Z[#2] ; plunge
+G0 Z[#1] ; come up to clearance height
+
+M2
