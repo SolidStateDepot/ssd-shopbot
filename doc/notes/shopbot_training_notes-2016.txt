@@ -1,0 +1,12 @@
+Shopbot tips
+
+-World mode / joint
+-Prefer MDI mode, and slow review of command input
+-Be aware of G64 setting, tolerance that is too large will "cut-corners" and jeopardize fixutring, etc.
+-Use a software stop when possible, E-stop when necessary
+-The machine is not true
+-Backlash is not well compensated
+-Keep bystanders away from the machine
+-Be aware of incremental (G91) vs absolute (G90) distance modes, misunderstanding can be catastrophic
+-Be aware of your coordinate system, and the potential to accidentally command incorrect coordinate system motion
+-
