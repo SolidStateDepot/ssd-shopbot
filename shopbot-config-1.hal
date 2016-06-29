@@ -8,11 +8,8 @@
 # Joint 0 and joint 3 are motors on either side of the gantry, driving the gantry along the X axis
 # Joint 1 is a motor on the gantry, driving the spindle sled side to side on the gantry along the Y axis
 # Joint 2 is a motor on the spindle sled, driving the spindle along the Z axis
-loadrt gantrykins coordinates=xyzy
-setp gantrykins.joint-0 0
-setp gantrykins.joint-1 1
-setp gantrykins.joint-2 2
-setp gantrykins.joint-3 1
+loadrt [KINS]KINEMATICS coordinates=xyzy kinstype=BOTH
+#autoconverted  gantrykins coordinates=xyzy
 
 # Load the realtime portion of classic ladder
 loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonostables=2 numPhysInputs=16 numPhysOutputs=16 numArithmExpr=4 numSections=4
@@ -20,7 +17,7 @@ loadrt classicladder_rt numRungs=12 numBits=20 numWords=4 numTimers=5 numMonosta
 loadusr classicladder --modmaster --nogui shopbot-ladder-1.clp
 
 # motion controller, get name and thread periods from ini file
-loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[TRAJ]AXES
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
 
 # hostmot2 driver
 loadrt hostmot2
@@ -83,7 +80,7 @@ addf hm2_5i23.0.write         servo-thread
 # External Output Signals
 # ################################################
 #Contactor control for Stepper power
-net contactor-stepper-control     <=  axis.0.amp-enable-out
+net contactor-stepper-control     <=  joint.0.amp-enable-out
 net contactor-stepper-control     =>  hm2_5i23.0.gpio.044.out
 net contactor-stepper-control     =>  hm2_5i23.0.stepgen.01.enable
 setp hm2_5i23.0.gpio.044.is_output 1
@@ -92,7 +89,7 @@ setp hm2_5i23.0.gpio.044.invert_output 1
 #setp hm2_5i23.0.gpio.044.out 1
 
 #Contactor control for Spindle power
-#net contactor-spindle-control     <=  axis.1.amp-enable-out
+#net contactor-spindle-control     <=  joint.1.amp-enable-out
 #net contactor-spindle-control     =>  hm2_5i23.0.gpio.046.out
 setp hm2_5i23.0.gpio.046.is_output 1
 setp hm2_5i23.0.gpio.046.is_opendrain 1
@@ -179,16 +176,16 @@ net spindle-key-switch    <=  hm2_5i23.0.gpio.038.in_not
 #
 
 net prox-x  <= hm2_5i23.0.gpio.026.in_not
-net prox-x  => axis.0.home-sw-in axis.0.neg-lim-sw-in axis.0.pos-lim-sw-in
+net prox-x  => joint.0.home-sw-in joint.0.neg-lim-sw-in joint.0.pos-lim-sw-in
 
 net prox-y1 <= hm2_5i23.0.gpio.024.in_not
-net prox-y1 => axis.1.home-sw-in axis.1.neg-lim-sw-in axis.1.pos-lim-sw-in
+net prox-y1 => joint.1.home-sw-in joint.1.neg-lim-sw-in joint.1.pos-lim-sw-in
 
 net prox-z  <= hm2_5i23.0.gpio.028.in_not
-net prox-z  => axis.2.home-sw-in axis.2.pos-lim-sw-in axis.2.neg-lim-sw-in
+net prox-z  => joint.2.home-sw-in joint.2.pos-lim-sw-in joint.2.neg-lim-sw-in
 
 net prox-y2 <= hm2_5i23.0.gpio.030.in_not 
-net prox-y2 => axis.3.home-sw-in axis.3.neg-lim-sw-in axis.3.pos-lim-sw-in
+net prox-y2 => joint.3.home-sw-in joint.3.neg-lim-sw-in joint.3.pos-lim-sw-in
 
 
 #Stepper Driver Digital I/O #run all of these into estop chain
@@ -210,75 +207,75 @@ net alarm-y2    <=  hm2_5i23.0.gpio.060.in
 # ######################################################
 
 # axis enable chain
-#net axis-enable-chain-x  axis.0.amp-enable-out => hm2_5i23.0.stepgen.01.enable
-net axis-enable-chain-y1 axis.1.amp-enable-out => hm2_5i23.0.stepgen.00.enable
-net axis-enable-chain-z  axis.2.amp-enable-out => hm2_5i23.0.stepgen.02.enable
-net axis-enable-chain-y2 axis.3.amp-enable-out => hm2_5i23.0.stepgen.03.enable
+#net axis-enable-chain-x  joint.0.amp-enable-out => hm2_5i23.0.stepgen.01.enable
+net axis-enable-chain-y1 joint.1.amp-enable-out => hm2_5i23.0.stepgen.00.enable
+net axis-enable-chain-z  joint.2.amp-enable-out => hm2_5i23.0.stepgen.02.enable
+net axis-enable-chain-y2 joint.3.amp-enable-out => hm2_5i23.0.stepgen.03.enable
 
 # encoder feedback signals
-setp hm2_5i23.0.encoder.01.scale [AXIS_0]INPUT_SCALE
+setp hm2_5i23.0.encoder.01.scale [JOINT_0]INPUT_SCALE
 net x-encoder-pos <= hm2_5i23.0.encoder.01.position
-net x-encoder-pos => axis.0.motor-pos-fb
+net x-encoder-pos => joint.0.motor-pos-fb
 net x-encoder-count <= hm2_5i23.0.encoder.01.count
 
-setp hm2_5i23.0.encoder.00.scale [AXIS_1]INPUT_SCALE
+setp hm2_5i23.0.encoder.00.scale [JOINT_1]INPUT_SCALE
 net y1-encoder-pos <= hm2_5i23.0.encoder.00.position
-net y1-encoder-pos => axis.1.motor-pos-fb
+net y1-encoder-pos => joint.1.motor-pos-fb
 net y1-encoder-count <= hm2_5i23.0.encoder.00.count
 
-setp hm2_5i23.0.encoder.02.scale [AXIS_2]INPUT_SCALE
+setp hm2_5i23.0.encoder.02.scale [JOINT_2]INPUT_SCALE
 net z-encoder-pos <= hm2_5i23.0.encoder.02.position
-net z-encoder-pos => axis.2.motor-pos-fb
+net z-encoder-pos => joint.2.motor-pos-fb
 net z-encoder-count <= hm2_5i23.0.encoder.02.count
 
-setp hm2_5i23.0.encoder.03.scale [AXIS_3]INPUT_SCALE
+setp hm2_5i23.0.encoder.03.scale [JOINT_3]INPUT_SCALE
 net y2-encoder-pos <= hm2_5i23.0.encoder.03.position
-net y2-encoder-pos => axis.3.motor-pos-fb
+net y2-encoder-pos => joint.3.motor-pos-fb
 net y2-encoder-count <= hm2_5i23.0.encoder.03.count
 
 
 
 
 # position command
-net x.pos-cmd  axis.0.motor-pos-cmd => hm2_5i23.0.stepgen.01.position-cmd
+net x.pos-cmd  joint.0.motor-pos-cmd => hm2_5i23.0.stepgen.01.position-cmd
 
-net y1.pos-cmd axis.1.motor-pos-cmd => hm2_5i23.0.stepgen.00.position-cmd
+net y1.pos-cmd joint.1.motor-pos-cmd => hm2_5i23.0.stepgen.00.position-cmd
 
-net z.pos-cmd  axis.2.motor-pos-cmd => hm2_5i23.0.stepgen.02.position-cmd
+net z.pos-cmd  joint.2.motor-pos-cmd => hm2_5i23.0.stepgen.02.position-cmd
 
-net y2.pos-cmd axis.3.motor-pos-cmd => hm2_5i23.0.stepgen.03.position-cmd
+net y2.pos-cmd joint.3.motor-pos-cmd => hm2_5i23.0.stepgen.03.position-cmd
 
 
 #Axis Jogging Settings
-setp axis.0.jog-vel-mode	1
-setp axis.1.jog-vel-mode	1
-setp axis.2.jog-vel-mode	1
-setp axis.3.jog-vel-mode	1	
+setp joint.0.jog-vel-mode	1
+setp joint.1.jog-vel-mode	1
+setp joint.2.jog-vel-mode	1
+setp joint.3.jog-vel-mode	1	
 
 # Stepgen parameters
-setp hm2_5i23.0.stepgen.01.dirsetup        [AXIS_0]DIRSETUP
-setp hm2_5i23.0.stepgen.01.dirhold         [AXIS_0]DIRHOLD
-setp hm2_5i23.0.stepgen.01.steplen         [AXIS_0]STEPLEN
-setp hm2_5i23.0.stepgen.01.stepspace       [AXIS_0]STEPSPACE
-setp hm2_5i23.0.stepgen.01.position-scale  [AXIS_0]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.01.dirsetup        [JOINT_0]DIRSETUP
+setp hm2_5i23.0.stepgen.01.dirhold         [JOINT_0]DIRHOLD
+setp hm2_5i23.0.stepgen.01.steplen         [JOINT_0]STEPLEN
+setp hm2_5i23.0.stepgen.01.stepspace       [JOINT_0]STEPSPACE
+setp hm2_5i23.0.stepgen.01.position-scale  [JOINT_0]OUTPUT_SCALE
 
-setp hm2_5i23.0.stepgen.00.dirsetup        [AXIS_1]DIRSETUP
-setp hm2_5i23.0.stepgen.00.dirhold         [AXIS_1]DIRHOLD
-setp hm2_5i23.0.stepgen.00.steplen         [AXIS_1]STEPLEN
-setp hm2_5i23.0.stepgen.00.stepspace       [AXIS_1]STEPSPACE
-setp hm2_5i23.0.stepgen.00.position-scale  [AXIS_1]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.00.dirsetup        [JOINT_1]DIRSETUP
+setp hm2_5i23.0.stepgen.00.dirhold         [JOINT_1]DIRHOLD
+setp hm2_5i23.0.stepgen.00.steplen         [JOINT_1]STEPLEN
+setp hm2_5i23.0.stepgen.00.stepspace       [JOINT_1]STEPSPACE
+setp hm2_5i23.0.stepgen.00.position-scale  [JOINT_1]OUTPUT_SCALE
 
-setp hm2_5i23.0.stepgen.02.dirsetup        [AXIS_2]DIRSETUP
-setp hm2_5i23.0.stepgen.02.dirhold         [AXIS_2]DIRHOLD
-setp hm2_5i23.0.stepgen.02.steplen         [AXIS_2]STEPLEN
-setp hm2_5i23.0.stepgen.02.stepspace       [AXIS_2]STEPSPACE
-setp hm2_5i23.0.stepgen.02.position-scale  [AXIS_2]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.02.dirsetup        [JOINT_2]DIRSETUP
+setp hm2_5i23.0.stepgen.02.dirhold         [JOINT_2]DIRHOLD
+setp hm2_5i23.0.stepgen.02.steplen         [JOINT_2]STEPLEN
+setp hm2_5i23.0.stepgen.02.stepspace       [JOINT_2]STEPSPACE
+setp hm2_5i23.0.stepgen.02.position-scale  [JOINT_2]OUTPUT_SCALE
 
-setp hm2_5i23.0.stepgen.03.dirsetup        [AXIS_3]DIRSETUP
-setp hm2_5i23.0.stepgen.03.dirhold         [AXIS_3]DIRHOLD
-setp hm2_5i23.0.stepgen.03.steplen         [AXIS_3]STEPLEN
-setp hm2_5i23.0.stepgen.03.stepspace       [AXIS_3]STEPSPACE
-setp hm2_5i23.0.stepgen.03.position-scale  [AXIS_3]OUTPUT_SCALE
+setp hm2_5i23.0.stepgen.03.dirsetup        [JOINT_3]DIRSETUP
+setp hm2_5i23.0.stepgen.03.dirhold         [JOINT_3]DIRHOLD
+setp hm2_5i23.0.stepgen.03.steplen         [JOINT_3]STEPLEN
+setp hm2_5i23.0.stepgen.03.stepspace       [JOINT_3]STEPSPACE
+setp hm2_5i23.0.stepgen.03.position-scale  [JOINT_3]OUTPUT_SCALE
 
 
 # step_type=0 means Step & Direction
