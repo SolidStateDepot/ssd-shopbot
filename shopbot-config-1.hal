@@ -330,21 +330,26 @@ net estop-all-ok => iocontrol.0.emc-enable-in
 # spindle stuff
 #
 
-loadusr -W hy_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1 --max-freq=300 --min-freq=1 --motor-voltage=220 --motor-current=13.0 --motor-speed=18000
+# Huanyang GT-series GT-7R5G-2
+loadusr -W hy_gt_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1 --max-freq=300 --min-freq=1 --motor-max-speed=18000
+#loadusr -W hy_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1 --max-freq=300 --min-freq=1 --motor-voltage=220 --motor-current=13.0 --motor-speed=18000 --debug
+
 
 net spindle-on <= motion.spindle-on
-net spindle-on => hy_vfd.spindle-on
+net spindle-on => hy_gt_vfd.spindle-on
 
 net spindle-forward <= motion.spindle-forward
-net spindle-forward => hy_vfd.spindle-forward
+#net spindle-forward => hy_gt_vfd.spindle-forward
 
 net spindle-reverse <= motion.spindle-reverse
-net spindle-reverse => hy_vfd.spindle-reverse
+#net spindle-reverse => hy_gt_vfd.spindle-reverse
 
 net spindle-speed-cmd <= motion.spindle-speed-out
-net spindle-speed-cmd => hy_vfd.speed-command
+net spindle-speed-cmd => hy_gt_vfd.speed-cmd
 
-net spindle-at-speed <= hy_vfd.spindle-at-speed
+net spindle-at-speed <= hy_gt_vfd.at-speed
 net spindle-at-speed => motion.spindle-at-speed
 
-setp hy_vfd.enable True
+#net spindle-speed-fb <= hy_gt_vfd.spindle-speed-fb
+
+#setp hy_gt_vfd.enable True
