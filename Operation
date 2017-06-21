@@ -12,3 +12,39 @@ The spindle goes up to 18K rpm.
 
 There's plenty of Onsrud tooling.
 
+
+
+TO USE THE SHOPBOT:
+- make sure cords are plugged in
+- hit black button
+- while the computer boots, find the collet you need for the size of bit you're using.
+  insert the collet and insert the bit.  (put more here on what to do)
+- turn red knob to on
+- put key into spindle interlock, and make sure it's on
+- when LinuxCNC launches, check e-stop
+- pop out all e-stop switches
+- hit e-stop button in gui (toggle it off)
+- power on the machine
+- home the machine.  You can only home while in JOINT mode, not WORLD mode.
+- switch to WORLD mode using "$".  DO NOT JOG UNTIL YOU DO.  YOU WILL RACK THE GANTRY.
+- Toggle SpindleVFD power button on.
+- click "warm up spindle button" to make sure that the spindle is warm.  Takes 10 minutes, 
+  and it will cycle up and then shut off.
+- switch on the dust collection
+- You are good to go.
+
+- You can start the spindle manually
+- Or, put the codes in.  This is safest.
+
+WHEN YOU'RE DONE:
+- power off the dust collector
+- remove the bit from the spindle
+- put the collet back in the place you found it and take your bit with you (unless it's a
+  community bit, then leave it in the drawer you found it in.)
+- remove your work piece(s) from the table
+- vacuum off any debris you created, and some you didn't.  Leave it in better shape than
+  when you found it.
+- put the dust boot upside down so that the bristles don't get bent
+- click "SpindleVFD power" button to turn off spindle VFD
+- close LinuxCNC app
+- Poweroff 
