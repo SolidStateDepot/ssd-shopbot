@@ -1,43 +1,46 @@
 
-This is a gantry machine, and LinuxCNC has trouble with gantry machines.
-
-Home in Joint (aka Free) mode, but never jog there!
-
-Jog and run in World mode.
-
-Use '$' to switch back and forth between Joint and World mode.
-
-
 The spindle goes up to 18K rpm.
 
-There's plenty of Onsrud tooling.
+Initialization phase:
+- make sure cords are plugged in.  There are 3 cables - the 240v, the computer 110v, the console 110v
+  (and the dust collector, so really four)
+- hit black button labeled "Computer power" on the silver box on the side of the shopbot.  The
+  console should wake up and come out of black-screen-sleep-mode.
+- Locate both e-stop pendants.  Make sure they are pushed in.  You should be in e-stop state at
+  this point.
+- turn red knob to on (motor power switch) and interlock key to on.
+- VFD should be booting up as well, you can look to see if it's display is on.
+- When system is at login prompt, login with your username and password.
 
+- launch a terminal from the "activities" menu
+   - run:
+       linuxcnc ssd-shopbot/shopbot-config-1.ini
+   - Alt tab to the window.  for some reason, right now, it doesn't just show up
 
+- when LinuxCNC launches, twist the two e-stop buttons to make the system come out of e-stop
 
-TO USE THE SHOPBOT:
-- make sure cords are plugged in
-- hit black button
-- while the computer boots, find the collet you need for the size of bit you're using.
-  insert the collet and insert the bit.  (put more here on what to do)
-- turn red knob to on
-- put key into spindle interlock, and make sure it's on
-- when LinuxCNC launches, check e-stop
-- pop out all e-stop switches
-- hit e-stop button in gui (toggle it off)
-- power on the machine
-- home the machine.  You can only home while in JOINT mode, not WORLD mode.
-- switch to WORLD mode using "$".  DO NOT JOG UNTIL YOU DO.  YOU WILL RACK THE GANTRY.
-- Toggle SpindleVFD power button on.
-- click "warm up spindle button" to make sure that the spindle is warm.  Takes 10 minutes, 
+- hit e-stop button in gui (toggle it off).
+- push the power button in the gui to power on the machine, you should hear it click.
+
+- Click "home all" to home the machine.  AT THIS POINT THE MACHINE WILL MOVE.  Please
+  ensure that you and all of your appendages you wish to keep are out of it's way.
+
+- Make sure that there is no Collet Nut, no tool or collet in the spindle.  If there is,
+  remove all and place aside.  Save these for the Work phase.
+  
+- Click "warm up spindle button" to make sure that the spindle is warm.  Takes 10 minutes, 
   and it will cycle up and then shut off.
+
+- You are now good to start your work prep phase.
+
+Work prep and work phase:
+- find the collet you need for the size of bit you're using.
+  insert the collet and insert the bit.  (put more here on what to do)
 - switch on the dust collection
 - You are good to go.
 
-- You can start the spindle manually
-- Or, put the codes in.  This is safest.
-
-WHEN YOU'RE DONE:
-- power off the dust collector
+Post work phase:
+- push in the e-stop buttons.
 - remove the bit from the spindle
 - put the collet back in the place you found it and take your bit with you (unless it's a
   community bit, then leave it in the drawer you found it in.)
@@ -45,6 +48,11 @@ WHEN YOU'RE DONE:
 - vacuum off any debris you created, and some you didn't.  Leave it in better shape than
   when you found it.
 - put the dust boot upside down so that the bristles don't get bent
-- click "SpindleVFD power" button to turn off spindle VFD
+
+Shutdown Phase:
+- hit all of the e-stop buttons
+- power off the dust collector
 - close LinuxCNC app
 - Poweroff 
+- Turn off the red motor power switch, and the interlock for the spindle (keyswitch)
+- unplug the 240v, and the computer 110v.  You may leave the 110v for the console plugged in.
