@@ -34,9 +34,9 @@ o<vacuum-the-table> sub
         g53 g0 x#<x_min>
 
         #<y> = [ #<y> + #<y_increment> ]
-        o110 if [ #<y> gt #<y_max> ]
+        o120 if [ #<y> gt #<y_max> ]
             #<y> = #<y_max>
-        o110 endif
+        o120 endif
     o100 while [#<y> lt #<y_max> ]
 
     g53 g0 z0
