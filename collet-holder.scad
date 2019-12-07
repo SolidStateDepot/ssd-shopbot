@@ -14,10 +14,7 @@ locs = [[0,0,0],
 [3,-2,0],
 [0,-3,0]];
 
-// cylinder(6,3,4);
-
 for (i = [0:1:len(rads)-1]) {
-  echo("blah", i);
   translate(locs[i])
   cylinder(h=0.5,r=rads[i]*0.5,
     $fn=48);
