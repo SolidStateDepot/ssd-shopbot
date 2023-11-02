@@ -3,7 +3,7 @@ o<present-spindle> sub
     o<spindle-up> call
     m5
     g20 
-    g53 g0 x30 y12
+    g53 g0 x30 y6
 o<present-spindle> endsub
 m2
 

@@ -69,6 +69,12 @@ The contents of this file will not be overwritten when you run stepconf again.
 	<labelframe text="Quickies">
             <vbox>
 
+                <checkbutton>
+                    <halpin>"vacuum"</halpin>
+                    <text>"Vacuum"</text>
+                    <initval>0</initval>
+                </checkbutton>
+
                 <button>
                     <text>"Spindle Up"</text>
                     <halpin>"spindle-up-button"</halpin>

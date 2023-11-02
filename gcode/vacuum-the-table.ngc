@@ -8,18 +8,18 @@ o<vacuum-the-table> sub
     G20 (imperial)
     G64 p.1 (best speed, but don't deviate by more than 0.1 mm)
 
-    #<x_min> = 0
-    #<x_max> = 61.25
+    #<x_min> = 0.25
+    #<x_max> = 60.75
 
-    #<y_min> = 12
-    #<y_max> = 102.5
-    #<y_increment> = 9
+    #<y_min> = 4
+    #<y_max> = 101.5
+    #<y_increment> = 6
 
     #<y> = #<y_min>
 
     g53 g0 z0
     g53 g0 x#<x_min> y#<y>
-    g53 g0 z-6.5
+    g53 g0 z-7.1250
 
     o100 do
         g53 g0 y#<y>
@@ -40,7 +40,7 @@ o<vacuum-the-table> sub
     o100 while [#<y> lt #<y_max> ]
 
     g53 g0 z0
-    g53 g0 x30 y17
+    g53 g0 x30 y6
 o<vacuum-the-table> endsub
 m2
 

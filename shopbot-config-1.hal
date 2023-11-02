@@ -5,8 +5,8 @@
 # ###################################
 
 # This machine uses Gantry kinematics.
-# Joint 0 and joint 3 are motors on either side of the gantry, driving the gantry along the X axis
-# Joint 1 is a motor on the gantry, driving the spindle sled side to side on the gantry along the Y axis
+# Joint 1 and joint 3 are motors on either side of the gantry, driving the gantry along the Y axis
+# Joint 0 is a motor on the gantry, driving the spindle sled side to side on the gantry along the X axis
 # Joint 2 is a motor on the spindle sled, driving the spindle along the Z axis
 loadrt [KINS]KINEMATICS coordinates=xyzy kinstype=BOTH
 #autoconverted  gantrykins coordinates=xyzy
@@ -334,19 +334,19 @@ net estop-all-ok => iocontrol.0.emc-enable-in
 loadusr -W hy_gt_vfd --device /dev/ttyUSB0 --bits 8 --parity none --stopbits 1 --rate 38400 --target 1 --max-freq=300 --min-freq=1 --motor-max-speed=18000
 
 
-net spindle-on <= motion.spindle-on
+net spindle-on <= spindle.0.on
 net spindle-on => hy_gt_vfd.spindle-on
 
-net spindle-forward <= motion.spindle-forward
+net spindle-forward <= spindle.0.forward
 #net spindle-forward => hy_gt_vfd.spindle-forward
 
-net spindle-reverse <= motion.spindle-reverse
+net spindle-reverse <= spindle.0.reverse
 #net spindle-reverse => hy_gt_vfd.spindle-reverse
 
-net spindle-speed-cmd <= motion.spindle-speed-out
+net spindle-speed-cmd <= spindle.0.speed-out
 net spindle-speed-cmd => hy_gt_vfd.speed-cmd
 
 net spindle-at-speed <= hy_gt_vfd.at-speed
-net spindle-at-speed => motion.spindle-at-speed
+net spindle-at-speed => spindle.0.at-speed
 
 net spindle-speed-fb <= hy_gt_vfd.speed-fb
