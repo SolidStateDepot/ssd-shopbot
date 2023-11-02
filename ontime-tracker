@@ -1,0 +1,90 @@
+#!/usr/bin/env python2
+
+import datetime
+import hal
+import os
+import sys
+import time
+
+
+def update_pins():
+    h['total-seconds'] = total_seconds + seconds_this_time
+    total_minutes, h['seconds'] = divmod((total_seconds + seconds_this_time), 60)
+    h['hours'], h['minutes'] = divmod(total_minutes, 60)
+
+
+def update_savefile():
+    global total_seconds
+    global name
+    global comments
+    with open(name+".save", "w") as savefile:
+        for c in comments:
+            savefile.write(c)
+        savefile.write("%d\n" % int(total_seconds))
+
+
+name = "ontime-tracker"
+if len(sys.argv) > 1:
+    name = name + "." + sys.argv[1]
+
+total_seconds = 0
+seconds_this_time = 0
+
+comments = []
+try:
+    with open(name+".save") as savefile:
+        while True:
+            line = savefile.readline()
+            if line[0] == '#':
+                comments.append(line)
+                continue
+            total_seconds = int(line.strip())
+            break
+except IOError as e:
+    # It's ok if the file doesn't exist, we'll start with 0 seconds of
+    # runtime and create the file.
+    pass
+
+h = hal.component(name)
+h.newpin("on", hal. HAL_BIT, hal.HAL_IN)
+
+h.newpin("hours", hal.HAL_U32, hal.HAL_OUT)
+h.newpin("minutes", hal.HAL_U32, hal.HAL_OUT)
+h.newpin("seconds", hal.HAL_U32, hal.HAL_OUT)
+h.newpin("total-seconds", hal.HAL_U32, hal.HAL_OUT)
+
+update_pins()
+
+h.ready()
+
+old_on = False
+
+try:
+    while True:
+        if h['on'] and not old_on:
+            # It's started!
+            start_time = datetime.datetime.now()
+            seconds_this_time = 0
+
+        elif old_on and not h['on']:
+            # It stopped.
+            dt = datetime.datetime.now() - start_time
+            seconds_this_time = dt.total_seconds()
+            total_seconds += seconds_this_time
+            seconds_this_time = 0
+            update_pins()
+            update_savefile()
+
+        elif h['on']:
+            # Still on.
+            dt = datetime.datetime.now() - start_time
+            seconds_this_time = dt.total_seconds()
+            update_pins()
+            update_savefile()
+
+        old_on = h['on']
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    total_seconds += seconds_this_time
+    update_savefile()

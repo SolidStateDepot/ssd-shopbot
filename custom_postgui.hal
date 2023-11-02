@@ -153,3 +153,9 @@ net spindle-speed-cmd => pyvcp.spindle-speed-cmd
 
 net spindle-at-speed => pyvcp.spindle-at-speed-led
 
+net spindle-ontime-hours <= ontime-tracker.spindle.hours
+net spindle-ontime-hours => pyvcp.spindle-ontime-hours
+net spindle-ontime-minutes <= ontime-tracker.spindle.minutes
+net spindle-ontime-minutes => pyvcp.spindle-ontime-minutes
+net spindle-ontime-seconds <= ontime-tracker.spindle.seconds
+net spindle-ontime-seconds => pyvcp.spindle-ontime-seconds

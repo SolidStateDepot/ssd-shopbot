@@ -350,3 +350,6 @@ net spindle-at-speed <= hy_gt_vfd.at-speed
 net spindle-at-speed => spindle.0.at-speed
 
 net spindle-speed-fb <= hy_gt_vfd.speed-fb
+
+loadusr -Wn ontime-tracker.spindle ./ontime-tracker spindle
+net spindle-on => ontime-tracker.spindle.on
