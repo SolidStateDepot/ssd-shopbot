@@ -6,10 +6,10 @@ import time
 
 
 def turn_on():
-    os.system('wget http://shopbot-vacuum.local/cm?cmnd=Power%20On > /dev/null 2> /dev/null') 
+    os.system('curl http://shopbot-vacuum.local/cm?cmnd=Power%20On > /dev/null 2> /dev/null')
 
 def turn_off():
-    os.system('wget http://shopbot-vacuum.local/cm?cmnd=Power%20Off > /dev/null 2> /dev/null') 
+    os.system('curl http://shopbot-vacuum.local/cm?cmnd=Power%20Off > /dev/null 2> /dev/null')
 
 
 h = hal.component("shopbot-vacuum-controller")
