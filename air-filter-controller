@@ -1,0 +1,50 @@
+#!/usr/bin/env python2
+
+import datetime
+import hal
+import os
+import sys
+import time
+
+
+def update_pins():
+    h['total-seconds'] = total_seconds + seconds_this_time
+    total_minutes, h['seconds'] = divmod((total_seconds + seconds_this_time), 60)
+    h['hours'], h['minutes'] = divmod(total_minutes, 60)
+
+
+def update_savefile():
+    global total_seconds
+    global name
+    global comments
+    with open(name+".save", "w") as savefile:
+        for c in comments:
+            savefile.write(c)
+        savefile.write("%d\n" % int(total_seconds))
+
+
+name = "air-filter-controller"
+pins = [ "wen3410-on", "wen3410-off", "wen3410-time", "wen3417-on", "wen3417-off", "wen3417-time" ]
+
+old_pins = { }
+
+h = hal.component(name)
+
+for pin in pins:
+    h.newpin(pin, hal. HAL_BIT, hal.HAL_IN)
+    old_pins[pin] = False
+
+h.ready()
+
+old_on = False
+
+try:
+    while True:
+        for pin in pins:
+            if h[pin] and not old_pins[pin]:
+                os.system("cd /opt/ook-remote; ./ook-remote {}.ook".format(pin))
+            old_pins[pin] = h[pin]
+        time.sleep(0.025)
+
+except KeyboardInterrupt:
+    pass

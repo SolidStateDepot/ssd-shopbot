@@ -159,3 +159,15 @@ net spindle-ontime-minutes <= ontime-tracker.spindle.minutes
 net spindle-ontime-minutes => pyvcp.spindle-ontime-minutes
 net spindle-ontime-seconds <= ontime-tracker.spindle.seconds
 net spindle-ontime-seconds => pyvcp.spindle-ontime-seconds
+
+
+loadusr -Wn air-filter-controller /opt/ssd-shopbot/air-filter-controller
+
+net wen3410-on   <= pyvcp.wen3410-on   => air-filter-controller.wen3410-on
+net wen3410-off  <= pyvcp.wen3410-off  => air-filter-controller.wen3410-off
+net wen3410-time <= pyvcp.wen3410-time => air-filter-controller.wen3410-time
+
+net wen3417-on   <= pyvcp.wen3417-on   => air-filter-controller.wen3417-on
+net wen3417-off  <= pyvcp.wen3417-off  => air-filter-controller.wen3417-off
+net wen3417-time <= pyvcp.wen3417-time => air-filter-controller.wen3417-time
+

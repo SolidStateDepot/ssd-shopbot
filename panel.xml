@@ -100,7 +100,8 @@ The contents of this file will not be overwritten when you run stepconf again.
 </vbox>
 
 <tabs>
-    <names>["Spindle", "Homing and Zeroing", "Misc Controls"]</names>
+    <names>["Spindle", "Air Filters", "Homing and Zeroing", "Misc Controls"]</names>
+
     <vbox>
 	<labelframe text="Spindle Status">
 		<hbox>
@@ -247,6 +248,48 @@ The contents of this file will not be overwritten when you run stepconf again.
 	</hbox>
 	</labelframe>
     </vbox>
+
+    <vbox>
+        <hbox>
+            <label>
+                <text>"WEN3410 (small air filter)"</text>
+            </label>
+            <vbox>
+                <button>
+                    <text>"On"</text>
+                    <halpin>"wen3410-on"</halpin>
+                </button>
+                <button>
+                    <text>"Off"</text>
+                    <halpin>"wen3410-off"</halpin>
+                </button>
+                <button>
+                    <text>"Timer"</text>
+                    <halpin>"wen3410-time"</halpin>
+                </button>
+            </vbox>
+        </hbox>
+        <hbox>
+            <label>
+                <text>"WEN3417 (big air filter)"</text>
+            </label>
+            <vbox>
+                <button>
+                    <text>"On"</text>
+                    <halpin>"wen3417-on"</halpin>
+                </button>
+                <button>
+                    <text>"Off"</text>
+                    <halpin>"wen3417-off"</halpin>
+                </button>
+                <button>
+                    <text>"Timer"</text>
+                    <halpin>"wen3417-time"</halpin>
+                </button>
+            </vbox>
+        </hbox>
+    </vbox>
+
     <vbox>
 	<hbox>
 		<labelframe text="Zeroing"> <!-- Zeroing -->
